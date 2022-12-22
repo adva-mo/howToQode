@@ -1,5 +1,5 @@
 const { mongoose, Schema } = require("mongoose");
-// const Comment = require("./comment.js");
+const Comment = require("./comment.js");
 const date = new Date();
 
 const Snippet = mongoose.model(
@@ -25,7 +25,7 @@ const Snippet = mongoose.model(
       type: Boolean,
       default: false,
     },
-    // comments: [Comment],
+    comments: [Comment],
     code: {
       type: String,
       required: true,
