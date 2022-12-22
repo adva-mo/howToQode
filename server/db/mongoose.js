@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-const URI = `mongodb+srv://advamo:${process.env.MONGO_PASS}@cluster0.qqzaahu.mongodb.net/?retryWrites=true&w=majority`;
+const URI = `mongodb+srv://${process.env.MONGO_USER}:${process.env.MONGO_PASS}@cluster0.lugjdkd.mongodb.net/?retryWrites=true&w=majority`;
 
 mongoose.set("strictQuery", false);
 const connectToDB = async () => {
