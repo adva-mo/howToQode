@@ -3,20 +3,19 @@ require("dotenv").config();
 const express = require("express");
 const app = express();
 const server = require("http").createServer(app);
-
-// const mongooseConnect = require("./db/mongoose.js")();
-
 const cors = require("cors");
+const validateRequest = require("./controllers/app.controllers");
 
-app.use(cors());
+const mongoose = require("./db/mongoose.js");
 
 const port = process.env.PORT || 1234;
 
-app.use((err, req, res, next) => {
-  if (err instanceof SyntaxError && err.status === 400 && "body" in err) {
-    return res.status(404).send({ message: err.message }); // Bad request
-  }
-  next();
+app.use(cors());
+app.use(express.json());
+app.use(validateRequest);
+
+app.get("/", (req, res) => {
+  res.send("ok");
 });
 
 server.listen(port, (e) => {
