@@ -8,6 +8,7 @@ const cors = require("cors");
 const validateRequest = require("./controllers/app.controllers");
 const usersRouter = require("./routes/users.routes.js");
 const snippetsRouter = require("./routes/snippets.routes.js");
+const commentsRouter = require("./routes/comments.routes.js");
 
 const session = require("express-session");
 const passport = require("passport");
@@ -47,6 +48,7 @@ app.get("/", (req, res) => {
 
 app.use("/users", usersRouter);
 app.use("/snippets", snippetsRouter);
+app.use("/comments", commentsRouter);
 
 server.listen(port, (e) => {
   if (!e) console.log("server is up on port " + port);
