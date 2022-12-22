@@ -21,4 +21,14 @@ const getAllSnippets = async (_, res) => {
   }
 };
 
-module.exports = { addSnippet, getAllSnippets };
+const getSnippet = async (req, res) => {
+  try {
+    const snippet = await Snippet.findById(req.params.id);
+    if (!snippet) return res.status(404).send("snippet is not exist");
+    res.send(snippet);
+  } catch (e) {
+    res.status(500).send();
+  }
+};
+
+module.exports = { addSnippet, getAllSnippets, getSnippet };
