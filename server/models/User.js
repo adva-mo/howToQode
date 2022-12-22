@@ -26,19 +26,17 @@ const userSchema = new mongoose.Schema({
   },
   password: {
     type: String,
-    // required: true,
     trim: true,
     minlength: 6,
     validate(value) {
       //todo
     },
   },
+  level: {
+    type: String,
+    default: "begginer",
+  },
 });
-
-// userSchema.pre("save", async function (next) {
-//   console.log("pre-save");
-//   next();
-// });
 
 userSchema.plugin(passportLocalMongoose);
 

@@ -2,10 +2,8 @@ const User = require("../models/User.js");
 const passport = require("passport");
 
 const addUser = async (req, res) => {
-  console.log(req.body);
   try {
     const newUser = await User.create(req.body);
-    // console.log(newUser);
     if (!newUser)
       return res.status(404).send("problem while creating the user");
     res.status(201).send(newUser);
@@ -14,6 +12,7 @@ const addUser = async (req, res) => {
     res.status(500).send(e);
   }
 };
+
 const getUser = async (req, res) => {
   try {
     const user = await User.findById(req.params.id);
@@ -23,13 +22,12 @@ const getUser = async (req, res) => {
     res.status(500).send();
   }
 };
+
 const getUsers = async (req, res) => {
-  console.log("get");
   try {
-    const users = await User.findMany({});
-    console.log(users);
-    if (!users) return res.status(404).send("p");
-    res.send("users");
+    const users = await User.find({});
+    if (!users) return res.status(404).send();
+    res.send(users);
   } catch (e) {
     res.status(500).send();
   }
@@ -73,9 +71,9 @@ const registerUser = (req, res) => {
       console.log(err);
       res.status(404).send(err);
     } else {
-      passport.authenticate("local")(req, res, function () {
-        res.send("user registered succesfully");
-      });
+      passport.authenticate("local")(req, res, () =>
+        res.send("user registered succesfully")
+      );
     }
   });
 };
@@ -84,11 +82,9 @@ const registerUser = (req, res) => {
 const loginUser = async (req, res) => {
   try {
     const user = new User(req.body);
-    req.login(user, function (err) {
+    req.login(user, (err) => {
       if (err) throw Error(err);
-      passport.authenticate("local")(req, res, function () {
-        res.send(user);
-      });
+      passport.authenticate("local")(req, res, () => res.send(user));
     });
   } catch (e) {
     res.status(404).send(e);
