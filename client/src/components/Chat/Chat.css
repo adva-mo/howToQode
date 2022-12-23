@@ -1,4 +1,17 @@
 .chat {
   background-color: cornflowerblue;
   width: 25%;
+  height: 70vh;
 }
+.chat-room {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+}
+.chat-input {
+  align-self: flex-end;
+}
+/* .chat-input-container {
+  overflow: hidden;
+} */
