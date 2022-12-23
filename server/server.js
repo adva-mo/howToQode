@@ -3,16 +3,18 @@ require("dotenv").config();
 const express = require("express");
 const app = express();
 const server = require("http").createServer(app);
+const mongoose = require("./db/mongoose.js");
 const cors = require("cors");
 
 const validateRequest = require("./controllers/app.controllers");
 const usersRouter = require("./routes/users.routes.js");
 const snippetsRouter = require("./routes/snippets.routes.js");
 const commentsRouter = require("./routes/comments.routes.js");
+const filesRouter = require("./routes/files.routes.js");
 
 const session = require("express-session");
 const passport = require("passport");
-const passportLocalMongoose = require("passport-local-mongoose");
+// const passportLocalMongoose = require("passport-local-mongoose");
 
 const port = process.env.PORT || 1234;
 
@@ -40,8 +42,6 @@ passport.deserializeUser(function (user, done) {
   done(null, user);
 });
 
-const mongoose = require("./db/mongoose.js");
-
 app.get("/", (req, res) => {
   res.send("ok");
 });
@@ -49,6 +49,7 @@ app.get("/", (req, res) => {
 app.use("/users", usersRouter);
 app.use("/snippets", snippetsRouter);
 app.use("/comments", commentsRouter);
+app.use("/files", filesRouter);
 
 server.listen(port, (e) => {
   if (!e) console.log("server is up on port " + port);

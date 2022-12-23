@@ -4,9 +4,8 @@ const addSnippet = async (req, res) => {
   try {
     const newSnippet = new Snippet(req.body);
     await newSnippet.save();
-    res.send("snippet upload succsefull");
+    res.send(newSnippet);
   } catch (e) {
-    console.log(e.message);
     res.status(404).send(e.message);
   }
 };
