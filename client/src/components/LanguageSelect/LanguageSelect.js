@@ -5,7 +5,6 @@ function LanguageSelect() {
   const { setSnippetObject } = useContext(newSnippetContext);
 
   const handleLanguageSelect = ({ target }) => {
-    console.log(target.value);
     setSnippetObject((prev) => ({ ...prev, language: target.value }));
   };
   return (

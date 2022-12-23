@@ -1,4 +1,3 @@
-// const File = require("../models/file.js");
 const fs = require("fs");
 
 const getFileContent = async (req, res) => {
@@ -12,7 +11,6 @@ const getFileContent = async (req, res) => {
     res.send(content.toString());
     //
   } catch (e) {
-    console.log(e.message);
     res.status(400).send(e.message);
   }
 };

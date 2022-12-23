@@ -9,7 +9,7 @@ filesRouter.post(
   upload.single("upload-snippet"),
   getFileContent,
   (error, req, res, next) => {
-    res.status(400).send(error.message);
+    res.status(404).send(error.message);
   }
 );
 

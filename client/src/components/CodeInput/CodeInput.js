@@ -1,10 +1,9 @@
-import React, { useContext, useState } from "react";
+import React, { useContext } from "react";
 import CodeBlock from "../Codeblock/Codeblock";
 import newSnippetContext from "../../context/snippet.context.js";
 import "./CodeInput.css";
 
 function CodeInput() {
-  // const [userCode, setUserCode] = useState("");
   const { setSnippetObject, snippetObject } = useContext(newSnippetContext);
 
   const handleCodeChange = ({ target }) => {

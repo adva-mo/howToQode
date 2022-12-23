@@ -2,6 +2,7 @@ import React, { useRef, useState, useContext } from "react";
 import CodeInput from "../CodeInput/CodeInput";
 import LanguageSelect from "../LanguageSelect/LanguageSelect";
 import newSnippetContext from "../../context/snippet.context.js";
+import UploadInput from "../uploadInput/UploadInput";
 
 function NewSnippetCard() {
   const { setSnippetObject, snippetObject, setIsSnippetFull } =
@@ -51,12 +52,7 @@ function NewSnippetCard() {
           ref={description}
         />
       </div>
-      <div>
-        <p>load a script:</p>
-        <label htmlFor="file">file</label>
-        <input placeholder="enter your file" type="file" />
-        <button>upload</button>
-      </div>
+      <UploadInput />
       <CodeInput />
       <button onClick={handleSnippetSubmit}>submit</button>
     </form>
