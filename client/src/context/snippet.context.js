@@ -6,13 +6,6 @@ const newSnippetContext = React.createContext({
   language: "",
   description: "",
   code: "",
-  clearContext() {
-    (this.author = ""),
-      (this.title = ""),
-      (this.language = ""),
-      (this.description = ""),
-      (this.code = "");
-  },
 });
 
 export default newSnippetContext;

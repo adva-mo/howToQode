@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-export const useHttp = (setData) => {
+export const useHttp = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
 
@@ -19,8 +19,8 @@ export const useHttp = (setData) => {
       if (!response.ok) throw new Error("request failed");
       const data = await response.json();
       // setData && setData(data);
-      console.log(data);
       setIsLoading(false);
+      return data;
     } catch (e) {
       console.log(e);
       setError(e.message || "something went wrong");

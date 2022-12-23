@@ -1,9 +1,16 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import CodeBlock from "../Codeblock/Codeblock";
+import newSnippetContext from "../../context/snippet.context.js";
 import "./CodeInput.css";
 
 function CodeInput() {
-  const [userCode, setUserCode] = useState("");
+  // const [userCode, setUserCode] = useState("");
+  const { setSnippetObject, snippetObject } = useContext(newSnippetContext);
+
+  const handleCodeChange = ({ target }) => {
+    setSnippetObject((prev) => ({ ...prev, code: target.value }));
+  };
+
   return (
     <div className="code-input-container">
       <div className="code-textarea">
@@ -14,11 +21,14 @@ function CodeInput() {
           placeholder="enjoy your coding (:"
           type="text"
           name="code"
-          onChange={({ target }) => setUserCode(target.value)}
+          onChange={handleCodeChange}
         />
       </div>
       <div className="code-block">
-        <CodeBlock textToFormat={userCode} language={"javascript"} />
+        <CodeBlock
+          textToFormat={snippetObject.code}
+          language={snippetObject.language}
+        />
       </div>
     </div>
   );
