@@ -52,18 +52,11 @@ function NewSnippetCard() {
       <div>
         <p>load a script:</p>
         <label htmlFor="file">file</label>
-        <input
-          // className={fileClasses}
-          placeholder="enter your file"
-          type="file"
-          name="file"
-          // value={emailValue}
-          // onChange={emailChangeHandler}
-          // onBlur={emailBlurHndler}
-        />
+        <input placeholder="enter your file" type="file" />
         <button>upload</button>
       </div>
       <CodeInput />
+      <button>submit</button>
     </form>
   );
 }
