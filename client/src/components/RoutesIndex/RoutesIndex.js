@@ -6,15 +6,13 @@ import NewSnippetPage from "../../pages/NewSnippet/NewSnippetPage";
 
 function RoutesIndex() {
   return (
-    <>
-      <Routes>
-        <Route path="/" element={<Navigate replace to="/homepage" />} />
-        <Route path="*" element={<Navigate replace to="/homepage" />} />
-        <Route path="/homepage" element={<Homepage />} />
-        <Route path="/login" element={<Loginpage />} />
-        <Route path="/new-snippet" element={<NewSnippetPage />} />
-      </Routes>
-    </>
+    <Routes>
+      <Route path="/" element={<Navigate replace to="/homepage" />} />
+      <Route path="*" element={<Navigate replace to="/homepage" />} />
+      <Route path="/homepage" element={<Homepage />} />
+      <Route path="/login" element={<Loginpage />} />
+      <Route path="/new-snippet" element={<NewSnippetPage />} />
+    </Routes>
   );
 }
 

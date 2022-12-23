@@ -1,9 +1,5 @@
 .App {
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  min-height: 100vh;
 }
 
 input,
@@ -17,4 +13,20 @@ select {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+.split-component {
+  display: flex;
+  justify-content: space-between;
+}
+
+.RoutesIndex {
+  background-color: antiquewhite;
+  flex-grow: 1;
+}
+.Chat {
+  width: 30vw;
+  height: 90vh;
+}
+.page-container {
+  flex-grow: 1;
 }

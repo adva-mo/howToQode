@@ -3,6 +3,8 @@ import NewSnippetCard from "../../components/NewSnippetCard/NewSnippetCard.js";
 import newSnippetContext from "../../context/snippet.context.js";
 import { useHttp } from "../../hooks/useHttp";
 
+import "./NewSnippetPage.css";
+
 function NewSnippetPage() {
   const [isSnippetFull, setIsSnippetFull] = useState(false);
   const [snippetObject, setSnippetObject] = useState({
@@ -37,7 +39,7 @@ function NewSnippetPage() {
   }, [isSnippetFull]);
 
   return (
-    <div>
+    <div className="new-snippeet-page page-container">
       <newSnippetContext.Provider
         value={{
           setSnippetObject,

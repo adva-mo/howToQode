@@ -11,13 +11,11 @@ function UploadInput() {
     try {
       let formData = new FormData();
       formData.append("upload-snippet", imageToUpload);
-      console.log(formData);
       const res = await axios.post(
         "http://localhost:3001/files/upload/snippet",
         formData
       );
       setSnippetObject((prev) => ({ ...prev, code: res.data }));
-      console.log(res.data);
     } catch (e) {
       console.log(e);
     }

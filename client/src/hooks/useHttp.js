@@ -15,10 +15,8 @@ export const useHttp = () => {
         headers: configObj.headers ? configObj.headers : {},
         body: configObj.body ? JSON.stringify(configObj.body) : null,
       });
-      console.log(response);
       if (!response.ok) throw new Error("request failed");
       const data = await response.json();
-      // setData && setData(data);
       setIsLoading(false);
       return data;
     } catch (e) {

@@ -40,7 +40,7 @@ function Loginpage() {
   const { getData } = useHttp(setConnectedUser);
 
   useEffect(() => {
-    console.log(userData);
+    if (!userData) return;
     getData({
       url: "users/login",
       method: "POST",
@@ -61,7 +61,7 @@ function Loginpage() {
   };
 
   return (
-    <div>
+    <div className="login-page page-container">
       <form onSubmit={formSubmissionHandler} className="flex-column login-card">
         <h3>{isNewUser ? "Sign up" : "Sign in"} </h3>
         <label htmlFor="username">email</label>

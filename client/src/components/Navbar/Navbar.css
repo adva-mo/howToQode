@@ -1,0 +1,46 @@
+.navbar-ul {
+  list-style: none;
+  display: flex;
+  justify-content: space-around;
+  padding: 0.5rem;
+  margin-top: 0.5rem;
+  position: sticky;
+  top: 0;
+  left: 0;
+  background-color: white;
+  z-index: 10;
+  width: 100%;
+}
+.navbar-ul a.active {
+  text-decoration: underline;
+}
+.navbar-ul a {
+  color: var(--black);
+  text-decoration: none;
+}
+.navlink {
+  border: 2px solid var(--gary) !important;
+  border-width: 0 0 2px 0 !important;
+}
+.small-profile-pic {
+  width: 1.7rem;
+  height: 2rem;
+  border-radius: 90%;
+}
+.logo-img {
+  width: 7rem;
+  transform: translateY(-0.7rem);
+}
+.logout-btn {
+  transform: translateY(-0.5rem);
+}
+@media (max-width: 450px) {
+  .media-450 {
+    display: none;
+  }
+  .logo-img {
+    width: 3rem;
+    height: 1.5rem;
+    transform: none;
+  }
+}
