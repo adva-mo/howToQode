@@ -2,6 +2,7 @@ import "./App.css";
 import RoutesIndex from "./components/RoutesIndex/RoutesIndex";
 import Navbar from "./components/Navbar/Navbar.js";
 import Chat from "./components/Chat/Chat";
+import AI from "./components/AI/AI";
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
 
         <Chat />
       </div>
+      {/* <AI /> */}
     </div>
   );
 }

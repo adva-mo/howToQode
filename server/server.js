@@ -15,6 +15,10 @@ const snippetsRouter = require("./routes/snippets.routes.js");
 const commentsRouter = require("./routes/comments.routes.js");
 const filesRouter = require("./routes/files.routes.js");
 const answersRouter = require("./routes/answers.routes.js");
+const aiRouter = require("./routes/ai.routes.js");
+
+//--------------AUTHENTICATION--------------
+const openAI = require("./openAI/openAI.js");
 
 //--------------AUTHENTICATION--------------
 const session = require("express-session");
@@ -55,6 +59,7 @@ app.use("/snippets", snippetsRouter);
 app.use("/answers", answersRouter);
 app.use("/comments", commentsRouter);
 app.use("/files", filesRouter);
+app.use("/ai", aiRouter);
 
 server.listen(port, (e) => {
   if (!e) console.log("server is up on port " + port);
@@ -62,6 +67,7 @@ server.listen(port, (e) => {
 
 //--------------SOCKET--------------
 const { Server } = require("socket.io");
+// const send = require("send");
 
 const io = new Server(server, {
   cors: {
@@ -73,6 +79,7 @@ const io = new Server(server, {
 
 io.on("connection", (socket) => {
   console.log(`new user connected: ${socket.id}`);
+  socket.emit(socket.id);
 
   socket.on("join_room", (data) => {
     socket.join(data);
