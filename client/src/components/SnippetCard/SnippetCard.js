@@ -1,6 +1,7 @@
 import React from "react";
 import uuid from "react-uuid";
 import Codeblock from "../Codeblock/Codeblock";
+import Comment from "../Comment/Comment";
 
 function SnippetCard({
   author,
@@ -24,8 +25,9 @@ function SnippetCard({
       <p>{solved ? "solved" : "not solved"}</p>
       {date} {time}
       <div className="snippet-comments">
+        <h4>Answers</h4>
         {comments?.map((comment) => (
-          <p key={uuid()}>comment!</p>
+          <Comment key={uuid()} {...comment} snippetOwner={author} />
         ))}
       </div>
     </div>

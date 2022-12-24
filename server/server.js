@@ -14,6 +14,7 @@ const usersRouter = require("./routes/users.routes.js");
 const snippetsRouter = require("./routes/snippets.routes.js");
 const commentsRouter = require("./routes/comments.routes.js");
 const filesRouter = require("./routes/files.routes.js");
+const answersRouter = require("./routes/answers.routes.js");
 
 //--------------AUTHENTICATION--------------
 const session = require("express-session");
@@ -51,6 +52,7 @@ app.get("/", (_, res) => {
 
 app.use("/users", usersRouter);
 app.use("/snippets", snippetsRouter);
+app.use("/answers", answersRouter);
 app.use("/comments", commentsRouter);
 app.use("/files", filesRouter);
 

@@ -1,11 +1,9 @@
 const { mongoose, Schema } = require("mongoose");
-const Answer = require("./Answer.js");
-// const Comment = require("./comment.js");
+const Comment = require("./Comment.js");
 const date = new Date();
 
-const Snippet = mongoose.model(
-  "Snippet",
-  new Schema({
+const Answer = new Schema(
+  {
     author: {
       type: String,
       required: true,
@@ -14,23 +12,16 @@ const Snippet = mongoose.model(
       type: String,
       required: true,
     },
-    language: {
-      type: String,
-      required: true,
-    },
+
     description: {
       type: String,
       required: true,
     },
-    solved: {
+    isHelpful: {
       type: Boolean,
       default: false,
     },
-    answers: [Answer],
-    code: {
-      type: String,
-      required: true,
-    },
+    comments: [Comment],
     date: {
       type: String,
       default: date.toLocaleDateString(),
@@ -39,7 +30,8 @@ const Snippet = mongoose.model(
       type: String,
       default: date.toLocaleTimeString(),
     },
-  })
+  }
+  //   )
 );
 
-module.exports = Snippet;
+module.exports = Answer;
