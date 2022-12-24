@@ -12,6 +12,12 @@
 .chat-input {
   align-self: flex-end;
 }
-/* .chat-input-container {
-  overflow: hidden;
-} */
+#other {
+  text-align: right;
+}
+.message-container {
+  width: 100%;
+  height: 100%;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}

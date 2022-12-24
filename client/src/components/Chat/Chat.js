@@ -1,15 +1,18 @@
 import React, { useState, useEffect } from "react";
 import "./Chat.css";
 import io from "socket.io-client";
+import uuid from "react-uuid";
+import ScrollToBottom from "react-scroll-to-bottom";
 
 const socket = io.connect("http://127.0.0.1:3001");
 
 function Chat() {
-  const [connected, setConnected] = useState(false);
+  const [isConnected, setIsConnected] = useState(false);
   const [currentMessage, setCurrentMessage] = useState("");
+  const [messageList, setMessageList] = useState([]);
 
   const joinChat = () => {
-    setConnected(true);
+    setIsConnected(true);
     socket.emit("join_room", "room1");
   };
 
@@ -31,25 +34,50 @@ function Chat() {
     } catch (e) {
       console.log(e);
     }
+    setMessageList((list) => [...list, messageData]);
+    setCurrentMessage("");
   };
 
   useEffect(() => {
-    socket.on("recieve_message", (data) => {
-      console.log(data);
+    socket.on("receive_message", (data) => {
+      setMessageList((list) => [...list, data]);
     });
   }, [socket]);
 
   return (
     <div className="chat">
-      {connected ? (
+      {isConnected ? (
         <div className="chat-room">
-          <p>liev chat</p>
+          <p>live chat</p>
+          <ScrollToBottom className="message-container">
+            {messageList.map((data) => {
+              return (
+                <div
+                  id={data.author === socket.id ? "you" : "other"}
+                  key={uuid()}
+                >
+                  <div>
+                    <p>{data.message}</p>
+                  </div>
+                  <div>
+                    {" "}
+                    <p>{data.time}</p>
+                    {/* <p>{data.author}</p> */}
+                  </div>
+                </div>
+              );
+            })}
+          </ScrollToBottom>
           <div className="flex chat-input-container">
             <input
               onChange={({ target }) => setCurrentMessage(target.value)}
               className="chat-input"
               type="text"
               placeholder="hey.."
+              value={currentMessage}
+              onKeyPress={(e) => {
+                e.key === "Enter" && sendMessage();
+              }}
             />
             <button onClick={sendMessage}>&#9658;</button>
           </div>
