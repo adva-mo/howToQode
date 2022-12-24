@@ -28,4 +28,21 @@ const deleteAnswer = async (req, res) => {
   }
 };
 
-module.exports = { addAnswer, deleteAnswer };
+const confirmAnswer = async (req, res) => {
+  try {
+    const snippet = await Snippet.findById(req.params.snippetid);
+    const answer = snippet.answers.id(req.body.answerId);
+    //function that check if the user who confirmed is the person who asked the question
+    //if it is, ishelpful = true && snippeet solved   else  likes+
+    snippet.author === req.body.userid
+      ? (answer.isHelpful = true)
+      : console.log("add like to answer");
+
+    await snippet.save();
+    console.log("answer confirmed");
+  } catch (e) {
+    console.log(e);
+  }
+};
+
+module.exports = { addAnswer, deleteAnswer, confirmAnswer };

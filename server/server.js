@@ -77,10 +77,7 @@ const io = new Server(server, {
 });
 
 io.on("connection", (socket) => {
-  socket.on("join_room", (data) => {
-    socket.join(data);
-    console.log(`user with ID: ${socket.id} joined room: ${data}`);
-  });
+  socket.on("join_room", (data) => socket.join(data));
 
   socket.on("user_connected", (data) => {
     new OnlineUser({ socket: data })
