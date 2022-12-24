@@ -78,11 +78,10 @@ io.on("connection", (socket) => {
   });
 
   socket.on("send_message", (data) => {
-    console.log(data);
     socket.to(data.room).emit("receive_message", data);
   });
 
-  socket.on("disconnect", (socket) => {
+  socket.on("disconnect", () => {
     console.log(`user disconnected: ${socket.id}`);
   });
 });
