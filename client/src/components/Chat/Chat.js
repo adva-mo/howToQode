@@ -14,6 +14,7 @@ function Chat() {
   const joinChat = () => {
     setIsConnected(true);
     socket.emit("join_room", "room1");
+    socket.emit("user_connected", socket.id);
   };
 
   const sendMessage = async () => {
@@ -42,6 +43,14 @@ function Chat() {
     socket.on("receive_message", (data) => {
       setMessageList((list) => [...list, data]);
     });
+
+    socket.on("updateUserList", (data) => {
+      console.log(data);
+    });
+
+    return () => {
+      socket.emit("user_disconnect", socket.id);
+    };
   }, [socket]);
 
   return (

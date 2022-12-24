@@ -67,7 +67,6 @@ server.listen(port, (e) => {
 
 //--------------SOCKET--------------
 const { Server } = require("socket.io");
-// const send = require("send");
 
 const io = new Server(server, {
   cors: {
@@ -77,13 +76,20 @@ const io = new Server(server, {
   },
 });
 
+module.exports = io;
+
+let loggedUsersArray = [];
 io.on("connection", (socket) => {
   console.log(`new user connected: ${socket.id}`);
-  socket.emit(socket.id);
 
   socket.on("join_room", (data) => {
     socket.join(data);
     console.log(`user with ID: ${socket.id} joined room: ${data}`);
+  });
+
+  socket.on("user_connected", (data) => {
+    io.emit("updateUserList", loggedUsersArray);
+    loggedUsersArray.push(socket.id);
   });
 
   socket.on("send_message", (data) => {
@@ -92,5 +98,7 @@ io.on("connection", (socket) => {
 
   socket.on("disconnect", () => {
     console.log(`user disconnected: ${socket.id}`);
+    loggedUsersArray = loggedUsersArray.filter((user) => user !== socket.id);
+    io.emit("updateUserList", loggedUsersArray);
   });
 });
