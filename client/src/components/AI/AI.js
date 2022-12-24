@@ -9,10 +9,10 @@ function AI() {
     console.log(message);
     try {
       e.preventDefault();
-      const result = await axios.post("http://127.0.0.1:3001/openai", {
+      const result = await axios.post("http://127.0.0.1:3001/ai", {
         body: message,
       });
-      console.log(result.data);
+      console.log(result.data.message);
       setResponse(result.data.message);
     } catch (e) {
       console.log(e);

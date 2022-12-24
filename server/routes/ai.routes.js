@@ -1,4 +1,5 @@
 const express = require("express");
+const openAI = require("../openAI/openAI.js");
 
 const aiRoutes = express.Router();
 
