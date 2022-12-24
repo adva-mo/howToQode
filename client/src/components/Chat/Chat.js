@@ -10,6 +10,7 @@ function Chat() {
   const [isConnected, setIsConnected] = useState(false);
   const [currentMessage, setCurrentMessage] = useState("");
   const [messageList, setMessageList] = useState([]);
+  const [onlineUsers, setOnlineUsers] = useState([]);
 
   const joinChat = () => {
     setIsConnected(true);
@@ -46,18 +47,21 @@ function Chat() {
 
     socket.on("updateUserList", (data) => {
       console.log(data);
+      setOnlineUsers([...data]);
     });
-
-    return () => {
-      socket.emit("user_disconnect", socket.id);
-    };
   }, [socket]);
 
   return (
     <div className="chat">
       {isConnected ? (
         <div className="chat-room">
-          <p>live chat</p>
+          <h4>live chat</h4>
+          <div className="online-users-container">
+            <p>online users:</p>
+            {onlineUsers.map((user) => (
+              <p key={uuid()}>{user.socket}</p>
+            ))}
+          </div>
           <ScrollToBottom className="message-container">
             {messageList.map((data) => {
               return (

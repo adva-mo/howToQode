@@ -3,7 +3,6 @@ const express = require("express");
 const app = express();
 const server = require("http").createServer(app);
 const cors = require("cors");
-// const { Server } = require("socket.io");
 
 //--------------DATA BASE--------------
 const mongoose = require("./db/mongoose.js");
@@ -17,14 +16,14 @@ const filesRouter = require("./routes/files.routes.js");
 const answersRouter = require("./routes/answers.routes.js");
 const aiRouter = require("./routes/ai.routes.js");
 
-//--------------AUTHENTICATION--------------
+//--------------OPEN AI--------------
 const openAI = require("./openAI/openAI.js");
 
 //--------------AUTHENTICATION--------------
 const session = require("express-session");
 const passport = require("passport");
 
-const port = process.env.PORT || 1234;
+const port = process.env.PORT || 3001;
 
 app.use(cors({ origin: "http://localhost:3000" }));
 app.use(express.json());
@@ -67,6 +66,7 @@ server.listen(port, (e) => {
 
 //--------------SOCKET--------------
 const { Server } = require("socket.io");
+const OnlineUser = require("./models/OnlineUser.js");
 
 const io = new Server(server, {
   cors: {
@@ -76,20 +76,18 @@ const io = new Server(server, {
   },
 });
 
-module.exports = io;
-
-let loggedUsersArray = [];
 io.on("connection", (socket) => {
-  console.log(`new user connected: ${socket.id}`);
-
   socket.on("join_room", (data) => {
     socket.join(data);
     console.log(`user with ID: ${socket.id} joined room: ${data}`);
   });
 
   socket.on("user_connected", (data) => {
-    io.emit("updateUserList", loggedUsersArray);
-    loggedUsersArray.push(socket.id);
+    new OnlineUser({ socket: data })
+      .save()
+      .then(() => OnlineUser.find({}))
+      .then((users) => io.emit("updateUserList", users))
+      .catch((e) => console.log(e));
   });
 
   socket.on("send_message", (data) => {
@@ -97,8 +95,10 @@ io.on("connection", (socket) => {
   });
 
   socket.on("disconnect", () => {
-    console.log(`user disconnected: ${socket.id}`);
-    loggedUsersArray = loggedUsersArray.filter((user) => user !== socket.id);
-    io.emit("updateUserList", loggedUsersArray);
+    OnlineUser.deleteOne({ socket: socket.id }).then(() =>
+      OnlineUser.find({})
+        .then((users) => io.emit("updateUserList", users))
+        .catch((e) => console.log(e))
+    );
   });
 });
