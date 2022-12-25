@@ -1,9 +1,19 @@
 import React, { useState, useEffect } from "react";
+import axios from "axios";
 
 import "./UserInfo.css";
 
-function UserInfo({ name, lastName, username, rank, city, country }) {
+function UserInfo({
+  name,
+  lastName,
+  username,
+  rank,
+  city,
+  country,
+  numOfSnippets,
+}) {
   const [editMood, setEditMood] = useState(false);
+  // const [userSnippet, setUserSnippet] = useState([]);
 
   const editProfileHandler = async (e) => {
     if (editMood) {
@@ -19,6 +29,12 @@ function UserInfo({ name, lastName, username, rank, city, country }) {
 
   useEffect(() => {
     //get user snippets
+    // axios
+    //   .get(`http://localhost:3001/snippets?user=${_id}`)
+    // .then(({ data }) => setUserSnippet(data))
+    //   .catch((e) => {
+    //     console.log(e);
+    //   });
   }, []);
 
   return (
@@ -38,7 +54,23 @@ function UserInfo({ name, lastName, username, rank, city, country }) {
         <button>EDIT</button>
         {/* <button>DELETE</button> */}
       </div>
-      <div className="user-statistics-container"></div>
+      {
+        <div className="user-statistics-container">
+          <div>
+            <h4>{numOfSnippets} QUESTIONS</h4>
+            <p>icon</p>
+          </div>
+          <div>
+            <h4>{numOfSnippets} ANSWERS</h4>
+            <p>icon</p>
+          </div>
+          <div>
+            <h4>RANK </h4>
+            <p>{rank}</p>
+            <p>icon</p>
+          </div>
+        </div>
+      }
     </div>
   );
 }

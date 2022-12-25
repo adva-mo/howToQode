@@ -1,40 +1,25 @@
-const { mongoose, Schema } = require("mongoose");
-const date = new Date();
+const { Schema } = require("mongoose");
 
-const Comment =
-  //   "Comment",
-  new Schema(
-    {
-      author: {
-        type: String,
-        required: true,
-      },
-      title: {
-        type: String,
-        required: true,
-      },
-
-      description: {
-        type: String,
-        required: true,
-      },
-      isHelpful: {
-        type: Boolean,
-        default: false,
-      },
-      //   comments: {
-      //     type: Array,
-      //   },
-      date: {
-        type: String,
-        default: date.toLocaleDateString(),
-      },
-      time: {
-        type: String,
-        default: date.toLocaleTimeString(),
-      },
-    }
-    //   )
-  );
+const Comment = new Schema(
+  {
+    author: {
+      type: String,
+      required: true,
+    },
+    title: {
+      type: String,
+      required: true,
+    },
+    description: {
+      type: String,
+      required: true,
+    },
+    likes: {
+      type: Number,
+      default: 0,
+    },
+  },
+  { timestamps: true }
+);
 
 module.exports = Comment;

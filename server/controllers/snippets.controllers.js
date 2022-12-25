@@ -11,9 +11,9 @@ const addSnippet = async (req, res) => {
 };
 
 const getAllSnippets = async (req, res) => {
-  const term = req.query.user ? { author: req.query.user } : {};
+  const snippetsToFind = req.query.user ? { author: req.query.user } : {};
   try {
-    const snippets = await Snippet.find(term);
+    const snippets = await Snippet.find(snippetsToFind);
     if (!snippets) return res.status(404).send();
     res.send(snippets);
   } catch (e) {
