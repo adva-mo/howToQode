@@ -13,8 +13,7 @@ const userSchema = new mongoose.Schema({
     required: true,
     trim: true,
   },
-  username: {
-    //email!
+  email: {
     type: String,
     required: true,
     trim: true,
@@ -24,15 +23,26 @@ const userSchema = new mongoose.Schema({
       //todo validaot to check if !isEmaail and throw an error
     },
   },
+  username: {
+    type: String,
+    required: true,
+    trim: true,
+    unique: true,
+  },
   password: {
     type: String,
     trim: true,
     minlength: 6,
-    validate(value) {
-      //todo
-    },
   },
-  level: {
+  city: {
+    type: String,
+    trim: true,
+  },
+  country: {
+    type: String,
+    trim: true,
+  },
+  rank: {
     type: String,
     default: "begginer",
   },
