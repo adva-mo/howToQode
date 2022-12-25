@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 import "./UserInfo.css";
 
@@ -16,6 +16,10 @@ function UserInfo({ name, lastName, username, rank, city, country }) {
     // await signOut(auth);
     // navigate("/home");
   };
+
+  useEffect(() => {
+    //get user snippets
+  }, []);
 
   return (
     <div>

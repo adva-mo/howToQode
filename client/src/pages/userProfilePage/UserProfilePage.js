@@ -18,15 +18,7 @@ function UserProfilePage() {
     // console.log(data);
   }, []);
 
-  return (
-    <div className="page-container">
-      {user && (
-        <div>
-          <UserInfo {...user} />
-        </div>
-      )}
-    </div>
-  );
+  return <div className="page-container">{user && <UserInfo {...user} />}</div>;
 }
 
 export default UserProfilePage;

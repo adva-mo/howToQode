@@ -11,4 +11,5 @@ snippetsRouter.post("", addSnippet);
 snippetsRouter.get("", getAllSnippets);
 snippetsRouter.get("/:id", getSnippet);
 
+snippetsRouter.get("/user/:id", getSnippet);
 module.exports = snippetsRouter;

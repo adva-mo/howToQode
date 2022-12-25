@@ -10,9 +10,10 @@ const addSnippet = async (req, res) => {
   }
 };
 
-const getAllSnippets = async (_, res) => {
+const getAllSnippets = async (req, res) => {
+  const term = req.query.user ? { author: req.query.user } : {};
   try {
-    const snippets = await Snippet.find({});
+    const snippets = await Snippet.find(term);
     if (!snippets) return res.status(404).send();
     res.send(snippets);
   } catch (e) {
@@ -20,7 +21,23 @@ const getAllSnippets = async (_, res) => {
   }
 };
 
+const getUserSnippets = async (req, res) => {
+  try {
+    const { userId } = req.params;
+    const userSnippets = await Snippet.find({ author: userId });
+
+    if (!userSnippets) {
+      return res.status(404).send()(userSnippets);
+    }
+
+    res.send(userSnippets);
+  } catch (e) {
+    res.status(500).send();
+  }
+};
+
 const getSnippet = async (req, res) => {
+  // console.log("h");
   try {
     const snippet = await Snippet.findById(req.params.id);
     if (!snippet) return res.status(404).send("snippet is not exist");
@@ -30,4 +47,4 @@ const getSnippet = async (req, res) => {
   }
 };
 
-module.exports = { addSnippet, getAllSnippets, getSnippet };
+module.exports = { addSnippet, getAllSnippets, getSnippet, getUserSnippets };
