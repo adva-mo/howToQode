@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react";
 import "./userProfilePage.css";
 import UserInfo from "../../components/UserInfo/UserInfo";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import axios from "axios";
+import SnippetPrev from "../../components/SnippetPrev/SnippetPrev";
 
 function UserProfilePage() {
   const [user, setUser] = useState();
@@ -12,11 +13,8 @@ function UserProfilePage() {
   useEffect(() => {
     axios
       .get(`http://localhost:3001/users/${`63a446403a69e528fb2eb2ed`}`)
-      .then(({ data }) => {
-        setUser(data);
-      })
+      .then(({ data }) => setUser(data))
       .catch((e) => console.log(e));
-    // console.log(data);
     axios
       .get(`http://localhost:3001/snippets?user=${id}`)
       .then(({ data }) => setUserSnippet(data))
@@ -27,10 +25,18 @@ function UserProfilePage() {
 
   return (
     <div className="page-container">
-      {user && (
+      {userSnippet && (
         <>
           <UserInfo {...user} numOfSnippets={userSnippet.length} />
-          {}
+          {userSnippet.map((snippet) => {
+            return (
+              <div>
+                <Link to={`/snippets/${snippet._id}`}>
+                  <SnippetPrev key={snippet._id} {...snippet} />
+                </Link>
+              </div>
+            );
+          })}
         </>
       )}
     </div>
