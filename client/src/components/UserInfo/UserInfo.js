@@ -39,38 +39,39 @@ function UserInfo({
 
   return (
     <div>
-      <img className="user-profile-image" />
-      <div className="user-info-container">
+      <div>
+        <img className="user-profile-image" />
         <div>
-          <p>User Name: {username || ""}</p>
-          <p>Name: {name || ""}</p>
-          <p>Last Name: {lastName || ""}</p>
-        </div>
-        <div>
-          <p>Rank: {rank || ""}</p>
-          <p>City: {city || ""}</p>
-          <p>Country: {country || ""}</p>
+          <div>
+            <p>User Name: {username || ""}</p>
+            <p>Name: {name || ""}</p>
+            <p>Last Name: {lastName || ""}</p>
+          </div>
+          <div>
+            <p>Rank: {rank || ""}</p>
+            <p>City: {city || ""}</p>
+            <p>Country: {country || ""}</p>
+          </div>
+          {/* <button>DELETE</button> */}
         </div>
         <button>EDIT</button>
-        {/* <button>DELETE</button> */}
       </div>
-      {
-        <div className="user-statistics-container">
-          <div>
-            <h4>{numOfSnippets} QUESTIONS</h4>
-            <p>icon</p>
-          </div>
-          <div>
-            <h4>{numOfSnippets} ANSWERS</h4>
-            <p>icon</p>
-          </div>
-          <div>
-            <h4>RANK </h4>
-            <p>{rank}</p>
-            <p>icon</p>
-          </div>
+
+      <div className="user-statistics-container">
+        <div>
+          <h4>{numOfSnippets} QUESTIONS</h4>
+          <p>icon</p>
         </div>
-      }
+        <div>
+          <h4>{numOfSnippets} ANSWERS</h4>
+          <p>icon</p>
+        </div>
+        <div>
+          <h4>RANK </h4>
+          <p>{rank}</p>
+          <p>icon</p>
+        </div>
+      </div>
     </div>
   );
 }

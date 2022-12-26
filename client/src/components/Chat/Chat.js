@@ -52,52 +52,54 @@ function Chat() {
   }, [socket]);
 
   return (
-    <div className="chat">
-      {isConnected ? (
-        <div className="chat-room">
-          <h4>live chat</h4>
-          <div className="online-users-container">
-            <p>online users:</p>
-            {onlineUsers.map((user) => (
-              <p key={uuid()}>{user.socket}</p>
-            ))}
-          </div>
-          <ScrollToBottom className="message-container">
-            {messageList.map((data) => {
-              return (
-                <div
-                  id={data.author === socket.id ? "you" : "other"}
-                  key={uuid()}
-                >
-                  <div>
-                    <p>{data.message}</p>
+    <div className="chat-wrapper">
+      <div className="chat">
+        {isConnected ? (
+          <div className="chat-room">
+            <h4>live chat</h4>
+            <div className="online-users-container">
+              <p>online users:</p>
+              {onlineUsers.map((user) => (
+                <p key={uuid()}>{user.socket}</p>
+              ))}
+            </div>
+            <ScrollToBottom className="message-container">
+              {messageList.map((data) => {
+                return (
+                  <div
+                    id={data.author === socket.id ? "you" : "other"}
+                    key={uuid()}
+                  >
+                    <div>
+                      <p>{data.message}</p>
+                    </div>
+                    <div>
+                      {" "}
+                      <p>{data.time}</p>
+                      {/* <p>{data.author}</p> */}
+                    </div>
                   </div>
-                  <div>
-                    {" "}
-                    <p>{data.time}</p>
-                    {/* <p>{data.author}</p> */}
-                  </div>
-                </div>
-              );
-            })}
-          </ScrollToBottom>
-          <div className="flex chat-input-container">
-            <input
-              onChange={({ target }) => setCurrentMessage(target.value)}
-              className="chat-input"
-              type="text"
-              placeholder="hey.."
-              value={currentMessage}
-              onKeyPress={(e) => {
-                e.key === "Enter" && sendMessage();
-              }}
-            />
-            <button onClick={sendMessage}>&#9658;</button>
+                );
+              })}
+            </ScrollToBottom>
+            <div className="flex chat-input-container">
+              <input
+                onChange={({ target }) => setCurrentMessage(target.value)}
+                className="chat-input"
+                type="text"
+                placeholder="hey.."
+                value={currentMessage}
+                onKeyPress={(e) => {
+                  e.key === "Enter" && sendMessage();
+                }}
+              />
+              <button onClick={sendMessage}>&#9658;</button>
+            </div>
           </div>
-        </div>
-      ) : (
-        <button onClick={joinChat}>join chat</button>
-      )}
+        ) : (
+          <button onClick={joinChat}>join chat</button>
+        )}
+      </div>
     </div>
   );
 }

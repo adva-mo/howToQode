@@ -1,7 +1,8 @@
 import React from "react";
-import uuid from "react-uuid";
+// import uuid from "react-uuid";
 import Codeblock from "../Codeblock/Codeblock";
 import Comment from "../Comment/Comment";
+import Answer from "../Answer/Answer";
 
 function SnippetCard({
   author,
@@ -12,10 +13,11 @@ function SnippetCard({
   solved,
   date,
   time,
-  comments,
+  answers,
 }) {
+  console.log(answers);
   return (
-    <div className="flex-column-center">
+    <div className="flex-column-center snippet-card">
       <p>author: {author}</p>
       <p>title: {title}</p>
       <p>description: {description}</p>
@@ -26,8 +28,8 @@ function SnippetCard({
       {date} {time}
       <div className="snippet-comments">
         <h4>Answers</h4>
-        {comments?.map((comment) => (
-          <Comment key={uuid()} {...comment} snippetOwner={author} />
+        {answers?.map((answer) => (
+          <Answer key={answer._id} {...answer} snippetOwner={author} />
         ))}
       </div>
     </div>

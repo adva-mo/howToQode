@@ -16,17 +16,13 @@ select {
 }
 .split-component {
   display: flex;
-  justify-content: space-between;
 }
 
-.RoutesIndex {
-  background-color: antiquewhite;
-  flex-grow: 1;
-}
-.Chat {
-  width: 30vw;
-  height: 90vh;
-}
 .page-container {
+  width: 100%;
   flex-grow: 1;
+}
+.flex-row {
+  display: flex;
+  justify-content: center;
 }

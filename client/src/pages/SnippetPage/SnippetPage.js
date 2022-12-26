@@ -16,7 +16,11 @@ function SnippetPage() {
       .finally(() => console.log(currentSnippet));
   }, [id]);
 
-  return <div>{currentSnippet && <SnippetCard {...currentSnippet} />}</div>;
+  return (
+    <div className="page-container">
+      {currentSnippet && <SnippetCard {...currentSnippet} />}
+    </div>
+  );
 }
 
 export default SnippetPage;
