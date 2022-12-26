@@ -29,6 +29,7 @@ select {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  position: relative;
 }
 .flex-row {
   display: flex;
@@ -61,4 +62,14 @@ button {
   background-color: var(--purple);
   border-radius: 5px;
   border: none !important;
+}
+.test {
+  /* background-color: rgba(255, 255, 255, 0.5); z-index: 0; */
+  position: fixed;
+  top: 20%;
+  left: 20%;
+}
+.test > img {
+  width: 10rem;
+  height: 10rem;
 }

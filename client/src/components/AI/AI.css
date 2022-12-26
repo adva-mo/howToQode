@@ -1,0 +1,15 @@
+.ai-response-box {
+  height: 70vh;
+  text-align: left;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+.ai-form {
+  width: 70%;
+}
+.ai-input {
+  flex-grow: 1;
+}
+.user {
+  color: var(--primary-blue);
+}

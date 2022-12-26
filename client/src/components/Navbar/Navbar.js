@@ -2,7 +2,7 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 import "./Navbar.css";
 
-function Navbar() {
+function Navbar({ loggedUser, setLoggedUser }) {
   return (
     <ul className="navbar-ul">
       {/* logo */}
@@ -30,7 +30,7 @@ function Navbar() {
       <li>
         <NavLink
           className={(navData) => (navData.isActive ? "active" : "")}
-          to={"/questions"}
+          to={"/ai"}
         >
           ask our experts
         </NavLink>
@@ -46,19 +46,31 @@ function Navbar() {
       <li>
         <NavLink
           className={(navData) => (navData.isActive ? "active" : "")}
-          to={"/login"}
+          to={loggedUser ? `/profile/${loggedUser[1]}` : "/login"}
         >
-          login
+          {loggedUser ? "profile" : "login"}
         </NavLink>
       </li>
-      <li>
-        <NavLink
-          className={(navData) => (navData.isActive ? "active" : "")}
-          to={`/signin`}
+      {!loggedUser ? (
+        <li>
+          <NavLink
+            className={(navData) => (navData.isActive ? "active" : "")}
+            to={`/signin`}
+          >
+            signin
+          </NavLink>
+        </li>
+      ) : (
+        <button
+          onClick={() => {
+            console.log("logging");
+            setLoggedUser(null);
+            localStorage.removeItem("QODE_APP");
+          }}
         >
-          signin
-        </NavLink>
-      </li>
+          logout
+        </button>
+      )}
     </ul>
   );
 }

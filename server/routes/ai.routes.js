@@ -9,10 +9,10 @@ aiRoutes.post("", async (req, res) => {
     const response = await openAI.createCompletion({
       model: "text-davinci-003",
       prompt: `${message}`,
-      max_tokens: 10,
+      max_tokens: 100,
       temperature: 0,
     });
-    console.log(response.data);
+    // console.log(response.data);
     if (!response.data.choices[0].text)
       throw Error("oops.. something went wrong. please try again");
     res.json({ message: response.data.choices[0].text });
