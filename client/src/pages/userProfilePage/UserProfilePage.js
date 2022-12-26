@@ -9,35 +9,43 @@ function UserProfilePage() {
   const [user, setUser] = useState();
   const [userSnippet, setUserSnippet] = useState([]);
   const { id } = useParams();
+  const [error, setError] = useState(null);
 
   useEffect(() => {
     axios
-      .get(`http://localhost:3001/users/${`63a446403a69e528fb2eb2ed`}`)
+      .get(`http://localhost:3001/users/${`${id}`}`)
       .then(({ data }) => setUser(data))
-      .catch((e) => console.log(e));
+      .catch((e) => setError(e));
     axios
       .get(`http://localhost:3001/snippets?user=${id}`)
       .then(({ data }) => setUserSnippet(data))
       .catch((e) => {
-        console.log(e);
+        setError(e);
       });
   }, []);
 
   return (
     <div className="page-container">
+      {error && console.log(error)}
       {userSnippet && (
         <>
           <UserInfo {...user} numOfSnippets={userSnippet.length} />
-          {userSnippet.map((snippet) => {
-            return (
-              <div>
-                <h4>Users's QUESTIONS</h4>
-                <Link to={`/snippets/${snippet._id}`}>
-                  <SnippetPrev key={snippet._id} {...snippet} />
-                </Link>
-              </div>
-            );
-          })}
+          {!userSnippet.length > 0 ? (
+            <div className="primary-box">
+              <p>user doesn't have any snippets yet</p>
+            </div>
+          ) : (
+            userSnippet.map((snippet) => {
+              return (
+                <div>
+                  <h4>Users's QUESTIONS</h4>
+                  <Link to={`/snippets/${snippet._id}`}>
+                    <SnippetPrev key={snippet._id} {...snippet} />
+                  </Link>
+                </div>
+              );
+            })
+          )}
         </>
       )}
     </div>

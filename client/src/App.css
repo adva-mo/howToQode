@@ -25,15 +25,19 @@ select {
   flex-grow: 1;
   background-color: var(--bg-purple);
   min-height: 92vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 .flex-row {
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
 }
 .primary-box {
   border: 1px solid var(--turkiz);
   border-radius: 5px;
-  /* width: 70%; */
+  width: 70%;
   padding: 2rem;
   text-align: center;
   margin: 2rem;
@@ -46,4 +50,14 @@ button {
   border: 1px solid var(--turkiz);
   outline: none;
   cursor: pointer;
+  border-radius: 5px;
+}
+.input-container {
+  border: 1px gray solid;
+  border-width: 0 0 1px 0;
+}
+.purple-btn {
+  background-color: var(--purple);
+  border-radius: 5px;
+  border: none !important;
 }

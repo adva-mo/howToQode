@@ -14,7 +14,6 @@ const getAllSnippets = async (req, res) => {
   const snippetsToFind = req.query.user ? { author: req.query.user } : {};
   try {
     const snippets = await Snippet.find(snippetsToFind);
-    if (!snippets) return res.status(404).send();
     res.send(snippets);
   } catch (e) {
     res.status(500).send();
@@ -27,7 +26,7 @@ const getUserSnippets = async (req, res) => {
     const userSnippets = await Snippet.find({ author: userId });
 
     if (!userSnippets) {
-      return res.status(404).send()(userSnippets);
+      return res.status(400).send("users doesnt have snippets");
     }
 
     res.send(userSnippets);

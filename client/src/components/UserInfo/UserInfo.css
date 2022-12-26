@@ -1,0 +1,15 @@
+.stat-h4 {
+  display: inline-block;
+}
+.user-profile-image {
+  width: 5rem;
+  height: 5rem;
+}
+.edit-profile-container {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+.profile-info-container {
+  position: relative;
+}

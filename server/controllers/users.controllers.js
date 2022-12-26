@@ -65,6 +65,7 @@ const deleteUser = async (req, res) => {
 };
 
 const registerUser = (req, res) => {
+  console.log(req.body);
   const { password, username, name } = req.body;
   User.register({ username, name }, password, (err, user) => {
     if (err) {
@@ -73,7 +74,7 @@ const registerUser = (req, res) => {
     } else {
       passport.authenticate("local")(req, res, () => {});
     }
-    User.find({ username })
+    User.findOne({ username })
       .then((result) => res.send(result))
       .catch((e) => console.log(e));
   });
