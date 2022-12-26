@@ -4,17 +4,7 @@ const passport = require("passport");
 
 const userSchema = new mongoose.Schema(
   {
-    name: {
-      type: String,
-      required: true,
-      trim: true,
-    },
-    lastName: {
-      type: String,
-      required: true,
-      trim: true,
-    },
-    email: {
+    username: {
       type: String,
       required: true,
       trim: true,
@@ -24,28 +14,45 @@ const userSchema = new mongoose.Schema(
         //todo validaot to check if !isEmaail and throw an error
       },
     },
-    username: {
+    password: {
       type: String,
       required: true,
       trim: true,
-      unique: true,
+      minlength: 6,
     },
-    password: {
+    name: {
       type: String,
       trim: true,
-      minlength: 6,
+      default: `user`,
+    },
+    lastName: {
+      type: String,
+      trim: true,
+      default: "",
     },
     city: {
       type: String,
       trim: true,
+      default: "",
     },
     country: {
       type: String,
       trim: true,
+      default: "",
     },
     rank: {
       type: String,
       default: "begginer",
+    },
+    learning: {
+      type: String,
+      trim: true,
+      default: "",
+    },
+    school: {
+      type: String,
+      trim: true,
+      default: "",
     },
   },
   { timestamps: true }

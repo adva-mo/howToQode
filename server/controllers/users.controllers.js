@@ -65,15 +65,14 @@ const deleteUser = async (req, res) => {
 };
 
 const registerUser = (req, res) => {
-  const { username, name, lastName, password } = req.body;
-  User.register({ username, name, lastName }, password, (err, user) => {
+  const { password } = req.body;
+  const newUser = new User(req.body);
+  User.register(newUser, password, (err, user) => {
     if (err) {
-      console.log(err);
-      res.status(404).send(err);
+      console.log(err.message);
+      res.status(404).send(err.message);
     } else {
-      passport.authenticate("local")(req, res, () =>
-        res.send("user registered succesfully")
-      );
+      passport.authenticate("local")(req, res, () => res.send(newUser));
     }
   });
 };

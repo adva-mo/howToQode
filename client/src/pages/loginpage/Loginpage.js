@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import useInput from "../../hooks/useInput";
-import { useHttp } from "../../hooks/useHttp";
+import axios from "axios";
 
 const isEmailInputValid = (value) => value.trim() !== "" && value.includes("@");
 const isPasswordInputValid = (value) =>
@@ -8,8 +8,7 @@ const isPasswordInputValid = (value) =>
 
 function Loginpage() {
   const [isNewUser, setIsNewUser] = useState(true);
-  const [userData, setUserData] = useState(null);
-  const [connectedUser, setConnectedUser] = useState(null);
+  // const [userData, setUserData] = useState(null);
 
   const {
     value: emailValue,
@@ -37,27 +36,27 @@ function Loginpage() {
     reset: resetConfirmedPassword,
   } = useInput(isPasswordInputValid);
 
-  const { getData } = useHttp(setConnectedUser);
-
-  useEffect(() => {
-    if (!userData) return;
-    getData({
-      url: "users/login",
-      method: "POST",
-      body: userData,
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
-    //send req to the server to login the user
-  }, [userData]);
+  // useEffect(() => {
+  //   if (!userData) return;
+  //   getData({
+  //     url: "users/login",
+  //     method: "POST",
+  //     body: userData,
+  //     headers: {
+  //       "Content-Type": "application/json",
+  //     },
+  //   });
+  //   //send req to the server to login the user
+  // }, [userData]);
 
   let isFormValid = true;
 
   const formSubmissionHandler = (e) => {
     e.preventDefault();
     if (!isFormValid) return;
-    setUserData({ username: emailValue, password: passwordValue });
+    axios.post();
+
+    // setUserData({ username: emailValue, password: passwordValue });
   };
 
   return (
