@@ -1,0 +1,39 @@
+import React, { useRef } from "react";
+import "./AddComment.css";
+import axios from "axios";
+
+function AddComment({ setIsUpdated, answerId, snippetId }) {
+  const commentInput = useRef();
+
+  const handlesubmit = () => {
+    if (!commentInput.current.value) return;
+    const comment = {
+      author: "logged user",
+      answerId: answerId,
+      description: commentInput.current.value,
+    };
+    console.log(comment);
+    axios
+      .post(`http://localhost:3001/comments/${snippetId}`, comment)
+      .then(() => {
+        commentInput.current.value = "";
+        setIsUpdated(true);
+      })
+      .catch((e) => console.log(e));
+  };
+  return (
+    <form className="add-comment-form" onSubmit={(e) => e.preventDefault()}>
+      <textarea
+        className="comment-textarea"
+        tyep="text"
+        placeholder="Add a comment..."
+        ref={commentInput}
+      />
+      <button type="submit" onClick={handlesubmit}>
+        send
+      </button>
+    </form>
+  );
+}
+
+export default AddComment;

@@ -21,8 +21,26 @@ select {
 .page-container {
   width: 100%;
   flex-grow: 1;
+  background-color: var(--bg-purple);
 }
 .flex-row {
   display: flex;
   justify-content: center;
+}
+.primary-box {
+  border: 1px solid var(--turkiz);
+  border-radius: 5px;
+  /* width: 70%; */
+  padding: 2rem;
+  text-align: center;
+  margin: 2rem;
+}
+.align-left {
+  text-align: left;
+}
+button {
+  background-color: transparent;
+  border: 1px solid var(--turkiz);
+  outline: none;
+  cursor: pointer;
 }

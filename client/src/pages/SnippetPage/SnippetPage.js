@@ -6,19 +6,23 @@ import axios from "axios";
 
 function SnippetPage() {
   const [currentSnippet, setCurrentSnippet] = useState(null);
+  const [isUpdated, setIsUpdated] = useState(false);
   const { id } = useParams();
 
   useEffect(() => {
+    console.log("snippet page use effcet");
     axios
       .get(`http://localhost:3001/snippets/${id}`)
       .then((snippet) => setCurrentSnippet(snippet.data))
       .catch((e) => console.log(e))
       .finally(() => console.log(currentSnippet));
-  }, [id]);
+  }, [id, , isUpdated]);
 
   return (
     <div className="page-container">
-      {currentSnippet && <SnippetCard {...currentSnippet} />}
+      {currentSnippet && (
+        <SnippetCard {...currentSnippet} setIsUpdated={setIsUpdated} />
+      )}
     </div>
   );
 }

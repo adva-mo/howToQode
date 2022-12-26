@@ -1,15 +1,15 @@
 import React from "react";
 import "./Comment.css";
 
-function Comment({ author, title, description, isHelpful, date, time }) {
+function Comment({ author, title, description, isHelpful, date, time, likes }) {
   return (
-    <div>
+    <div className=" primary-box comment-container align-left">
       <p>author {author}</p>
-      <p>title :{title}</p>
+      <div className="flex-row">
+        <p>date: {date}</p>
+        <p>likes {likes?.length}</p>
+      </div>
       <p>description: {description}</p>
-      <p>correct? {isHelpful ? "V" : "X"}</p>
-      <p>date: {date}</p>
-      <p>time: {time}</p>
     </div>
   );
 }

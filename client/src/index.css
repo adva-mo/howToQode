@@ -1,8 +1,11 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700&display=swap");
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-}
-.flex {
-  display: flex;
+  font-family: "Poppins", sans-serif;
+  --bg-purple: rgba(18, 5, 53, 1);
+  --turkiz: rgba(0, 205, 180, 1);
+  --primary-blue: rgba(30, 141, 148, 1);
+  color: white;
 }

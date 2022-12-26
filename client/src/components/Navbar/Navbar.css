@@ -3,13 +3,13 @@
   display: flex;
   justify-content: space-around;
   padding: 0.5rem;
-  margin-top: 0.5rem;
+  height: 8vh;
   position: sticky;
   top: 0;
   left: 0;
-  background-color: white;
   z-index: 10;
   width: 100%;
+  background-color: var(--bg-purple);
 }
 .navbar-ul a.active {
   text-decoration: underline;

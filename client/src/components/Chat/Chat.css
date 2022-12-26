@@ -5,10 +5,10 @@
 .chat {
   background-color: cornflowerblue;
   width: 250px;
-  height: 90vh;
+  height: 94vh;
   position: fixed;
   /* matxh to navbar height: */
-  top: 12vh;
+  top: 8vh;
   right: 0;
 }
 .chat-room {
