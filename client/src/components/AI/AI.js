@@ -23,7 +23,6 @@ function AI() {
     <div className="page-container flex-column-center">
       <h3>ASK OUR EXPERT ANYTHING YOU WANT ABOUT CODING</h3>
       <div className="primary-box ai-response-box">
-        {console.log(responses)}
         <ScrollToBottom>
           {responses.map((r, i) => (
             <p className={i % 2 === 0 ? "user" : "ai"}>{r}</p>

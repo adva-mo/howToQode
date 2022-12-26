@@ -55,26 +55,27 @@ function UserInfo({
           <p>school: {school || ""}</p>
         </div>
       </div>
-
-      <h4 className="stat-h4">STATISTICS</h4>
+      <div className="turkiz-underline"></div>
+      <h4 className="stat-h4 ">STATISTICS</h4>
 
       <div className="user-statistics-container flex-row">
         <div>
           <h4>{numOfSnippets} QUESTIONS</h4>
-          <p>icon</p>
+          <i className="fa-regular fa-circle-question blue-font"></i>
         </div>
         <div>
           <h4>{numOfSnippets} ANSWERS</h4>
-          <p>icon</p>
+          <i className="fa-regular fa-circle-check blue-font"></i>{" "}
         </div>
         <div>
           <h4>RANK </h4>
           <p>{rank}</p>
-          <p>icon</p>
+          <i className="fa-solid fa-ranking-star blue-font"></i>{" "}
         </div>
       </div>
       <div className="edit-profile-container">
-        <button className="edit-profile-btn">EDIT</button>
+        <i className="fa-solid fa-pencil"></i>
+        {/* <button className="edit-profile-btn">EDIT</button> */}
         {/* <button>DELETE</button> */}
       </div>
     </div>

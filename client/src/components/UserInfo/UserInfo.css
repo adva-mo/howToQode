@@ -1,5 +1,6 @@
 .stat-h4 {
   display: inline-block;
+  margin: 2rem;
 }
 .user-profile-image {
   width: 5rem;
@@ -9,6 +10,11 @@
   position: absolute;
   top: 0;
   right: 0;
+  background-color: var(--turkiz);
+  padding: 0.5rem;
+}
+.edit-profile-container :hover {
+  cursor: pointer;
 }
 .profile-info-container {
   position: relative;

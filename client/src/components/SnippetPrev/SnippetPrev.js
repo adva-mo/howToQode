@@ -3,7 +3,6 @@ import "./SnippetPrev.css";
 import { Link } from "react-router-dom";
 
 function SnippetPrev({ created_At, title, solved, answers, _id }) {
-  console.log(title);
   return (
     <div className="flex-row primary-box">
       <div>{created_At}</div>

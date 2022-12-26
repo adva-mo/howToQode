@@ -21,8 +21,17 @@ function SnippetCard({
       <div className="primary-box">
         <h2>title: {title}</h2>
         <div className="flex-row">
-          <p>{date}</p>
-          <p>asked by: {author}</p>
+          <p>
+            {date}
+            <span>
+              <i className="fa-solid fa-calendar-days turkiz-font"></i>
+            </span>
+          </p>
+          <p>
+            asked by:
+            <i class="fa-regular fa-user turkiz-font"></i>
+            {author}
+          </p>
           <p>{solved ? "solved" : "not solved"}</p>
         </div>
         <p>coding language: {language}</p>

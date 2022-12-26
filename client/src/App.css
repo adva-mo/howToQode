@@ -36,13 +36,13 @@ select {
   justify-content: space-around;
 }
 .primary-box {
-  /* background: url("https://firebasestorage.googleapis.com/v0/b/sharry-1319e.appspot.com/o/QODE%2FASSETS%2Fstars-night-textured-background.jpg?alt=media&token=0c0e9486-fd3a-4f56-ac69-06e21139a601"); */
   border: 1px solid var(--turkiz);
   border-radius: 5px;
   width: 70%;
   padding: 2rem;
   text-align: center;
   margin: 2rem;
+  background: linear-gradient(rgb(61, 47, 99), 1rem, transparent);
 }
 .align-left {
   text-align: left;
@@ -56,6 +56,10 @@ button {
 }
 .input-container {
   border: 1px gray solid;
+  border-width: 0 0 1px 0;
+}
+.turkiz-underline {
+  border: 1px solid var(--turkiz);
   border-width: 0 0 1px 0;
 }
 .purple-btn {
@@ -72,4 +76,10 @@ button {
 .test > img {
   width: 10rem;
   height: 10rem;
+}
+.blue-font {
+  color: var(--primary-blue);
+}
+.turkiz-font {
+  color: var(--turkiz);
 }
