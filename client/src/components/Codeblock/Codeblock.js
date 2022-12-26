@@ -9,8 +9,10 @@ const Codeblock = ({ language, textToFormat }) => {
       style={docco}
       showLineNumbers={true}
       customStyle={{
-        backgroundColor: "transparent",
+        backgroundColor: "rgb(190, 190, 190)",
         opacity: "1",
+        textAlign: "left",
+        color: "rgb(26, 26, 26)", //todo
       }}
     >
       {textToFormat}

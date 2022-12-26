@@ -16,7 +16,7 @@ function Answer({
   const [showComments, setshowComments] = useState(false);
 
   return (
-    <div className="answer primary-box flex-column-center">
+    <div className="answer-container primary-box flex-column-center">
       <p> {description}</p>
 
       <p>correct? {isHelpful ? "V" : "X"}</p>

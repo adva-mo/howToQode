@@ -6,6 +6,8 @@ input,
 textarea,
 select {
   outline: none;
+  background-color: var(--bg-gray);
+  border: none;
 }
 
 .flex-column-center {
@@ -22,6 +24,7 @@ select {
   width: 100%;
   flex-grow: 1;
   background-color: var(--bg-purple);
+  min-height: 92vh;
 }
 .flex-row {
   display: flex;
