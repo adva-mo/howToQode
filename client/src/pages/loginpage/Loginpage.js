@@ -51,12 +51,21 @@ function Loginpage() {
 
   let isFormValid = true;
 
-  const formSubmissionHandler = (e) => {
-    e.preventDefault();
-    if (!isFormValid) return;
-    axios.post();
-
-    // setUserData({ username: emailValue, password: passwordValue });
+  const formSubmissionHandler = async (e) => {
+    try {
+      e.preventDefault();
+      if (!isFormValid) return;
+      const { data } = await axios.post(
+        "http://localhost:3001/users/register",
+        {
+          username: emailValue,
+          password: passwordValue,
+        }
+      );
+      console.log(data);
+    } catch (e) {
+      console.log(e.message);
+    }
   };
 
   return (
