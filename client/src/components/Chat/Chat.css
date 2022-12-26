@@ -3,7 +3,7 @@
   min-width: 250px;
 }
 .chat {
-  /* background-color: cornflowerblue; */
+  background-color: cornflowerblue;
   width: 250px;
   height: 94vh;
   position: fixed;

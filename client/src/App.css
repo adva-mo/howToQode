@@ -35,6 +35,7 @@ select {
   justify-content: space-around;
 }
 .primary-box {
+  /* background: url("https://firebasestorage.googleapis.com/v0/b/sharry-1319e.appspot.com/o/QODE%2FASSETS%2Fstars-night-textured-background.jpg?alt=media&token=0c0e9486-fd3a-4f56-ac69-06e21139a601"); */
   border: 1px solid var(--turkiz);
   border-radius: 5px;
   width: 70%;

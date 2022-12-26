@@ -21,6 +21,7 @@ function NewSnippetCard() {
 
   return (
     <form
+      className="primary-box"
       onSubmit={(e) => {
         e.preventDefault();
       }}
