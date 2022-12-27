@@ -56,7 +56,6 @@
     "form-data": "^4.0.0",
     "forwarded": "^0.2.0",
     "fresh": "^0.5.2",
-    "fsevents": "^2.3.2",
     "function-bind": "^1.1.1",
     "generaterr": "^1.5.0",
     "get-intrinsic": "^1.1.3",
