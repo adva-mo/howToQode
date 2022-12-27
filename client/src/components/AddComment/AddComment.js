@@ -13,7 +13,7 @@ function AddComment({ setIsUpdated, answerId, snippetId }) {
       answerId: answerId,
       description: commentInput.current.value,
     };
-    console.log(comment);
+    // console.log(comment);
     axios
       .post(`http://localhost:3001/comments/${snippetId}`, comment)
       .then(() => {
