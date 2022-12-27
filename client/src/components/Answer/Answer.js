@@ -28,11 +28,11 @@ function Answer({
           <p>{date}</p>
         </div>
         <div>
-          <i class="fa-regular fa-user turkiz-font"></i>
+          <i className="fa-regular fa-user turkiz-font"></i>
           <p
             className="profile-link"
             onClick={({ target }) => {
-              navigate(`/profile/${target.value}`);
+              navigate(`/profile/${target.textContent}`);
             }}
           >
             {author}

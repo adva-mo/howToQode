@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
 
 import "./UserInfo.css";
 
@@ -15,16 +14,16 @@ function UserInfo({
   learning,
   school,
 }) {
-  const [editMood, setEditMood] = useState(false);
+  // const [editMood, setEditMood] = useState(false);
 
-  const editProfileHandler = async (e) => {
-    if (editMood) {
-    } else setEditMood((prev) => !prev);
-  };
+  // const editProfileHandler = async (e) => {
+  //   if (editMood) {
+  //   } else setEditMood((prev) => !prev);
+  // };
 
-  const deleteProfileHandler = async () => {
-    console.log("delete PROFILE function");
-  };
+  // const deleteProfileHandler = async () => {
+  //   console.log("delete PROFILE function");
+  // };
 
   useEffect(() => {}, []);
 
@@ -33,6 +32,7 @@ function UserInfo({
       <img
         className="user-profile-image"
         src={img || process.env.PUBLIC_URL + "/assets/avatar.jpg"}
+        alt=""
       />
       <div className="flex-row">
         <div className="align-left">

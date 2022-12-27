@@ -1,8 +1,8 @@
 import React from "react";
 // import uuid from "react-uuid";
 import Codeblock from "../Codeblock/Codeblock";
-// import Comment from "../Comment/Comment";
 import Answer from "../Answer/Answer";
+import { useNavigate } from "react-router-dom";
 
 function SnippetCard({
   author,
@@ -16,6 +16,8 @@ function SnippetCard({
   setIsUpdated,
   _id,
 }) {
+  const navigate = useNavigate();
+
   return (
     <div className="flex-column-center snippet-card">
       <div className="primary-box ">
@@ -28,9 +30,18 @@ function SnippetCard({
             {/* {date} */}
           </div>
           <div>
-            <i class="fa-regular fa-user turkiz-font"></i>
+            <i className="fa-regular fa-user turkiz-font"></i>
             <br />
-            <p className="profile-link">{author}</p>
+            <p
+              onClick={({ target }) => {
+                console.log(target.textContent);
+                // const id = target.value;
+                navigate(`/profile/${target.textContent}`);
+              }}
+              className="profile-link"
+            >
+              {author}
+            </p>
           </div>
           <p>
             {solved ? (

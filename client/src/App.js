@@ -2,7 +2,7 @@ import "./App.css";
 import RoutesIndex from "./components/RoutesIndex/RoutesIndex";
 import Navbar from "./components/Navbar/Navbar.js";
 import Chat from "./components/Chat/Chat";
-import AI from "./components/AI/AI";
+// import AI from "./components/AI/AI";
 import { useLocalStorage } from "./hooks/useLocalStorage";
 import currentLoggedUser from "./context/loggedUserContext";
 
