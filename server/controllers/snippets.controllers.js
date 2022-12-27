@@ -1,4 +1,4 @@
-const Snippet = require("../models/snippet.js");
+const Snippet = require("../models/Snippet.js");
 
 const addSnippet = async (req, res) => {
   try {
