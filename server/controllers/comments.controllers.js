@@ -1,4 +1,4 @@
-const Snippet = require("../models/snippet.js");
+const Snippet = require("../models/Snippet.js");
 
 const addComment = async (req, res) => {
   const { author, title, description, answerId } = req.body;
