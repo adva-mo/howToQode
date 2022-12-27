@@ -7,6 +7,7 @@ function AddComment({ setIsUpdated, answerId, snippetId }) {
 
   const handlesubmit = () => {
     if (!commentInput.current.value) return;
+    if (commentInput.current.value === "Add a comment") return;
     const comment = {
       author: "logged user",
       answerId: answerId,

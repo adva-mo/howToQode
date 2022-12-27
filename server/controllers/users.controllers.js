@@ -65,7 +65,7 @@ const deleteUser = async (req, res) => {
 };
 
 const registerUser = (req, res) => {
-  console.log(req.body);
+  // console.log(req.body);
   const { password, username, name } = req.body;
   User.register({ username, name }, password, (err, user) => {
     if (err) {
