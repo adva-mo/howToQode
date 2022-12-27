@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/adva-mo/howToQode#readme",
   "dependencies": {
+    "fsevents": "^2.3.2",
     "node-modules": "^0.0.1"
   }
 }
