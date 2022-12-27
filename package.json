@@ -16,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/adva-mo/howToQode/issues"
   },
-  "homepage": "https://github.com/adva-mo/howToQode#readme"
+  "homepage": "https://github.com/adva-mo/howToQode#readme",
+  "dependencies": {
+    "node-modules": "^1.0.1"
+  }
 }
