@@ -1,13 +1,14 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import "./Loginpaage.css";
 import LoginCard from "../../components/LoginCard/LoginCard";
+import currentLoggedUser from "../../context/loggedUserContext";
 
 function Loginpage() {
   const [userToRegister, setUserToRegister] = useState(null);
   const [isNewUser, setIsNewUser] = useState(true);
-
+  const { setLoggedUser } = useContext(currentLoggedUser);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -19,6 +20,7 @@ function Loginpage() {
       .post(path, userToRegister)
       .then(({ data }) => {
         localStorage.setItem("QODE_APP", JSON.stringify([data._id]));
+        setLoggedUser(data);
         if (data._id) navigate(`/profile/${data._id}`);
       })
       .catch((e) => {

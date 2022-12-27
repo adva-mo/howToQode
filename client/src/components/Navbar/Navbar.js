@@ -1,9 +1,12 @@
-import React from "react";
+import React, { useContext } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
+import currentLoggedUser from "../../context/loggedUserContext";
 import "./Navbar.css";
 
-function Navbar({ loggedUser, setLoggedUser }) {
+function Navbar() {
   const navigate = useNavigate();
+  const { loggedUser, setLoggedUser } = useContext(currentLoggedUser);
+
   return (
     <ul className="navbar-ul">
       {/* logo */}

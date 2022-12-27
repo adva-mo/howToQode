@@ -29,7 +29,7 @@ function UserProfilePage() {
   }, [id]);
 
   useEffect(() => {
-    if (!user) {
+    if (!user && error) {
       setTimeout(() => {
         //todo: display error component
         navigate(-1);

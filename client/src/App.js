@@ -8,10 +8,11 @@ import currentLoggedUser from "./context/loggedUserContext";
 
 function App() {
   const [loggedUser, setLoggedUser] = useLocalStorage("QODE_APP", false);
+
   return (
     <div className="App">
-      <currentLoggedUser.Provider value={{ loggedUser }}>
-        <Navbar loggedUser={loggedUser} setLoggedUser={setLoggedUser} />
+      <currentLoggedUser.Provider value={{ loggedUser, setLoggedUser }}>
+        <Navbar />
         <div className="split-component">
           <RoutesIndex />
           <Chat />
