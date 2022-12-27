@@ -28,8 +28,8 @@
     "chokidar": "^3.5.3",
     "combined-stream": "^1.0.8",
     "concat-map": "^0.0.1",
-    "content-disposition": "^0.5.4",
     "concat-stream": "^1.6.2",
+    "content-disposition": "^0.5.4",
     "content-type": "^1.0.4",
     "cookie": "^0.5.0",
     "cookie-signature": "^1.0.6",
@@ -161,10 +161,6 @@
     "whatwg-url": "^11.0.0",
     "ws": "^8.2.3",
     "xtend": "^4.0.2"
-  },
-  "devDependencies": {},
-  "optionalDependencies": {
-    "fsevents": "^2.3.2"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
