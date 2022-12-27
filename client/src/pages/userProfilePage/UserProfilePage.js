@@ -10,33 +10,36 @@ function UserProfilePage() {
   const [userSnippet, setUserSnippet] = useState([]);
   const { id } = useParams();
   const [error, setError] = useState(null);
-
   const navigate = useNavigate();
+  console.log(id);
 
   useEffect(() => {
+    if (!id) return;
     axios
       .get(`http://localhost:3001/users/${`${id}`}`)
+      // .then(({ data }) => console.log(data))
       .then(({ data }) => setUser(data))
       .then(() => {
         axios.get(`http://localhost:3001/snippets?user=${id}`);
       })
       .then(({ data }) => data && setUserSnippet(data))
       .catch((e) => {
-        setError(e.message);
+        setError(e.response?.data);
       });
   }, [id]);
 
   useEffect(() => {
-    if (error && !user) {
+    if (!user) {
       setTimeout(() => {
         //todo: display error component
         navigate(-1);
       }, 2000);
     }
-  }, [error, navigate, user]);
+  }, [error, navigate]);
 
   return (
     <div className="page-container">
+      {console.log(user)}
       <img
         className="test"
         src={process.env.PUBLIC_URL + "/assets/Ellipse1.png"}

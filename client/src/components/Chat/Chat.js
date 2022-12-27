@@ -1,8 +1,9 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import "./Chat.css";
 import io from "socket.io-client";
 import uuid from "react-uuid";
 import ScrollToBottom from "react-scroll-to-bottom";
+import loggedUserContext from "../../context/loggedUserContext";
 
 const socket = io.connect("http://127.0.0.1:3001");
 
@@ -12,10 +13,13 @@ function Chat() {
   const [messageList, setMessageList] = useState([]);
   const [onlineUsers, setOnlineUsers] = useState([]);
 
+  const { loggedUser } = useContext(loggedUserContext);
+  console.log(loggedUser);
+
   const joinChat = () => {
     setIsConnected(true);
     socket.emit("join_room", "room1");
-    socket.emit("user_connected", socket.id);
+    // socket.emit("user_connected", socket.id);
   };
 
   const sendMessage = async () => {
@@ -41,12 +45,16 @@ function Chat() {
   };
 
   useEffect(() => {
+    // console.log(socket);
+    if (!socket) return;
+    socket.emit("user_connected", socket.id);
+
     socket.on("receive_message", (data) => {
       setMessageList((list) => [...list, data]);
     });
 
     socket.on("updateUserList", (data) => {
-      console.log(data);
+      // console.log(data);
       setOnlineUsers([...data]);
     });
   }, [socket]);
@@ -54,15 +62,21 @@ function Chat() {
   return (
     <div className="chat-wrapper">
       <div className="chat">
+        <div className="online-users-container">
+          <p>online users:</p>
+          {onlineUsers.map((user) => (
+            <p key={uuid()}>{user.socket}</p>
+          ))}
+        </div>
+
+        {!loggedUser ? (
+          <button>sign in to chat</button>
+        ) : (
+          <button onClick={joinChat}>join chat</button>
+        )}
         {isConnected ? (
           <div className="chat-room">
             <h4>live chat</h4>
-            <div className="online-users-container">
-              <p>online users:</p>
-              {onlineUsers.map((user) => (
-                <p key={uuid()}>{user.socket}</p>
-              ))}
-            </div>
             <ScrollToBottom className="message-container">
               {messageList.map((data) => {
                 return (
@@ -97,7 +111,7 @@ function Chat() {
             </div>
           </div>
         ) : (
-          <button onClick={joinChat}>join chat</button>
+          ""
         )}
       </div>
     </div>

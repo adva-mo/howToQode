@@ -8,8 +8,8 @@ const isEmailInputValid = (value) => value.trim() !== "" && value.includes("@");
 const isPasswordInputValid = (value) =>
   value.trim() !== "" && value.length >= 6;
 
-function LoginCard({ setUserToRegister }) {
-  const [isNewUser, setIsNewUser] = useState(true);
+function LoginCard({ setUserToRegister, isNewUser, setIsNewUser }) {
+  // const [isNewUser, setIsNewUser] = useState(true);
 
   const {
     value: emailValue,

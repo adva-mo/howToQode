@@ -6,18 +6,23 @@ import LoginCard from "../../components/LoginCard/LoginCard";
 
 function Loginpage() {
   const [userToRegister, setUserToRegister] = useState(null);
+  const [isNewUser, setIsNewUser] = useState(true);
+
   const navigate = useNavigate();
 
   useEffect(() => {
     if (!userToRegister) return;
+    const path = isNewUser
+      ? "http://localhost:3001/users/register"
+      : "http://localhost:3001/users/login";
     axios
-      .post("http://localhost:3001/users/register", userToRegister)
+      .post(path, userToRegister)
       .then(({ data }) => {
         localStorage.setItem("QODE_APP", JSON.stringify([data._id]));
         if (data._id) navigate(`/profile/${data._id}`);
       })
       .catch((e) => {
-        console.log(e);
+        console.log(e.response.data);
       });
   }, [userToRegister]);
 
@@ -31,7 +36,11 @@ function Loginpage() {
         className="test2"
         src={process.env.PUBLIC_URL + "/assets/Ellipse2.png"}
       />
-      <LoginCard setUserToRegister={setUserToRegister} />
+      <LoginCard
+        setUserToRegister={setUserToRegister}
+        isNewUser={isNewUser}
+        setIsNewUser={setIsNewUser}
+      />
     </div>
   );
 }

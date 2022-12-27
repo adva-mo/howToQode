@@ -1,8 +1,9 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import "./Navbar.css";
 
 function Navbar({ loggedUser, setLoggedUser }) {
+  const navigate = useNavigate();
   return (
     <ul className="navbar-ul">
       {/* logo */}
@@ -46,7 +47,7 @@ function Navbar({ loggedUser, setLoggedUser }) {
       <li>
         <NavLink
           className={(navData) => (navData.isActive ? "active" : "")}
-          to={loggedUser ? `/profile/${loggedUser[1]}` : "/login"}
+          to={loggedUser ? `/profile/${loggedUser[0]}` : "/login"}
         >
           {loggedUser ? "profile" : "login"}
         </NavLink>
@@ -63,9 +64,9 @@ function Navbar({ loggedUser, setLoggedUser }) {
       ) : (
         <button
           onClick={() => {
-            console.log("logging");
             setLoggedUser(null);
             localStorage.removeItem("QODE_APP");
+            navigate("/login");
           }}
         >
           logout

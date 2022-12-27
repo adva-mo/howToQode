@@ -80,6 +80,7 @@ io.on("connection", (socket) => {
   socket.on("join_room", (data) => socket.join(data));
 
   socket.on("user_connected", (data) => {
+    console.log(data);
     new OnlineUser({ socket: data })
       .save()
       .then(() => OnlineUser.find({}))
