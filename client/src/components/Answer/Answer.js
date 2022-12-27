@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import "./Answer.css";
 import Comment from "../Comment/Comment";
 import AddComment from "../AddComment/AddComment";
+import { useNavigate } from "react-router-dom";
 
 function Answer({
   author,
@@ -14,30 +15,59 @@ function Answer({
   snippetId,
 }) {
   const [showComments, setshowComments] = useState(false);
+  const navigate = useNavigate();
 
   return (
     <div className="answer-container primary-box flex-column-center">
       <p> {description}</p>
 
-      <p>correct? {isHelpful ? "V" : "X"}</p>
-      <div className="flex-row">
-        <p>date: {date}</p>
-        <p>author {author}</p>
-        <p>comments {comments.length}</p>
-        <button onClick={() => setshowComments((prev) => !prev)}>
-          {!showComments ? (
-            <i className="fa-solid fa-caret-down"></i>
-          ) : (
-            <i class="fa-solid fa-sort-up"></i>
-          )}
-        </button>
+      <p className="turkiz-bottom-border">correct? {isHelpful ? "V" : "X"}</p>
+      <div className="flex-row-around">
+        <div>
+          <i className="fa-solid fa-calendar-days turkiz-font"></i>
+          <p>{date}</p>
+        </div>
+        <div>
+          <i class="fa-regular fa-user turkiz-font"></i>
+          <p
+            className="profile-link"
+            onClick={({ target }) => {
+              navigate(`/profile/${target.value}`);
+            }}
+          >
+            {author}
+          </p>
+        </div>
+        <div>
+          <i className="fa-regular fa-comment turkiz-font"></i>
+          <br />
+          <p>
+            {comments.length}
+
+            <button
+              className="show-comment-btn"
+              onClick={() => setshowComments((prev) => !prev)}
+            >
+              {!showComments ? (
+                <i className="fa-solid fa-caret-down"></i>
+              ) : (
+                <i class="fa-solid fa-sort-up"></i>
+              )}
+            </button>
+          </p>
+        </div>
       </div>
 
-      {showComments
-        ? comments.map((comment) => {
-            return <Comment key={comment._id} {...comment} />;
-          })
-        : ""}
+      {showComments ? (
+        <>
+          comments
+          {comments.map((comment) => (
+            <Comment key={comment._id} {...comment} />
+          ))}
+        </>
+      ) : (
+        ""
+      )}
 
       <AddComment
         setIsUpdated={setIsUpdated}

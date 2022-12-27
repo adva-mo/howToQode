@@ -1,5 +1,14 @@
 .comment-container {
   border-width: 0 0 0 1px;
   border-radius: 0;
-  align-self: flex-start;
+  /* align-self: flex-start; */
+  width: 100%;
+  padding: 0.3rem 0.5rem;
+  justify-content: flex-start;
+}
+.user-profile-image-comment {
+  align-self: center;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
 }

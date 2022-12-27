@@ -12,6 +12,7 @@ function AIpage() {
         className="test2"
         src={process.env.PUBLIC_URL + "/assets/Ellipse2.png"}
       />
+      
       <AI />
     </div>
   );

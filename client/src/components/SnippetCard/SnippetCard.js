@@ -18,21 +18,35 @@ function SnippetCard({
 }) {
   return (
     <div className="flex-column-center snippet-card">
-      <div className="primary-box">
-        <h2>title: {title}</h2>
+      <div className="primary-box ">
+        <h2 className="turkiz-bottom-border">{title}</h2>
         <div className="flex-row">
-          <p>
-            {date}
-            <span>
-              <i className="fa-solid fa-calendar-days turkiz-font"></i>
-            </span>
-          </p>
-          <p>
-            asked by:
+          <div>
+            <i className="fa-solid fa-calendar-days turkiz-font"></i>
+            <br />
+            <p className="profile-link">{date}</p>
+            {/* {date} */}
+          </div>
+          <div>
             <i class="fa-regular fa-user turkiz-font"></i>
-            {author}
+            <br />
+            <p className="profile-link">{author}</p>
+          </div>
+          <p>
+            {solved ? (
+              <>
+                <i className="fa-solid fa-check turkiz-font" />
+                SOLVED
+              </>
+            ) : (
+              <>
+                <i className="fa-solid fa-xmark turkiz-font" />
+                <br />
+                NOT SOLVED
+              </>
+            )}
           </p>
-          <p>{solved ? "solved" : "not solved"}</p>
+          {/* <p>{solved ? "solved" : "not solved"}</p> */}
         </div>
         <p>coding language: {language}</p>
         {/* {space} */}

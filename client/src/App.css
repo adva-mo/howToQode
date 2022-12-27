@@ -9,6 +9,17 @@ select {
   background-color: var(--bg-gray);
   border: none;
 }
+textarea {
+  resize: none;
+  padding: 0.5rem;
+}
+
+.flex-row-around {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 100%;
+}
 
 .flex-column-center {
   display: flex;
@@ -44,6 +55,8 @@ select {
   margin: 2rem;
   background: linear-gradient(rgb(61, 47, 99), 1rem, transparent);
   z-index: 3;
+  line-height: 1.7rem;
+  gap: 1rem;
 }
 .align-left {
   text-align: left;
@@ -57,6 +70,10 @@ button {
 }
 .input-container {
   border: 1px gray solid;
+  border-width: 0 0 1px 0;
+}
+.turkiz-bottom-border {
+  border: 1px var(--turkiz) solid;
   border-width: 0 0 1px 0;
 }
 .turkiz-underline {
@@ -89,6 +106,17 @@ button {
 .blue-font {
   color: var(--primary-blue);
 }
+.gray-font {
+  color: rgb(180, 180, 180);
+  font-size: small;
+}
 .turkiz-font {
   color: var(--turkiz);
+}
+.profile-link:hover {
+  cursor: pointer;
+}
+.space-between {
+  justify-content: space-between;
+  align-items: center;
 }
