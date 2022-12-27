@@ -164,7 +164,7 @@
   },
   "devDependencies": {},
   "optionalDependencies": {
-    "fsevents": "~2.3.2"
+    "fsevents": "^2.3.2"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
