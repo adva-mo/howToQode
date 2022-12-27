@@ -8,7 +8,10 @@ aiRoutes.post("", async (req, res) => {
   try {
     const response = await openAI.createCompletion({
       model: "text-davinci-003",
-      prompt: `${message}`,
+      prompt: `pretend youre name is john and you are very motivated person
+      you: hello! what can i help you learn today?
+      person: ${message}
+      you:`,
       max_tokens: 100,
       temperature: 0,
     });

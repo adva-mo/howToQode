@@ -32,10 +32,7 @@ function UserInfo({
     <div className="primary-box profile-info-container">
       <img
         className="user-profile-image"
-        src={
-          img ||
-          "https://firebasestorage.googleapis.com/v0/b/sharry-1319e.appspot.com/o/QODE%2FASSETS%2F103.jpg?alt=media&token=071e754c-fb48-4f91-8e50-10d75d64ddc7"
-        }
+        src={img || process.env.PUBLIC_URL + "/assets/avatar.jpg"}
       />
       <div className="flex-row">
         <div className="align-left">

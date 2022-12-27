@@ -18,12 +18,12 @@ select {
 }
 .split-component {
   display: flex;
+  background-color: var(--bg-purple) !important;
 }
 
 .page-container {
   width: 100%;
   flex-grow: 1;
-  background-color: var(--bg-purple);
   min-height: 92vh;
   display: flex;
   flex-direction: column;
@@ -43,6 +43,7 @@ select {
   text-align: center;
   margin: 2rem;
   background: linear-gradient(rgb(61, 47, 99), 1rem, transparent);
+  z-index: 3;
 }
 .align-left {
   text-align: left;
@@ -68,15 +69,23 @@ button {
   border: none !important;
 }
 .test {
-  /* background-color: rgba(255, 255, 255, 0.5); z-index: 0; */
   position: fixed;
-  top: 20%;
-  left: 20%;
+  top: 35%;
+  left: 0;
+  transform: translateX(-250px);
+  width: 25rem;
+  height: 30rem;
+  /* z-index: -1; */
 }
-.test > img {
-  width: 10rem;
-  height: 10rem;
+.test2 {
+  position: fixed;
+  top: 0;
+  left: 0;
+  transform: translateY(-180px);
+  width: 25rem;
+  height: 30rem;
 }
+
 .blue-font {
   color: var(--primary-blue);
 }

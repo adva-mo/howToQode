@@ -73,7 +73,10 @@ function LoginCard({ setUserToRegister }) {
   };
 
   return (
-    <form onSubmit={formSubmissionHandler} className="flex-column login-card">
+    <form
+      onSubmit={formSubmissionHandler}
+      className="flex-column login-card primary-box"
+    >
       <h3>{isNewUser ? "Sign up" : "Sign in"} </h3>
       <div className="input-container">
         <input
