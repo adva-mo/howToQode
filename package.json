@@ -18,6 +18,6 @@
   },
   "homepage": "https://github.com/adva-mo/howToQode#readme",
   "dependencies": {
-    "node-modules": "^1.0.1"
+    "node-modules": "^0.0.1"
   }
 }
