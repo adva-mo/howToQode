@@ -25,15 +25,14 @@ function UserInfo({
   const editProfileHandler = async (e) => {
     if (editMood) {
       const updatedUserInfo = Object.fromEntries(new FormData(form.current));
-
-      // const data = new FormData(form);
-      // const temp = Object.keys(data);
       console.log(updatedUserInfo);
       //* validate form inputes
-      //* if valid: send request
+      //* if valid: send request:
+      await axios.patch(`http://localhost:3001/users/${_id}`, updatedUserInfo);
       //* if not : set error
-      // setEditMood(false);
-      // navigate(`/profile/${_id}`);
+      setEditMood(false);
+      navigate(`/profile/${_id}`);
+      console.log("user updated");
     } else setEditMood((prev) => !prev);
   };
 
@@ -46,8 +45,6 @@ function UserInfo({
     }
   };
 
-  useEffect(() => {}, []);
-
   return (
     <form ref={form} className="primary-box profile-info-form">
       <img
@@ -55,15 +52,20 @@ function UserInfo({
         src={img || process.env.PUBLIC_URL + "/assets/avatar.jpg"}
         alt=""
       />
-      <div className="flex-row">
-        <div className="align-left">
-          <p>
+      <div className="flex-row info-container">
+        <div className="align-left flex-grow">
+          {/* <p>
             User Name:
             <input defaultValue={username || ""} readOnly={true} />
-          </p>
+          </p> */}
           <p>
             Name:
-            <input defaultValue={name || ""} readOnly={!editMood} name="name" />
+            <input
+              defaultValue={name || ""}
+              readOnly={!editMood}
+              name="name"
+              className={editMood ? "edit-input" : ""}
+            />
           </p>
           <p>
             Last Name:
@@ -71,14 +73,20 @@ function UserInfo({
               defaultValue={lastName || ""}
               readOnly={!editMood}
               name="lastName"
+              className={editMood ? "edit-input" : ""}
             />
           </p>
         </div>
 
-        <div className="align-left">
+        <div className="align-left flex-grow">
           <p>
             City:{" "}
-            <input defaultValue={city || ""} readOnly={!editMood} name="city" />
+            <input
+              defaultValue={city || ""}
+              readOnly={!editMood}
+              name="city"
+              className={editMood ? "edit-input" : ""}
+            />
           </p>
           <p>
             Country:{" "}
@@ -86,6 +94,7 @@ function UserInfo({
               defaultValue={country || ""}
               readOnly={!editMood}
               name="country"
+              className={editMood ? "edit-input" : ""}
             />
           </p>
         </div>
@@ -97,6 +106,7 @@ function UserInfo({
             defaultValue={learning || ""}
             readOnly={!editMood}
             name="learning"
+            className={editMood ? "edit-input" : ""}
           />
         </p>
         <p>
@@ -105,6 +115,7 @@ function UserInfo({
             defaultValue={school || ""}
             readOnly={!editMood}
             name="school"
+            className={editMood ? "edit-input" : ""}
           />
         </p>
       </div>
@@ -122,7 +133,7 @@ function UserInfo({
         </div>
         <div>
           <h4>RANK </h4>
-          <p>{rank}</p>
+          {rank}
           <i className="fa-solid fa-ranking-star blue-font"></i>{" "}
         </div>
       </div>

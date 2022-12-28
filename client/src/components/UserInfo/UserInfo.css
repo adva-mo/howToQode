@@ -19,3 +19,18 @@
 .profile-info-form {
   position: relative;
 }
+.profile-info-form * input {
+  flex-grow: 1;
+  background-color: transparent !important;
+}
+.edit-input {
+  border: 1px solid gray;
+  border-width: 0 0 1px 0;
+}
+.profile-info-form * p {
+  display: flex;
+}
+.info-container {
+  /* justify-content: flex-start; */
+  /* width: 100%; */
+}
