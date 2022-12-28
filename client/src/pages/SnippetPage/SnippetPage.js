@@ -22,7 +22,7 @@ function SnippetPage() {
   useEffect(() => {
     console.log(error);
   }, [error]);
-
+  console.log(currentSnippet);
   return (
     <div className="page-container">
       <img

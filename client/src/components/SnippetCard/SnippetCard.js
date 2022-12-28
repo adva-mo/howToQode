@@ -3,6 +3,7 @@ import React from "react";
 import Codeblock from "../Codeblock/Codeblock";
 import Answer from "../Answer/Answer";
 import { useNavigate } from "react-router-dom";
+import NewAnswerForm from "../NewAnswerForm/NewAnswerForm";
 
 function SnippetCard({
   author,
@@ -76,6 +77,7 @@ function SnippetCard({
             snippetId={_id}
           />
         ))}
+        <NewAnswerForm />
       </div>
     </div>
   );

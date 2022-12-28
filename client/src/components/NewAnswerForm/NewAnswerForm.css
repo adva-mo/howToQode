@@ -1,0 +1,9 @@
+.new-answer-form {
+  align-items: flex-start !important;
+  width: 100%;
+}
+.new-answer-title-input,
+.new-answer-textarea {
+  width: 100%;
+  margin-left: 0;
+}

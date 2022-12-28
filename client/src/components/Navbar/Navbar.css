@@ -9,8 +9,10 @@
   left: 0;
   z-index: 10;
   width: 100%;
+  /* background-color: rgb(10, 22, 41) !important; */
   background-color: var(--bg-purple) !important;
   background: linear-gradient(var(--purple), 1rem, transparent);
+  /* border-bottom: 1px solid whitesmoke; */
 }
 .navbar-ul a.active {
   text-decoration: underline;
