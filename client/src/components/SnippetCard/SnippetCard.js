@@ -14,7 +14,7 @@ function SnippetCard({
   solved,
   date,
   answers,
-  setIsUpdated,
+  // setIsUpdated,
   _id,
 }) {
   const navigate = useNavigate();
@@ -73,7 +73,7 @@ function SnippetCard({
             key={answer._id}
             {...answer}
             snippetOwner={author}
-            setIsUpdated={setIsUpdated}
+            // setIsUpdated={setIsUpdated}
             snippetId={_id}
           />
         ))}

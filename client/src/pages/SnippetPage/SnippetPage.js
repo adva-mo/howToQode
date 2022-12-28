@@ -1,14 +1,16 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import "./SnippetPage.css";
 import SnippetCard from "../../components/SnippetCard/SnippetCard";
 import { useParams } from "react-router-dom";
 import axios from "axios";
+import currentLoggedUser from "../../context/loggedUserContext";
 
 function SnippetPage() {
   const [currentSnippet, setCurrentSnippet] = useState(null);
-  const [isUpdated, setIsUpdated] = useState(false);
+  // const [isUpdated, setIsUpdated] = useState(false);
   const { id } = useParams();
   const [error, setError] = useState(null);
+  const { toggleUpdate } = useContext(currentLoggedUser);
 
   useEffect(() => {
     axios
@@ -17,7 +19,7 @@ function SnippetPage() {
       .catch((e) => setError(e.response.data))
       .finally(() => console.log(currentSnippet));
     // eslint-disable-next-line
-  }, [id, isUpdated]);
+  }, [id, toggleUpdate]);
 
   useEffect(() => {
     console.log(error);
@@ -37,9 +39,7 @@ function SnippetPage() {
         alt=""
         key={"2"}
       />
-      {currentSnippet && (
-        <SnippetCard {...currentSnippet} setIsUpdated={setIsUpdated} />
-      )}
+      {currentSnippet && <SnippetCard {...currentSnippet} />}
     </div>
   );
 }

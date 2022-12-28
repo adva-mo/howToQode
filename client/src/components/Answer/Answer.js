@@ -1,21 +1,46 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import "./Answer.css";
 import Comment from "../Comment/Comment";
 import AddComment from "../AddComment/AddComment";
 import { useNavigate } from "react-router-dom";
+import currentLoggedUser from "../../context/loggedUserContext";
+import axios from "axios";
 
 function Answer({
   author,
   description,
   isHelpful,
-  date,
+  createdAt,
   comments,
-  setIsUpdated,
+  // setIsUpdated,
   _id,
   snippetId,
+  likes,
 }) {
   const [showComments, setshowComments] = useState(false);
   const navigate = useNavigate();
+  const { loggedUser, setToggleUpdate } = useContext(currentLoggedUser);
+  // console.log(loggedUser);
+
+  const isLoggedUserLiked = (function () {
+    return likes.includes(loggedUser);
+  })();
+  // const isLoggedUserLiked = () => {
+  // };
+  // console.log(isLoggedUserLiked());
+
+  const addLike = async () => {
+    console.log("add like");
+    try {
+      await axios.post(`http://localhost:3001/answers/${snippetId}/confirm`, {
+        answerId: _id,
+        userid: loggedUser,
+      });
+      setToggleUpdate((prev) => !prev);
+    } catch (e) {
+      console.log(e);
+    }
+  };
 
   return (
     <div className="answer-container primary-box flex-column-center">
@@ -25,7 +50,7 @@ function Answer({
       <div className="flex-row-around">
         <div>
           <i className="fa-solid fa-calendar-days turkiz-font"></i>
-          <p>{date}</p>
+          <p>{createdAt}</p>
         </div>
         <div>
           <i className="fa-regular fa-user turkiz-font"></i>
@@ -56,6 +81,18 @@ function Answer({
             </button>
           </p>
         </div>
+        <div>
+          <i
+            className={
+              isLoggedUserLiked
+                ? "fa-solid fa-thumbs-up turkiz-font"
+                : "fa-regular fa-thumbs-up turkiz-font"
+            }
+            onClick={isLoggedUserLiked ? () => {} : () => addLike()}
+          ></i>{" "}
+          <br />
+          <p>{likes.length}</p>
+        </div>
       </div>
 
       {showComments ? (
@@ -70,7 +107,7 @@ function Answer({
       )}
 
       <AddComment
-        setIsUpdated={setIsUpdated}
+        // setIsUpdated={setIsUpdated}
         answerId={_id}
         snippetId={snippetId}
       />

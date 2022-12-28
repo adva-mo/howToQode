@@ -9,8 +9,8 @@ select {
   /* background-color: var(--bg-gray); */
   border: none;
   border-radius: 5px;
-  padding: 0.5rem;
-  margin: 0.5rem;
+  /* padding: 0.5rem;
+  margin: 0.5rem; */
 }
 textarea {
   resize: none;
