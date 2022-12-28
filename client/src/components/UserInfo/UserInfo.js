@@ -1,3 +1,4 @@
+import axios from "axios";
 import React, { useState, useEffect } from "react";
 
 import "./UserInfo.css";
@@ -13,17 +14,29 @@ function UserInfo({
   img,
   learning,
   school,
+  _id,
 }) {
-  // const [editMood, setEditMood] = useState(false);
+  const [editMood, setEditMood] = useState(false);
+  const [error, setError] = useState(false);
 
-  // const editProfileHandler = async (e) => {
-  //   if (editMood) {
-  //   } else setEditMood((prev) => !prev);
-  // };
+  const editProfileHandler = async (e) => {
+    if (editMood) {
+      //do
+      setEditMood(false);
+    } else setEditMood((prev) => !prev);
+  };
 
-  // const deleteProfileHandler = async () => {
-  //   console.log("delete PROFILE function");
-  // };
+  const deleteProfileHandler = async () => {
+    try {
+      console.log("delete PROFILE function");
+      const { data } = axios.delete(`http://localhost:3001/users/${_id}`);
+      console.log("user deleted");
+    } catch (e) {
+      setError(e.message);
+    }
+
+    //finally redirect to loginpage
+  };
 
   useEffect(() => {}, []);
 
@@ -36,21 +49,39 @@ function UserInfo({
       />
       <div className="flex-row">
         <div className="align-left">
-          <p>User Name: {username || ""}</p>
-          <p>Name: {name || ""}</p>
-          <p>Last Name: {lastName || ""}</p>
+          <p>
+            User Name:
+            <input value={username || ""} readOnly={!editMood} />
+          </p>
+          <p>
+            Name:
+            <input value={name || ""} readOnly={!editMood} />
+          </p>
+          <p>
+            Last Name:
+            <input value={lastName || ""} readOnly={!editMood} />
+          </p>
         </div>
 
         <div className="align-left">
-          <p>Rank: {rank || ""}</p>
-          <p>City: {city || ""}</p>
-          <p>Country: {country || ""}</p>
+          <p>
+            Rank: <input value={rank || ""} readOnly={!editMood} />
+          </p>
+          <p>
+            City: <input value={city || ""} readOnly={!editMood} />
+          </p>
+          <p>
+            Country: <input value={country || ""} readOnly={!editMood} />
+          </p>
         </div>
-
-        <div className="align-left">
-          <p>learning: {learning || ""}</p>
-          <p>school: {school || ""}</p>
-        </div>
+      </div>
+      <div className="align-left">
+        <p>
+          learning: <input value={learning || ""} readOnly={!editMood} />
+        </p>
+        <p>
+          school: <input value={school || ""} readOnly={!editMood} />
+        </p>
       </div>
       <div className="turkiz-underline"></div>
       <h4 className="stat-h4 ">STATISTICS</h4>
@@ -70,10 +101,19 @@ function UserInfo({
           <i className="fa-solid fa-ranking-star blue-font"></i>{" "}
         </div>
       </div>
-      <div className="edit-profile-container">
-        <i className="fa-solid fa-pencil"></i>
-        {/* <button className="edit-profile-btn">EDIT</button> */}
-        {/* <button>DELETE</button> */}
+      <div className="edit-profile-container flex-column-center">
+        <i
+          className={editMood ? "fa-solid fa-check" : "fa-solid fa-pencil"}
+          onClick={editProfileHandler}
+        ></i>
+        {editMood ? (
+          <i
+            className="fa-solid fa-trash-can"
+            onClick={deleteProfileHandler}
+          ></i>
+        ) : (
+          ""
+        )}
       </div>
     </div>
   );
