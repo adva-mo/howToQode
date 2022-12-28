@@ -57,6 +57,10 @@ const userSchema = new mongoose.Schema(
       trim: true,
       default: "",
     },
+    solvedQuestions: {
+      type: Number,
+      default: 0,
+    },
   },
   { timestamps: true }
 );
