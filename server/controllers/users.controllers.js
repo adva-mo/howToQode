@@ -90,12 +90,18 @@ const registerUser = (req, res) => {
 
 //providing username and password only in body
 const loginUser = async (req, res) => {
+  const { username } = req.body;
   try {
     const user = new User(req.body);
     req.login(user, (err) => {
       if (err) throw Error(err);
-      passport.authenticate("local")(req, res, () => res.send(user));
+      passport.authenticate("local")(req, res, (error) => {
+        if (error) {
+          throw Error(error);
+        }
+      });
     });
+    res.send(await User.findOne({ username }));
   } catch (e) {
     res.status(404).send(e);
   }
