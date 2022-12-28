@@ -5,7 +5,7 @@ import newSnippetContext from "../../context/snippet.context.js";
 import UploadInput from "../uploadInput/UploadInput";
 
 function NewSnippetCard() {
-  const { setSnippetObject, setIsSnippetFull } = useContext(newSnippetContext);
+  const { setSnippetObject } = useContext(newSnippetContext);
 
   const title = useRef();
   const description = useRef();
@@ -16,7 +16,6 @@ function NewSnippetCard() {
       title: title.current.value,
       description: description.current.value,
     }));
-    setIsSnippetFull(true);
   };
 
   return (

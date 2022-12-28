@@ -1,12 +1,13 @@
-import React, { useEffect, useState } from "react";
+import axios from "axios";
+import React, { useContext, useEffect, useState } from "react";
 import NewSnippetCard from "../../components/NewSnippetCard/NewSnippetCard.js";
+import currentLoggedUser from "../../context/loggedUserContext.js";
 import newSnippetContext from "../../context/snippet.context.js";
-import { useHttp } from "../../hooks/useHttp";
-
+// import { useNavigate } from "react-router-dom";
 import "./NewSnippetPage.css";
 
 function NewSnippetPage() {
-  const [isSnippetFull, setIsSnippetFull] = useState(false);
+  const [error, setError] = useState(false);
   const [snippetObject, setSnippetObject] = useState({
     title: "",
     language: "",
@@ -14,29 +15,24 @@ function NewSnippetPage() {
     code: "",
   });
 
-  const { getData } = useHttp();
+  const { loggedUser } = useContext(currentLoggedUser);
+  // const navigate = useNavigate;
 
   useEffect(() => {
-    if (!isSnippetFull) return;
-
-    const PostBody = {
+    const postBody = {
       ...snippetObject,
-      author: "63a446403a69e528fb2eb2ed",
+      author: `${loggedUser}`,
     };
-
-    getData({
-      url: "http://localhost:3001/snippets",
-      method: "POST",
-      body: PostBody,
-      headers: {
-        "Content-Type": "application/json",
-      },
-    })
-      .then((res) => {
-        console.log(res);
+    axios
+      .post("http://localhost:3001/snippets", postBody)
+      .then(({ data }) => {
+        console.log(data);
+        //todo redirect the user to snippet page
       })
-      .catch((err) => console.log(err));
-  }, [isSnippetFull]);
+      .catch((e) => {
+        setError(e);
+      });
+  }, [loggedUser, snippetObject]);
 
   return (
     <div className="new-snippeet-page page-container">
@@ -51,9 +47,7 @@ function NewSnippetPage() {
       <newSnippetContext.Provider
         value={{
           setSnippetObject,
-          setIsSnippetFull,
           snippetObject,
-          isSnippetFull,
         }}
       >
         <NewSnippetCard />

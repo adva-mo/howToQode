@@ -7,26 +7,30 @@ import SnippetPrev from "../../components/SnippetPrev/SnippetPrev";
 
 function UserProfilePage() {
   const [user, setUser] = useState();
-  const [userSnippet, setUserSnippet] = useState([]);
+  const [userSnippet, setUserSnippet] = useState(null);
   const { id } = useParams();
   const [error, setError] = useState(null);
   const navigate = useNavigate();
-  console.log(id);
+  // console.log(id);
 
   useEffect(() => {
     if (!id) return;
     axios
       .get(`http://localhost:3001/users/${`${id}`}`)
-      // .then(({ data }) => console.log(data))
       .then(({ data }) => setUser(data))
-      .then(() => {
-        axios.get(`http://localhost:3001/snippets?user=${id}`);
-      })
-      .then(({ data }) => data && setUserSnippet(data))
       .catch((e) => {
         setError(e.response?.data);
       });
   }, [id]);
+
+  useEffect(() => {
+    axios
+      .get(`http://localhost:3001/snippets?user=${id}`)
+      .then(({ data }) => setUserSnippet(data))
+      .catch((e) => {
+        console.log(e);
+      });
+  }, [user]);
 
   useEffect(() => {
     if (!user && error) {
@@ -39,7 +43,6 @@ function UserProfilePage() {
 
   return (
     <div className="page-container">
-      {console.log(user)}
       <img
         className="test"
         src={process.env.PUBLIC_URL + "/assets/Ellipse1.png"}
@@ -56,7 +59,7 @@ function UserProfilePage() {
       {userSnippet && (
         <>
           <UserInfo {...user} numOfSnippets={userSnippet.length} />
-          {!userSnippet.length > 0 ? (
+          {!userSnippet.length === 0 ? (
             <div className="primary-box">
               <p>user doesn't have any snippets yet</p>
             </div>
@@ -65,9 +68,7 @@ function UserProfilePage() {
               return (
                 <div key={snippet._id}>
                   <h4>Users's QUESTIONS</h4>
-                  {/* <Link to={`/snippets/${snippet._id}`}> */}
-                  <SnippetPrev key={snippet._id} {...snippet} />
-                  {/* </Link> */}
+                  <SnippetPrev {...snippet} />
                 </div>
               );
             })

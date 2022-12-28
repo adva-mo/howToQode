@@ -50,7 +50,7 @@ function Navbar() {
       <li>
         <NavLink
           className={(navData) => (navData.isActive ? "active" : "")}
-          to={loggedUser ? `/profile/${loggedUser[0]}` : "/login"}
+          to={loggedUser ? `/profile/${loggedUser}` : "/login"}
         >
           {loggedUser ? "profile" : "login"}
         </NavLink>
