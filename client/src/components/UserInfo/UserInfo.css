@@ -16,6 +16,6 @@
 .edit-profile-container :hover {
   cursor: pointer;
 }
-.profile-info-container {
+.profile-info-form {
   position: relative;
 }

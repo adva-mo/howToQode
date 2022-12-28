@@ -1,5 +1,6 @@
 import axios from "axios";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
+import { useNavigate } from "react-router-dom";
 
 import "./UserInfo.css";
 
@@ -19,29 +20,36 @@ function UserInfo({
   const [editMood, setEditMood] = useState(false);
   const [error, setError] = useState(false);
 
+  const navigate = useNavigate();
+  const form = useRef();
   const editProfileHandler = async (e) => {
     if (editMood) {
-      //do
-      setEditMood(false);
+      const updatedUserInfo = Object.fromEntries(new FormData(form.current));
+
+      // const data = new FormData(form);
+      // const temp = Object.keys(data);
+      console.log(updatedUserInfo);
+      //* validate form inputes
+      //* if valid: send request
+      //* if not : set error
+      // setEditMood(false);
+      // navigate(`/profile/${_id}`);
     } else setEditMood((prev) => !prev);
   };
 
   const deleteProfileHandler = async () => {
     try {
-      console.log("delete PROFILE function");
-      const { data } = axios.delete(`http://localhost:3001/users/${_id}`);
-      console.log("user deleted");
+      await axios.delete(`http://localhost:3001/users/${_id}`);
+      navigate(`/login`);
     } catch (e) {
       setError(e.message);
     }
-
-    //finally redirect to loginpage
   };
 
   useEffect(() => {}, []);
 
   return (
-    <div className="primary-box profile-info-container">
+    <form ref={form} className="primary-box profile-info-form">
       <img
         className="user-profile-image"
         src={img || process.env.PUBLIC_URL + "/assets/avatar.jpg"}
@@ -51,36 +59,53 @@ function UserInfo({
         <div className="align-left">
           <p>
             User Name:
-            <input value={username || ""} readOnly={!editMood} />
+            <input defaultValue={username || ""} readOnly={true} />
           </p>
           <p>
             Name:
-            <input value={name || ""} readOnly={!editMood} />
+            <input defaultValue={name || ""} readOnly={!editMood} name="name" />
           </p>
           <p>
             Last Name:
-            <input value={lastName || ""} readOnly={!editMood} />
+            <input
+              defaultValue={lastName || ""}
+              readOnly={!editMood}
+              name="lastName"
+            />
           </p>
         </div>
 
         <div className="align-left">
           <p>
-            Rank: <input value={rank || ""} readOnly={!editMood} />
+            City:{" "}
+            <input defaultValue={city || ""} readOnly={!editMood} name="city" />
           </p>
           <p>
-            City: <input value={city || ""} readOnly={!editMood} />
-          </p>
-          <p>
-            Country: <input value={country || ""} readOnly={!editMood} />
+            Country:{" "}
+            <input
+              defaultValue={country || ""}
+              readOnly={!editMood}
+              name="country"
+            />
           </p>
         </div>
       </div>
       <div className="align-left">
         <p>
-          learning: <input value={learning || ""} readOnly={!editMood} />
+          learning:{" "}
+          <input
+            defaultValue={learning || ""}
+            readOnly={!editMood}
+            name="learning"
+          />
         </p>
         <p>
-          school: <input value={school || ""} readOnly={!editMood} />
+          school:{" "}
+          <input
+            defaultValue={school || ""}
+            readOnly={!editMood}
+            name="school"
+          />
         </p>
       </div>
       <div className="turkiz-underline"></div>
@@ -115,7 +140,7 @@ function UserInfo({
           ""
         )}
       </div>
-    </div>
+    </form>
   );
 }
 
