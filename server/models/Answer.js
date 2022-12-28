@@ -19,11 +19,10 @@ const Answer = new Schema(
       type: Boolean,
       default: false,
     },
-    likes: {
-      type: Number,
-      default: 0,
-    },
     comments: [Comment],
+    likes: {
+      type: [String],
+    },
   },
   { timestamps: true }
 );
