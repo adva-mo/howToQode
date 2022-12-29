@@ -5,6 +5,7 @@ import currentLoggedUser from "../../context/loggedUserContext.js";
 import newSnippetContext from "../../context/snippet.context.js";
 // import { useNavigate } from "react-router-dom";
 import "./NewSnippetPage.css";
+import { validateSnippetFields } from "../../utils/utils.js";
 
 function NewSnippetPage() {
   const [error, setError] = useState(false);
@@ -19,19 +20,24 @@ function NewSnippetPage() {
   // const navigate = useNavigate;
 
   useEffect(() => {
-    const postBody = {
-      ...snippetObject,
-      author: `${loggedUser}`,
-    };
-    axios
-      .post("http://localhost:3001/snippets", postBody)
-      .then(({ data }) => {
-        console.log(data);
-        //todo redirect the user to snippet page
-      })
-      .catch((e) => {
-        setError(e);
-      });
+    if (validateSnippetFields(snippetObject)) {
+      const postBody = {
+        ...snippetObject,
+        author: `${loggedUser}`,
+      };
+      axios
+        .post("http://localhost:3001/snippets", postBody)
+        .then(({ data }) => {
+          console.log(data);
+          //todo redirect the user to snippet page
+        })
+        .catch((e) => {
+          setError(e);
+        });
+    } else {
+      setError(`missing fields`);
+      console.log(error);
+    }
   }, [loggedUser, snippetObject]);
 
   return (
