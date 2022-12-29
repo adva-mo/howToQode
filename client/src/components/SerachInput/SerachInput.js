@@ -1,28 +1,28 @@
-import React, { useRef } from "react";
+import React from "react";
+import "./SerachInput.css";
 
-function SerachInput(setSearchInput) {
-  const input = useRef();
+function SerachInput({ setSearchValue, searchValue, setserachTerm }) {
   return (
-    <form className="form-search-box flex-row">
-      <div className="shrink-search flex-row">
-        <label for="search-term"></label>
-        <input
-          type="search-term"
-          className="search-term forms-lable"
-          name="search-term"
-          id="search-term"
-          placeholder="search for a question..."
-          ref={input}
-        />
-      </div>
+    <form
+      onSubmit={(e) => e.preventDefault()}
+      className="form-search-box flex-row"
+    >
+      <label for="search-term"></label>
+      <input
+        type="search-term"
+        className="search-term forms-lable"
+        name="search-term"
+        id="search-term"
+        placeholder="search for a question..."
+        defaultValue={searchValue}
+        onChange={({ target }) => setSearchValue(target.value)}
+      />
 
-      <button
-        onClick={() => setSearchInput(input.current?.value)}
-        type="submit"
-        className="mirror-glass forms-lable"
-      >
-        <i className="fa-solid fa-magnifying-glass"></i>
-      </button>
+      <select onChange={({ target }) => setserachTerm(target.value)}>
+        <option value="">--select--</option>
+        <option value="questions">questions</option>
+        <option value="users">users</option>
+      </select>
     </form>
   );
 }

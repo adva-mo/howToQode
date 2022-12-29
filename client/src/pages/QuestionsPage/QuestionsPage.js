@@ -4,14 +4,46 @@ import SnippetPrev from "../../components/SnippetPrev/SnippetPrev";
 import axios from "axios";
 
 function QuestionsPage() {
-  const [questions, setquestions] = useState([]);
-  const [searchInput, setSearchInput] = useState("");
+  const [questions, setquestions] = useState(null);
+  const [searchValue, setSearchValue] = useState("");
+  const [users, setUsers] = useState(null);
+  const [serachTerm, setserachTerm] = useState("questions");
+  const [queryResults, setqueryResults] = useState(questions);
 
   useEffect(() => {
     axios.get("http://localhost:3001/snippets").then(({ data }) => {
       setquestions(data);
+      setqueryResults(data);
     });
   }, []);
+
+  useEffect(() => {
+    if (searchValue === "")
+      return setqueryResults(
+        serachTerm === "questions" ? [...questions] : [...users]
+      );
+
+    const filtered = [];
+    queryResults.forEach((item) => {
+      if (item.title?.toLowerCase().includes(searchValue)) {
+        filtered.push(item);
+      }
+      if (item.name?.toLowerCase().includes(searchValue)) {
+        filtered.push(item);
+      }
+    });
+    setqueryResults(filtered);
+  }, [searchValue]);
+
+  useEffect(() => {
+    if (!users) {
+      axios.get("http://localhost:3001/users").then(({ data }) => {
+        setUsers(data);
+      });
+    }
+    const data = serachTerm === "questions" ? [...questions] : [...users];
+    setqueryResults(data);
+  }, [serachTerm]);
 
   return (
     <div className="page-container">
@@ -23,9 +55,13 @@ function QuestionsPage() {
         className="test2"
         src={process.env.PUBLIC_URL + "/assets/Ellipse2.png"}
       />
-      <SearchInput setSearchInput={setSearchInput} />
-      {questions.map((question) => {
-        return <SnippetPrev key={question._id} {...question} />;
+      <SearchInput
+        setSearchValue={setSearchValue}
+        setserachTerm={setserachTerm}
+        searchValue={searchValue}
+      />
+      {queryResults?.map((question, i) => {
+        return <SnippetPrev key={i} {...question} />;
       })}
     </div>
   );
