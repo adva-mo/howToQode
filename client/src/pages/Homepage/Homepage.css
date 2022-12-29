@@ -1,0 +1,13 @@
+.hero-image {
+  width: 20rem;
+  z-index: 2;
+}
+.hero-h1 {
+  align-self: center;
+}
+.flex-row-between {
+  justify-content: space-between;
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}

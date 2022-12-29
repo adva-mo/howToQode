@@ -108,7 +108,7 @@ const loginUser = async (req, res) => {
 };
 
 const logoutUser = (req, res) => {
-  console.log("req");
+  console.log("request");
   req.logout();
   res.send("user logged out succesfully");
 };

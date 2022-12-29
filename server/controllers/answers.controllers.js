@@ -29,12 +29,11 @@ const deleteAnswer = async (req, res) => {
 };
 
 const confirmAnswer = async (req, res) => {
-  console.log(req.body);
+  // console.log(req.body);
   try {
     const snippet = await Snippet.findById(req.params.snippetid);
     const answer = snippet.answers.id(req.body.answerId);
-    //function that check if the user who confirmed is the person who asked the question
-    //if it is, ishelpful = true && snippeet solved   else  likes+
+
     if (req.body.userid === answer.author) {
       console.log("cant add like, user is the author");
       return;
@@ -42,15 +41,14 @@ const confirmAnswer = async (req, res) => {
     if (snippet.author === req.body.userid) {
       answer.isHelpful = true;
       answer.likes.push(req.body.userid);
-      // update answer.solved = true
+      snippet.solved = true;
       console.log("answer confirmed");
     } else {
       answer.likes.push(req.body.userid);
       console.log("added like to answer");
     }
-    // console.log("add like to answer");
-
     await snippet.save();
+    res.send();
   } catch (e) {
     console.log(e);
   }

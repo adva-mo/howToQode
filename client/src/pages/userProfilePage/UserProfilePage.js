@@ -66,9 +66,11 @@ function UserProfilePage() {
           ) : (
             userSnippet.map((snippet) => {
               return (
-                <div key={snippet._id}>
+                <div className="snippet-prev-container">
                   <h4>Users's QUESTIONS</h4>
-                  <SnippetPrev {...snippet} />
+                  <div key={snippet._id}>
+                    <SnippetPrev {...snippet} />
+                  </div>
                 </div>
               );
             })

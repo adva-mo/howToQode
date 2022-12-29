@@ -36,7 +36,8 @@ function Answer({
         answerId: _id,
         userid: loggedUser,
       });
-      setToggleUpdate((prev) => !prev);
+      // setToggleUpdate((prev) => !prev);
+      // window.location.reload();
     } catch (e) {
       console.log(e);
     }
