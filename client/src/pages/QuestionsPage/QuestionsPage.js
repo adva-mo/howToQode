@@ -4,11 +4,11 @@ import SnippetPrev from "../../components/SnippetPrev/SnippetPrev";
 import axios from "axios";
 
 function QuestionsPage() {
-  const [questions, setquestions] = useState(null);
+  const [questions, setquestions] = useState([]);
   const [searchValue, setSearchValue] = useState("");
-  const [users, setUsers] = useState(null);
+  const [users, setUsers] = useState([]);
   const [serachTerm, setserachTerm] = useState("questions");
-  const [queryResults, setqueryResults] = useState(questions);
+  const [queryResults, setqueryResults] = useState(null);
 
   useEffect(() => {
     axios.get("http://localhost:3001/snippets").then(({ data }) => {

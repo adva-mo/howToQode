@@ -7,13 +7,10 @@ function SerachInput({ setSearchValue, searchValue, setserachTerm }) {
       onSubmit={(e) => e.preventDefault()}
       className="form-search-box flex-row"
     >
-      <label for="search-term"></label>
       <input
-        type="search-term"
-        className="search-term forms-lable"
-        name="search-term"
-        id="search-term"
-        placeholder="search for a question..."
+        type="text"
+        className="search-term-input"
+        placeholder="search for a..."
         defaultValue={searchValue}
         onChange={({ target }) => setSearchValue(target.value)}
       />
