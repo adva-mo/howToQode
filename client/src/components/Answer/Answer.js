@@ -18,11 +18,13 @@ function Answer({
 }) {
   const [NumOfLikes, setNumOfLikes] = useState(likes.length);
   const [showComments, setshowComments] = useState(false);
-  const navigate = useNavigate();
+  const [answerComments, setAnswerComments] = useState(comments);
   const { loggedUser } = useContext(currentLoggedUser);
   const [isLoggedUserLiked, setisLoggedUserLiked] = useState(
     likes.includes(loggedUser)
   );
+
+  const navigate = useNavigate();
 
   const addLike = async () => {
     console.log("add like");
@@ -63,7 +65,7 @@ function Answer({
           <i className="fa-regular fa-comment turkiz-font"></i>
           <br />
           <p>
-            {comments.length}
+            {answerComments.length}
 
             <button
               className="show-comment-btn"
@@ -94,7 +96,7 @@ function Answer({
       {showComments ? (
         <>
           comments
-          {comments.map((comment) => (
+          {answerComments.map((comment) => (
             <Comment key={comment._id} {...comment} />
           ))}
         </>
@@ -102,7 +104,11 @@ function Answer({
         ""
       )}
 
-      <AddComment answerId={_id} snippetId={snippetId} />
+      <AddComment
+        answerId={_id}
+        snippetId={snippetId}
+        setAnswerComments={setAnswerComments}
+      />
     </div>
   );
 }

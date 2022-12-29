@@ -24,11 +24,11 @@ function Comment({ author, description, likes, img, createdAt }) {
           author {author}
         </p>
         <div className="flex-row space-between">
-          {likes && console.log(likes)}
+          {/* {likes && console.log(likes)}
           <p className="gray-font">date: {createdAt.split(":")[0]}</p>
           <p>
-            <i className="fa-regular fa-thumbs-up"></i> {likes?.length - 1 || 0}
-          </p>
+            <i className="fa-regular fa-thumbs-up"></i> {likes?.length || 0}
+          </p> */}
         </div>
         <p>description: {description}</p>
       </div>

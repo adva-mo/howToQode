@@ -1,15 +1,17 @@
-import React, { useRef } from "react";
+import React, { useRef, useContext } from "react";
 import "./AddComment.css";
 import axios from "axios";
+import currentLoggedUser from "../../context/loggedUserContext";
 
-function AddComment({ setIsUpdated, answerId, snippetId }) {
+function AddComment({ answerId, snippetId, setAnswerComments }) {
   const commentInput = useRef();
+  const { loggedUser } = useContext(currentLoggedUser);
 
   const handlesubmit = () => {
     if (!commentInput.current.value) return;
     if (commentInput.current.value === "Add a comment") return;
     const comment = {
-      author: "logged user",
+      author: loggedUser,
       answerId: answerId,
       description: commentInput.current.value,
     };
@@ -18,9 +20,12 @@ function AddComment({ setIsUpdated, answerId, snippetId }) {
       .post(`http://localhost:3001/comments/${snippetId}`, comment)
       .then(() => {
         commentInput.current.value = "";
-        setIsUpdated(true);
+        // setIsUpdated(true);
       })
-      .catch((e) => console.log(e));
+      .catch((e) => console.log(e))
+      .finally(() => {
+        setAnswerComments((prev) => [...prev, comment]);
+      });
   };
   return (
     <form className="add-comment-form" onSubmit={(e) => e.preventDefault()}>

@@ -10,9 +10,6 @@ const Comment = new Schema(
       type: String,
       required: true,
     },
-    likes: {
-      type: [String],
-    },
   },
   { timestamps: true }
 );
