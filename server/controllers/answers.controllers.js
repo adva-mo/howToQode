@@ -42,6 +42,10 @@ const confirmAnswer = async (req, res) => {
       answer.isHelpful = true;
       answer.likes.push(req.body.userid);
       snippet.solved = true;
+      const repliedUser = User.findOneById(answer.author);
+
+      repliedUser.solvedQuestions += 1;
+      await repliedUser.save();
       console.log("answer confirmed");
     } else {
       answer.likes.push(req.body.userid);
