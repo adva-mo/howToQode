@@ -10,7 +10,7 @@ function SnippetPage() {
   // const [isUpdated, setIsUpdated] = useState(false);
   const { id } = useParams();
   const [error, setError] = useState(null);
-  const { toggleUpdate } = useContext(currentLoggedUser);
+  // const { toggleUpdate } = useContext(currentLoggedUser);
 
   useEffect(() => {
     axios
@@ -19,7 +19,7 @@ function SnippetPage() {
       .catch((e) => setError(e.response.data))
       .finally(() => console.log(currentSnippet));
     // eslint-disable-next-line
-  }, [id, toggleUpdate]);
+  }, [id]);
 
   useEffect(() => {
     console.log(error);

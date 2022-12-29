@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import "./Answer.css";
 import Comment from "../Comment/Comment";
 import AddComment from "../AddComment/AddComment";
@@ -12,22 +12,17 @@ function Answer({
   isHelpful,
   createdAt,
   comments,
-  // setIsUpdated,
   _id,
   snippetId,
   likes,
 }) {
+  const [NumOfLikes, setNumOfLikes] = useState(likes.length);
   const [showComments, setshowComments] = useState(false);
   const navigate = useNavigate();
-  const { loggedUser, setToggleUpdate } = useContext(currentLoggedUser);
-  // console.log(loggedUser);
-
-  const isLoggedUserLiked = (function () {
-    return likes.includes(loggedUser);
-  })();
-  // const isLoggedUserLiked = () => {
-  // };
-  // console.log(isLoggedUserLiked());
+  const { loggedUser } = useContext(currentLoggedUser);
+  const [isLoggedUserLiked, setisLoggedUserLiked] = useState(
+    likes.includes(loggedUser)
+  );
 
   const addLike = async () => {
     console.log("add like");
@@ -36,8 +31,8 @@ function Answer({
         answerId: _id,
         userid: loggedUser,
       });
-      // setToggleUpdate((prev) => !prev);
-      // window.location.reload();
+      setNumOfLikes((prev) => (prev += 1));
+      setisLoggedUserLiked((prev) => !prev);
     } catch (e) {
       console.log(e);
     }
@@ -92,7 +87,7 @@ function Answer({
             onClick={isLoggedUserLiked ? () => {} : () => addLike()}
           ></i>{" "}
           <br />
-          <p>{likes.length}</p>
+          <p>{NumOfLikes}</p>
         </div>
       </div>
 
@@ -107,11 +102,7 @@ function Answer({
         ""
       )}
 
-      <AddComment
-        // setIsUpdated={setIsUpdated}
-        answerId={_id}
-        snippetId={snippetId}
-      />
+      <AddComment answerId={_id} snippetId={snippetId} />
     </div>
   );
 }

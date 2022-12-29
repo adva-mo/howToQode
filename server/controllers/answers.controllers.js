@@ -1,5 +1,5 @@
 const Snippet = require("../models/Snippet.js");
-
+const User = require("../models/User.js");
 const addAnswer = async (req, res) => {
   try {
     const snippet = await Snippet.findById(req.params.snippetid);
@@ -42,10 +42,14 @@ const confirmAnswer = async (req, res) => {
       answer.isHelpful = true;
       answer.likes.push(req.body.userid);
       snippet.solved = true;
-      const repliedUser = User.findOneById(answer.author);
+      console.log(answer.author);
+      const repliedUser = await User.findById(answer.author);
+      if (repliedUser) {
+        // throw Error("usr isnt exist anymore");
+        repliedUser.solvedQuestions += 1;
+        await repliedUser.save();
+      }
 
-      repliedUser.solvedQuestions += 1;
-      await repliedUser.save();
       console.log("answer confirmed");
     } else {
       answer.likes.push(req.body.userid);
