@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useState } from "react";
 import "./Answer.css";
 import Comment from "../Comment/Comment";
 import AddComment from "../AddComment/AddComment";
@@ -93,15 +93,13 @@ function Answer({
         </div>
       </div>
 
-      {showComments ? (
+      {showComments && (
         <>
           comments
           {answerComments.map((comment) => (
             <Comment key={comment._id} {...comment} />
           ))}
         </>
-      ) : (
-        ""
       )}
 
       <AddComment

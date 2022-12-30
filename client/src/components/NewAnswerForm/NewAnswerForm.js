@@ -4,7 +4,7 @@ import loggedUserContext from "../../context/loggedUserContext";
 import axios from "axios";
 import { useParams } from "react-router-dom";
 
-function NewAnswerForm() {
+function NewAnswerForm({ setAnswersToDisplay }) {
   const title = useRef();
   const description = useRef();
   const { loggedUser } = useContext(loggedUserContext);
@@ -17,7 +17,11 @@ function NewAnswerForm() {
         title: title.current.value,
         description: description.current.value,
       };
-      await axios.post(`http://localhost:3001/answers/${snippetId}`, newAnswer);
+      const { data } = await axios.post(
+        `http://localhost:3001/answers/${snippetId}`,
+        newAnswer
+      );
+      setAnswersToDisplay((prev) => [...prev, data]);
       description.current.value = "";
       title.current.value = "";
     } catch (e) {

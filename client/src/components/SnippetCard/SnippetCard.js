@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Codeblock from "../Codeblock/Codeblock";
 import Answer from "../Answer/Answer";
 import { useNavigate } from "react-router-dom";
@@ -16,7 +16,7 @@ function SnippetCard({
   _id,
 }) {
   const navigate = useNavigate();
-
+  const [answersToDisplay, setAnswersToDisplay] = useState(answers);
   return (
     <div className="flex-column-center snippet-card">
       <div className="primary-box ">
@@ -56,8 +56,8 @@ function SnippetCard({
       </div>
 
       <div className="snippet-comments primary-box flex-column-center">
-        <h4>{answers.length} Answers</h4>
-        {answers?.map((answer) => (
+        <h4>{answersToDisplay.length} Answers</h4>
+        {answersToDisplay?.map((answer) => (
           <Answer
             key={answer._id}
             {...answer}
@@ -65,7 +65,7 @@ function SnippetCard({
             snippetId={_id}
           />
         ))}
-        <NewAnswerForm />
+        <NewAnswerForm setAnswersToDisplay={setAnswersToDisplay} />
       </div>
     </div>
   );
