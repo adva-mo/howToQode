@@ -1,16 +1,13 @@
-import React, { useEffect, useState, useContext } from "react";
+import React, { useEffect, useState } from "react";
 import "./SnippetPage.css";
 import SnippetCard from "../../components/SnippetCard/SnippetCard";
 import { useParams } from "react-router-dom";
 import axios from "axios";
-import currentLoggedUser from "../../context/loggedUserContext";
 
 function SnippetPage() {
   const [currentSnippet, setCurrentSnippet] = useState(null);
-  // const [isUpdated, setIsUpdated] = useState(false);
   const { id } = useParams();
   const [error, setError] = useState(null);
-  // const { toggleUpdate } = useContext(currentLoggedUser);
 
   useEffect(() => {
     axios
@@ -24,7 +21,7 @@ function SnippetPage() {
   useEffect(() => {
     console.log(error);
   }, [error]);
-  console.log(currentSnippet);
+
   return (
     <div className="page-container">
       <img

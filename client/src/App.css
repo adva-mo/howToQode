@@ -79,10 +79,10 @@ button {
   border: 1px var(--turkiz) solid;
   border-width: 0 0 1px 0;
 }
-.turkiz-underline {
+/* .turkiz-underline {
   border: 1px solid var(--turkiz);
   border-width: 0 0 1px 0;
-}
+} */
 .purple-btn {
   background-color: var(--purple);
   border-radius: 5px;

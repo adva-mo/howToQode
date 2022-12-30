@@ -13,6 +13,8 @@ const Codeblock = ({ language, textToFormat }) => {
         opacity: "1",
         textAlign: "left",
         color: "rgb(26, 26, 26)", //todo
+        borderRadius: "2px",
+        flexWrap: "wrap",
       }}
     >
       {textToFormat}

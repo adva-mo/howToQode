@@ -7,7 +7,7 @@ import "./UserInfo.css";
 function UserInfo({
   name,
   lastName,
-  username,
+  solvedQuestions,
   rank,
   city,
   country,
@@ -22,10 +22,11 @@ function UserInfo({
 
   const navigate = useNavigate();
   const form = useRef();
+
   const editProfileHandler = async (e) => {
     if (editMood) {
       const updatedUserInfo = Object.fromEntries(new FormData(form.current));
-      console.log(updatedUserInfo);
+      // console.log(updatedUserInfo);
       //* validate form inputes
       //* if valid: send request:
       await axios.patch(`http://localhost:3001/users/${_id}`, updatedUserInfo);
@@ -54,10 +55,6 @@ function UserInfo({
       />
       <div className="flex-row info-container">
         <div className="align-left flex-grow">
-          {/* <p>
-            User Name:
-            <input defaultValue={username || ""} readOnly={true} />
-          </p> */}
           <p>
             Name:
             <input
@@ -119,7 +116,7 @@ function UserInfo({
           />
         </p>
       </div>
-      <div className="turkiz-underline"></div>
+      {/* <div className="turkiz-underline"></div> */}
       <h4 className="stat-h4 turkiz-bottom-border">STATISTICS</h4>
 
       <div className="user-statistics-container flex-row">
@@ -128,7 +125,7 @@ function UserInfo({
           <i className="fa-regular fa-circle-question blue-font"></i>
         </div>
         <div>
-          <h4>{numOfSnippets} ANSWERS</h4>
+          <h4>{solvedQuestions} ANSWERS</h4>
           <i className="fa-regular fa-circle-check blue-font"></i>{" "}
         </div>
         <div>
