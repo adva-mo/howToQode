@@ -59,15 +59,11 @@ function Chat() {
         <div className="online-users-container">
           <p>online users:</p>
           {onlineUsers.map((user) => (
-            <p key={uuid()}>{user.socket}</p>
+            <p key={user.socket}>{user.socket}</p>
           ))}
         </div>
 
-        {/* {!loggedUser ? (
-          <button>sign in to chat</button>
-        ) : ( */}
         <button onClick={joinChat}>join chat</button>
-        {/* )} */}
         {isConnected ? (
           <div className="chat-room">
             <h4>live chat</h4>
