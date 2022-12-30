@@ -18,7 +18,7 @@ function Chat() {
   const joinChat = () => {
     setIsConnected(true);
     socket.emit("join_room", "room1");
-    socket.emit("user_connected", socket.id);
+    // socket.emit("user_connected", socket.id);
   };
 
   const sendMessage = async () => {
@@ -49,23 +49,26 @@ function Chat() {
     });
 
     socket.on("updateUserList", (data) => {
-      setOnlineUsers([...data]);
+      setOnlineUsers(data);
     });
   }, [socket]);
+
+  useEffect(() => {
+    if (isConnected) socket.emit("user_connected", socket.id);
+  }, [isConnected]);
 
   return (
     <div className="chat-wrapper">
       <div className="chat">
-        <div className="online-users-container">
-          <p>online users:</p>
-          {onlineUsers.map((user) => (
-            <p key={user.socket}>{user.socket}</p>
-          ))}
-        </div>
-
-        <button onClick={joinChat}>join chat</button>
         {isConnected ? (
           <div className="chat-room">
+            {/* <button onClick={}>go offline</button> */}
+            <div className="online-users-container">
+              <p>online users:</p>
+              {onlineUsers.map((user) => (
+                <p key={user.socket}>{user.socket}</p>
+              ))}
+            </div>
             <h4>live chat</h4>
             <ScrollToBottom className="message-container">
               {messageList.map((data) => {
@@ -103,7 +106,7 @@ function Chat() {
             </div>
           </div>
         ) : (
-          ""
+          <button onClick={joinChat}>click here and chat with friends!</button>
         )}
       </div>
     </div>

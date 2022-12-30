@@ -11,7 +11,7 @@ function Table({ data, searchTerm }) {
       <tbody>
         <tr>
           {titles.map((value) => {
-            return <td key={uuid()}>{value}</td>;
+            if (value !== "_id") return <td key={uuid()}>{value}</td>;
           })}
         </tr>
         {/* <Row fields={titles} /> */}

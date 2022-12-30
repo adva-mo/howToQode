@@ -3,18 +3,18 @@ import { Link } from "react-router-dom";
 
 import uuid from "react-uuid";
 function Row({ fields, id, searchTerm }) {
-  console.log(searchTerm);
-  // console.log(id);
-
-  // const path =
-  //   searchTerm === "questions" ? `/snippets/${id}` : `/profile/${id}`;
-
-  // console.log(path);
+  // console.log(fields);
 
   return (
     <tr>
       {fields.map((value) => {
-        return <td key={uuid()}>{value}</td>;
+        if (value !== id)
+          return (
+            <td key={uuid()}>
+              {typeof value === "string" ? value : value ? "yes" : "no"}
+            </td>
+          );
+        else return;
       })}
       <td>
         <Link
