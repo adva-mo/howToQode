@@ -5,7 +5,7 @@ import uuid from "react-uuid";
 function Row({ fields, id, searchTerm }) {
   return (
     <tr>
-      {fields.filter((value) => {
+      {fields.map((value) => {
         if (value !== id)
           return (
             <td key={uuid()} className=" right-blue-border">
@@ -14,7 +14,7 @@ function Row({ fields, id, searchTerm }) {
               </div>
             </td>
           );
-        else return false;
+        else return;
       })}
       <td>
         <div className="flex-row">
