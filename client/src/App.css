@@ -61,6 +61,10 @@ textarea {
   line-height: 1.7rem;
   gap: 1rem;
 }
+.secondary-box {
+  /* width: ; */
+  z-index: 3;
+}
 .align-left {
   text-align: left;
 }
@@ -79,10 +83,11 @@ button {
   border: 1px var(--turkiz) solid;
   border-width: 0 0 1px 0;
 }
-/* .turkiz-underline {
-  border: 1px solid var(--turkiz);
+.white-underline {
+  border: 1px solid whitesmoke;
   border-width: 0 0 1px 0;
-} */
+  padding: 1rem 0;
+}
 .purple-btn {
   background-color: var(--purple);
   border-radius: 5px;
@@ -127,8 +132,9 @@ button {
   flex-grow: 1;
 }
 .blue-btn {
-  border-radius: 20%;
+  border-radius: 20px;
   background-color: var(--primary-blue);
+  width: fit-content;
 }
 .turkiz-btn {
   border-radius: 20px;

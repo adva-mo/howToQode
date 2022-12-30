@@ -1,20 +1,29 @@
 import React from "react";
 import uuid from "react-uuid";
 import Row from "../Row/Row";
+import "./table.css";
 
 function Table({ data, searchTerm }) {
   const titles = data[0] ? Object.keys(data[0]) : [];
-  console.log(searchTerm);
-  // const path = serachTerm==="questions"?"/snippets/${}"
+
   return (
-    <table>
-      <tbody>
+    <table className="primary-box table-container">
+      <thead>
         <tr>
-          {titles.map((value) => {
-            if (value !== "_id") return <td key={uuid()}>{value}</td>;
+          {titles.filter((value) => {
+            if (value !== "_id")
+              return (
+                <td key={uuid()}>
+                  <div className="flex-row ">
+                    <p className="blue-btn title-container">{value}</p>
+                  </div>
+                </td>
+              );
+            else return false;
           })}
         </tr>
-        {/* <Row fields={titles} /> */}
+      </thead>
+      <tbody>
         {data?.map((obj) => {
           return (
             <Row

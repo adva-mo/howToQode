@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import SearchInput from "../../components/SerachInput/SerachInput";
-// import SnippetPrev from "../../components/SnippetPrev/SnippetPrev";
 import axios from "axios";
 import Table from "../../components/Table/Table";
 
@@ -27,6 +26,7 @@ function QuestionsPage() {
         setUsers(data);
       })
       .catch((e) => console.log(e));
+    // eslint-disable-next-line
   }, []);
 
   useEffect(() => {
@@ -45,23 +45,28 @@ function QuestionsPage() {
       }
     });
     setqueryResults(filtered);
+    // eslint-disable-next-line
   }, [searchValue]);
 
   useEffect(() => {
     console.log(searchTerm);
     const data = searchTerm === "questions" ? [...questions] : [...users];
     setqueryResults(data);
-  }, [searchTerm]);
+  }, [searchTerm, questions, users]);
 
   return (
-    <div className="page-container">
+    <div className="page-container questions-page">
       <img
         className="test"
         src={process.env.PUBLIC_URL + "/assets/Ellipse1.png"}
+        alt=""
+        key="1"
       />
       <img
         className="test2"
         src={process.env.PUBLIC_URL + "/assets/Ellipse2.png"}
+        alt=""
+        key="2"
       />
       <SearchInput
         setSearchValue={setSearchValue}
