@@ -101,7 +101,9 @@ function Chat() {
                   e.key === "Enter" && sendMessage();
                 }}
               />
-              <button onClick={sendMessage}>&#9658;</button>
+              <button className="send-msg-btn" onClick={sendMessage}>
+                &#9658;
+              </button>
             </div>
           </div>
         ) : (
