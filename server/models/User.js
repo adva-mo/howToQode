@@ -1,6 +1,7 @@
 const { mongoose, Schema } = require("mongoose");
 const passportLocalMongoose = require("passport-local-mongoose");
 const passport = require("passport");
+const date = new Date();
 
 const userSchema = new mongoose.Schema(
   {
@@ -60,6 +61,14 @@ const userSchema = new mongoose.Schema(
     solvedQuestions: {
       type: Number,
       default: 0,
+    },
+    date: {
+      type: String,
+      default: date.toLocaleDateString(),
+    },
+    time: {
+      type: String,
+      default: date.toLocaleTimeString(),
     },
   },
   { timestamps: true }

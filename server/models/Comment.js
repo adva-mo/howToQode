@@ -1,4 +1,5 @@
 const { Schema } = require("mongoose");
+const date = new Date();
 
 const Comment = new Schema(
   {
@@ -9,6 +10,14 @@ const Comment = new Schema(
     description: {
       type: String,
       required: true,
+    },
+    date: {
+      type: String,
+      default: date.toLocaleDateString(),
+    },
+    time: {
+      type: String,
+      default: date.toLocaleTimeString(),
     },
   },
   { timestamps: true }

@@ -25,7 +25,10 @@ const getUser = async (req, res) => {
 
 const getUsers = async (req, res) => {
   try {
-    const users = await User.find({});
+    const users = await User.find(
+      {},
+      { name: 1, rank: 1, lastName: 1, img: 1, date: 1, learning: 1 }
+    );
     if (!users) return res.status(404).send();
     res.send(users);
   } catch (e) {

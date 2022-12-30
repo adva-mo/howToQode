@@ -1,5 +1,6 @@
 const { mongoose, Schema } = require("mongoose");
 const Answer = require("./Answer.js");
+const date = new Date();
 
 const Snippet = mongoose.model(
   "Snippet",
@@ -29,6 +30,14 @@ const Snippet = mongoose.model(
       code: {
         type: String,
         required: true,
+      },
+      date: {
+        type: String,
+        default: date.toLocaleDateString(),
+      },
+      time: {
+        type: String,
+        default: date.toLocaleTimeString(),
       },
     },
     { timestamps: true }

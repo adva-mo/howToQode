@@ -1,5 +1,6 @@
 const { Schema } = require("mongoose");
 const Comment = require("./Comment.js");
+const date = new Date();
 
 const Answer = new Schema(
   {
@@ -22,6 +23,14 @@ const Answer = new Schema(
     comments: [Comment],
     likes: {
       type: [String],
+    },
+    date: {
+      type: String,
+      default: date.toLocaleDateString(),
+    },
+    time: {
+      type: String,
+      default: date.toLocaleTimeString(),
     },
   },
   { timestamps: true }

@@ -1,7 +1,7 @@
 import React from "react";
 import "./SerachInput.css";
 
-function SerachInput({ setSearchValue, searchValue, setserachTerm }) {
+function SerachInput({ setSearchValue, searchValue, setSearchTerm }) {
   return (
     <form
       onSubmit={(e) => e.preventDefault()}
@@ -15,7 +15,7 @@ function SerachInput({ setSearchValue, searchValue, setserachTerm }) {
         onChange={({ target }) => setSearchValue(target.value)}
       />
 
-      <select onChange={({ target }) => setserachTerm(target.value)}>
+      <select onChange={({ target }) => setSearchTerm(target.value)}>
         <option value="">--select--</option>
         <option value="questions">questions</option>
         <option value="users">users</option>

@@ -8,23 +8,31 @@ function QuestionsPage() {
   const [questions, setquestions] = useState([]);
   const [users, setUsers] = useState([]);
   const [searchValue, setSearchValue] = useState("");
-  const [serachTerm, setserachTerm] = useState("questions");
-  const [queryResults, setqueryResults] = useState(null);
+  const [searchTerm, setSearchTerm] = useState("questions");
+  const [queryResults, setqueryResults] = useState(questions);
 
   useEffect(() => {
-    axios.get("http://localhost:3001/snippets").then(({ data }) => {
-      setquestions(data);
-      setqueryResults(data);
-    });
-    axios.get("http://localhost:3001/users").then(({ data }) => {
-      setUsers(data);
-    });
+    axios
+      .get("http://localhost:3001/snippets")
+      .then(({ data }) => {
+        setquestions(data);
+        setqueryResults(data);
+        console.log(queryResults);
+      })
+      .catch((e) => console.log(e));
+    axios
+      .get("http://localhost:3001/users")
+      .then(({ data }) => {
+        console.log(data);
+        setUsers(data);
+      })
+      .catch((e) => console.log(e));
   }, []);
 
   useEffect(() => {
     if (searchValue === "")
       return setqueryResults(
-        serachTerm === "questions" ? [...questions] : [...users]
+        searchTerm === "questions" ? [...questions] : [...users]
       );
 
     const filtered = [];
@@ -40,9 +48,10 @@ function QuestionsPage() {
   }, [searchValue]);
 
   useEffect(() => {
-    const data = serachTerm === "questions" ? [...questions] : [...users];
+    console.log(searchTerm);
+    const data = searchTerm === "questions" ? [...questions] : [...users];
     setqueryResults(data);
-  }, [serachTerm]);
+  }, [searchTerm]);
 
   return (
     <div className="page-container">
@@ -56,10 +65,12 @@ function QuestionsPage() {
       />
       <SearchInput
         setSearchValue={setSearchValue}
-        setserachTerm={setserachTerm}
+        setSearchTerm={setSearchTerm}
         searchValue={searchValue}
       />
-      {queryResults && <Table data={queryResults} />}
+      {queryResults.length > 0 && (
+        <Table data={queryResults} searchTerm={searchTerm} />
+      )}
     </div>
   );
 }
