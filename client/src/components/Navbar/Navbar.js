@@ -56,16 +56,17 @@ function Navbar() {
         </NavLink>
       </li>
       {!loggedUser ? (
-        <li>
+        <li className="turkiz-btn">
           <NavLink
             className={(navData) => (navData.isActive ? "active" : "")}
-            to={`/signin`}
+            to={`/login`}
           >
             signin
           </NavLink>
         </li>
       ) : (
         <button
+          className="turkiz-btn"
           onClick={() => {
             setLoggedUser(null);
             localStorage.removeItem("QODE_APP");

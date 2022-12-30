@@ -3,7 +3,9 @@ import "./userProfilePage.css";
 import UserInfo from "../../components/UserInfo/UserInfo";
 import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
-import SnippetPrev from "../../components/SnippetPrev/SnippetPrev";
+// import SnippetPrev from "../../components/SnippetPrev/SnippetPrev";
+// import QuestionsChart from "../../components/QuestionsChart/QuestionsChart";
+import Table from "../../components/Table/Table";
 
 function UserProfilePage() {
   const [user, setUser] = useState();
@@ -56,7 +58,15 @@ function UserProfilePage() {
         key={"2"}
       />
       {error && console.log(error)}
-      {userSnippet && (
+      {userSnippet && <UserInfo {...user} numOfSnippets={userSnippet.length} />}
+      {userSnippet?.length > 0 ? (
+        <Table data={userSnippet} />
+      ) : (
+        <div className="primary-box">
+          <p>user doesn't have any snippets yet</p>
+        </div>
+      )}
+      {/* {userSnippet && (
         <>
           <UserInfo {...user} numOfSnippets={userSnippet.length} />
           {!userSnippet.length === 0 ? (
@@ -64,19 +74,9 @@ function UserProfilePage() {
               <p>user doesn't have any snippets yet</p>
             </div>
           ) : (
-            userSnippet.map((snippet) => {
-              return (
-                <div className="snippet-prev-container">
-                  <h4>Users's QUESTIONS</h4>
-                  <div key={snippet._id}>
-                    <SnippetPrev {...snippet} />
-                  </div>
-                </div>
-              );
-            })
           )}
-        </>
-      )}
+        </> */}
+      {/* )} */}
     </div>
   );
 }

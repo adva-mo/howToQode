@@ -129,7 +129,7 @@ function LoginCard({ setUserToRegister, isNewUser, setIsNewUser }) {
       <div>
         <button
           type="button"
-          className="blue-btn"
+          // className="blue-btn"
           onClick={() => {
             setIsNewUser((prev) => !prev);
           }}

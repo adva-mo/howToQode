@@ -1,4 +1,5 @@
 const fs = require("fs");
+const Image = require("../models/Image");
 
 const getFileContent = async (req, res) => {
   try {
@@ -15,4 +16,13 @@ const getFileContent = async (req, res) => {
   }
 };
 
-module.exports = getFileContent;
+// const saveImage = async (req, res) => {
+//   try {
+//     const newImage = new Image(req.body);
+//     await newImage.save();
+//   } catch (e) {
+//     console.log(e);
+//   }
+// };
+
+module.exports = { getFileContent };

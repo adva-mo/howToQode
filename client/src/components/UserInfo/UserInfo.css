@@ -5,6 +5,7 @@
 .user-profile-image {
   width: 5rem;
   height: 5rem;
+  border-radius: 5px;
 }
 .edit-profile-container {
   position: absolute;

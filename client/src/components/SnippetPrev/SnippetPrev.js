@@ -10,7 +10,6 @@ function SnippetPrev({ created_At, title, solved, answers, _id }) {
       <div>{solved ? "solved" : "NOT solved"}</div>
       <div>answers: {answers?.length}</div>
       <Link to={`/snippets/${_id}`}>read more</Link>
-      {/* <button onClick={() => navigae(`/snippets/$`)}>read more</button> */}
     </div>
   );
 }

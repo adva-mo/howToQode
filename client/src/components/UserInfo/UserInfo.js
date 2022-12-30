@@ -68,11 +68,11 @@ function UserInfo({
             />
           </p>
           <p>
-            Last Name:
+            City:{" "}
             <input
-              defaultValue={lastName || ""}
+              defaultValue={city || ""}
               readOnly={!editMood}
-              name="lastName"
+              name="city"
               className={editMood ? "edit-input" : ""}
             />
           </p>
@@ -80,11 +80,11 @@ function UserInfo({
 
         <div className="align-left flex-grow">
           <p>
-            City:{" "}
+            Last Name:
             <input
-              defaultValue={city || ""}
+              defaultValue={lastName || ""}
               readOnly={!editMood}
-              name="city"
+              name="lastName"
               className={editMood ? "edit-input" : ""}
             />
           </p>
@@ -120,7 +120,7 @@ function UserInfo({
         </p>
       </div>
       <div className="turkiz-underline"></div>
-      <h4 className="stat-h4 ">STATISTICS</h4>
+      <h4 className="stat-h4 turkiz-bottom-border">STATISTICS</h4>
 
       <div className="user-statistics-container flex-row">
         <div>

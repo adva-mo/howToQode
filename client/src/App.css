@@ -126,3 +126,13 @@ button {
 .flex-grow {
   flex-grow: 1;
 }
+.blue-btn {
+  border-radius: 20%;
+  background-color: var(--primary-blue);
+}
+.turkiz-btn {
+  border-radius: 20px;
+  background-color: var(--turkiz);
+  padding: 0.2rem 0.7rem;
+  min-width: none;
+}

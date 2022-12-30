@@ -13,9 +13,9 @@ const upload = multer({
   //   cb(undefined, true);
   //   // cb(undefined, false);
   // },
-  // // filename: (req, file, cb) => {
-  //   cb(null, new Date().toISOString.replace(/:/g, "-") + file.originalname);
-  // },
+  filename: (req, file, cb) => {
+    cb(null, new Date().toISOString.replace(/:/g, "-") + file.originalname);
+  },
 });
 
 module.exports = upload;
