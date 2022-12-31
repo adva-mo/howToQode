@@ -46,6 +46,7 @@ const updateUser = async (req, res) => {
     "learning",
     "city",
     "country",
+    "img",
   ];
   const isUpdateValid = updates.every((update) =>
     allowedUpdates.includes(update)

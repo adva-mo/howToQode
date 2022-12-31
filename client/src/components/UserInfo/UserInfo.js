@@ -19,7 +19,8 @@ function UserInfo({
 }) {
   const [editMood, setEditMood] = useState(false);
   const [error, setError] = useState(false);
-
+  const [userImg, setUserImg] = useState(img);
+  const imageInput = useRef();
   const navigate = useNavigate();
   const form = useRef();
 
@@ -37,6 +38,22 @@ function UserInfo({
     } else setEditMood((prev) => !prev);
   };
 
+  const uploadProfileImage = async (e) => {
+    const file = e.target.files[0];
+    const reader = new FileReader();
+
+    reader.addEventListener("load", async () => {
+      console.log(reader.result);
+      await axios.patch(`http://localhost:3001/users/${_id}`, {
+        img: reader.result,
+      });
+      setUserImg(reader.result);
+      imageInput.current.value = "";
+    });
+
+    reader.readAsDataURL(file);
+  };
+
   const deleteProfileHandler = async () => {
     try {
       await axios.delete(`http://localhost:3001/users/${_id}`);
@@ -50,9 +67,10 @@ function UserInfo({
     <form ref={form} className="primary-box profile-info-form">
       <img
         className="user-profile-image"
-        src={img || process.env.PUBLIC_URL + "/assets/avatar.jpg"}
+        src={userImg || process.env.PUBLIC_URL + "/assets/avatar.jpg"}
         alt=""
       />
+      <input ref={imageInput} type="file" onChange={uploadProfileImage} />
       <div className="flex-row info-container">
         <div className="align-left flex-grow">
           <p>

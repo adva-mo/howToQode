@@ -109,14 +109,13 @@ function Answer({
           {answerComments.map((comment) => (
             <Comment key={uuid()} {...comment} />
           ))}
+          <AddComment
+            answerId={_id}
+            snippetId={snippetId}
+            setAnswerComments={setAnswerComments}
+          />
         </>
       )}
-
-      <AddComment
-        answerId={_id}
-        snippetId={snippetId}
-        setAnswerComments={setAnswerComments}
-      />
     </div>
   );
 }

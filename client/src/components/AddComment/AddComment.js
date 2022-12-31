@@ -11,16 +11,14 @@ function AddComment({ answerId, snippetId, setAnswerComments }) {
     if (!commentInput.current.value) return;
     if (commentInput.current.value === "Add a comment") return;
     const comment = {
-      author: loggedUser,
+      author: loggedUser || "guest",
       answerId: answerId,
       description: commentInput.current.value,
     };
-    // console.log(comment);
     axios
       .post(`http://localhost:3001/comments/${snippetId}`, comment)
       .then(() => {
         commentInput.current.value = "";
-        // setIsUpdated(true);
       })
       .catch((e) => console.log(e))
       .finally(() => {
