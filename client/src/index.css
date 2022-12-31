@@ -1,4 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700&display=swap");
+
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap");
 * {
   margin: 0;
   padding: 0;
@@ -9,5 +11,5 @@
   --primary-blue: rgba(30, 141, 148, 1);
   --bg-gray: rgb(190, 190, 190);
   --purple: rgb(134, 85, 255);
-  color: white;
+  color: whitesmoke;
 }

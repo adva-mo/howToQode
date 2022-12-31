@@ -20,8 +20,7 @@ function AI() {
     }
   };
   return (
-    <div className="page-container flex-column-center">
-      <h3>ASK OUR EXPERT ANYTHING YOU WANT ABOUT CODING</h3>
+    <>
       <div className="primary-box ai-response-box">
         <ScrollToBottom>
           {responses.map((r, i) => (
@@ -35,9 +34,9 @@ function AI() {
           value={message}
           onChange={({ target }) => setMessage(target.value)}
         ></input>
-        <button type="submit">Submit</button>
+        <button type="submit">Send</button>
       </form>
-    </div>
+    </>
   );
 }
 

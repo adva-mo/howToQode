@@ -40,6 +40,15 @@ function Loginpage() {
         className="test2"
         src={process.env.PUBLIC_URL + "/assets/Ellipse2.png"}
       />
+
+      <div className=" secondary-box page-title-container">
+        <h1 className="page-title">
+          <span className="turkiz-font page-title">Join</span> the community and
+          start asking questions today!{" "}
+        </h1>
+      </div>
+
+      {/* <div>Join the community and start asking questions today!</div> */}
       <LoginCard
         setUserToRegister={setUserToRegister}
         isNewUser={isNewUser}

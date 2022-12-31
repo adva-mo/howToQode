@@ -20,7 +20,7 @@ function Navbar() {
           className={(navData) => (navData.isActive ? "active" : "")}
           to={"/homepage"}
         >
-          Home
+          LOGO
         </NavLink>
       </li>
       <li>
@@ -28,7 +28,7 @@ function Navbar() {
           className={(navData) => (navData.isActive ? "active" : "")}
           to={"/new-snippet"}
         >
-          ask a questions
+          POST A QEUSTION
         </NavLink>
       </li>
       <li>
@@ -36,7 +36,7 @@ function Navbar() {
           className={(navData) => (navData.isActive ? "active" : "")}
           to={"/ai"}
         >
-          ask our experts
+          ASK OUR EXPERTS
         </NavLink>
       </li>
       <li>
@@ -44,7 +44,7 @@ function Navbar() {
           className={(navData) => (navData.isActive ? "active" : "")}
           to={"/explore"}
         >
-          Questions
+          EXPLORE
         </NavLink>
       </li>
       <li>
@@ -52,7 +52,7 @@ function Navbar() {
           className={(navData) => (navData.isActive ? "active" : "")}
           to={loggedUser ? `/profile/${loggedUser}` : "/login"}
         >
-          {loggedUser ? "profile" : "login"}
+          {loggedUser ? "PROFILE" : "LOGIN"}
         </NavLink>
       </li>
       {!loggedUser ? (
@@ -61,7 +61,7 @@ function Navbar() {
             className={(navData) => (navData.isActive ? "active" : "")}
             to={`/login`}
           >
-            signin
+            SIGN UP
           </NavLink>
         </li>
       ) : (
@@ -73,7 +73,7 @@ function Navbar() {
             navigate("/login");
           }}
         >
-          logout
+          LOGOUT
         </button>
       )}
     </ul>

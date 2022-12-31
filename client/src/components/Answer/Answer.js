@@ -5,6 +5,7 @@ import AddComment from "../AddComment/AddComment";
 import { useNavigate } from "react-router-dom";
 import currentLoggedUser from "../../context/loggedUserContext";
 import axios from "axios";
+import uuid from "react-uuid";
 
 function Answer({
   author,
@@ -74,7 +75,7 @@ function Answer({
               {!showComments ? (
                 <i className="fa-solid fa-caret-down"></i>
               ) : (
-                <i class="fa-solid fa-sort-up"></i>
+                <i className="fa-solid fa-sort-up"></i>
               )}
             </button>
           </p>
@@ -97,7 +98,7 @@ function Answer({
         <>
           comments
           {answerComments.map((comment) => (
-            <Comment key={comment._id} {...comment} />
+            <Comment key={uuid()} {...comment} />
           ))}
         </>
       )}

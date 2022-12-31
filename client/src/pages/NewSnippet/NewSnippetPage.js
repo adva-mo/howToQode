@@ -3,7 +3,7 @@ import React, { useContext, useEffect, useState } from "react";
 import NewSnippetCard from "../../components/NewSnippetCard/NewSnippetCard.js";
 import currentLoggedUser from "../../context/loggedUserContext.js";
 import newSnippetContext from "../../context/snippet.context.js";
-// import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import "./NewSnippetPage.css";
 import { validateSnippetFields } from "../../utils/utils.js";
 
@@ -15,9 +15,10 @@ function NewSnippetPage() {
     description: "",
     code: "",
   });
-
+  const [isSnippetSent, stisSnippetSent] = useState(false);
+  let newSnippetId;
   const { loggedUser } = useContext(currentLoggedUser);
-  // const navigate = useNavigate;
+  const navigate = useNavigate;
 
   useEffect(() => {
     if (validateSnippetFields(snippetObject)) {
@@ -28,8 +29,9 @@ function NewSnippetPage() {
       axios
         .post("http://localhost:3001/snippets", postBody)
         .then(({ data }) => {
-          console.log(data);
-          //todo redirect the user to snippet page
+          newSnippetId = data._id;
+          // navigate(`/snippets/${data._id}`);
+          redirect();
         })
         .catch((e) => {
           setError(e);
@@ -39,6 +41,8 @@ function NewSnippetPage() {
       console.log(error);
     }
   }, [loggedUser, snippetObject]);
+
+  const redirect = () => navigate("/", { replace: true });
 
   return (
     <div className="new-snippeet-page page-container">
@@ -50,6 +54,15 @@ function NewSnippetPage() {
         className="test2"
         src={process.env.PUBLIC_URL + "/assets/Ellipse2.png"}
       />
+      <div className=" secondary-box page-title-container">
+        <h1 className="page-title">
+          Need help troubleshooting a problem in your code?{" "}
+        </h1>
+        <h3 className="page-title">
+          Post a code snippet and get help from experienced programmers in our
+          community!
+        </h3>
+      </div>
       <newSnippetContext.Provider
         value={{
           setSnippetObject,

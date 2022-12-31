@@ -16,7 +16,9 @@ function AIpage() {
         alt=""
         key={"2"}
       />
-
+      <div className=" secondary-box page-title-container">
+        <h2 className="page-title">Ask our experts anything about coding!</h2>
+      </div>
       <AI />
     </div>
   );
