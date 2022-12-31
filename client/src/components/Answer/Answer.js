@@ -87,7 +87,16 @@ function Answer({
                 ? "fa-solid fa-thumbs-up turkiz-font"
                 : "fa-regular fa-thumbs-up turkiz-font"
             }
-            onClick={isLoggedUserLiked ? () => {} : () => addLike()}
+            onClick={
+              loggedUser
+                ? isLoggedUserLiked
+                  ? () => {}
+                  : () => addLike()
+                : () => {
+                    alert("sign in to add likes!");
+                  }
+              // isLoggedUserLiked  ? () => {} : () => addLike()
+            }
           ></i>{" "}
           <br />
           <p>{NumOfLikes}</p>

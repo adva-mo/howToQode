@@ -3,9 +3,10 @@ import React, { useContext, useEffect, useState } from "react";
 import NewSnippetCard from "../../components/NewSnippetCard/NewSnippetCard.js";
 import currentLoggedUser from "../../context/loggedUserContext.js";
 import newSnippetContext from "../../context/snippet.context.js";
-import { useNavigate } from "react-router-dom";
+import { Navigate, useNavigate } from "react-router-dom";
 import "./NewSnippetPage.css";
 import { validateSnippetFields } from "../../utils/utils.js";
+import Loginpage from "../loginpage/Loginpage";
 
 function NewSnippetPage() {
   const [error, setError] = useState(false);
@@ -15,8 +16,7 @@ function NewSnippetPage() {
     description: "",
     code: "",
   });
-  const [isSnippetSent, stisSnippetSent] = useState(false);
-  let newSnippetId;
+
   const { loggedUser } = useContext(currentLoggedUser);
   const navigate = useNavigate;
 
@@ -29,9 +29,8 @@ function NewSnippetPage() {
       axios
         .post("http://localhost:3001/snippets", postBody)
         .then(({ data }) => {
-          newSnippetId = data._id;
+          console.log(data._id);
           // navigate(`/snippets/${data._id}`);
-          redirect();
         })
         .catch((e) => {
           setError(e);
@@ -42,7 +41,7 @@ function NewSnippetPage() {
     }
   }, [loggedUser, snippetObject]);
 
-  const redirect = () => navigate("/", { replace: true });
+  if (!loggedUser) return <Loginpage />;
 
   return (
     <div className="new-snippeet-page page-container">
