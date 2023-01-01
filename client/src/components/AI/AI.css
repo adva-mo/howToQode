@@ -3,6 +3,7 @@
   text-align: left;
   overflow-y: scroll;
   overflow-x: hidden;
+  width: 80%;
 }
 .ai-form {
   width: 70%;

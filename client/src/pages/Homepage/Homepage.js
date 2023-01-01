@@ -3,7 +3,7 @@ import "./Homepage.css";
 
 function Homepage() {
   return (
-    <div className="Homepage page-container">
+    <div className="Homepage page-container Homepage-page-container">
       <img
         className="test"
         src={process.env.PUBLIC_URL + "/assets/Ellipse1.png"}

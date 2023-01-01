@@ -42,7 +42,6 @@ textarea {
   min-height: 92vh;
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
   position: relative;
 }
@@ -53,7 +52,6 @@ textarea {
 .primary-box {
   border: 1px solid var(--turkiz);
   border-radius: 5px;
-  width: 80%;
   padding: 2rem;
   text-align: center;
   margin: 2rem;

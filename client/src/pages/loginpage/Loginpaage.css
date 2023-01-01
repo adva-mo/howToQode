@@ -33,3 +33,7 @@
   font-weight: 400;
   outline: 1px solid var(--turkiz);
 }
+.login-page-title-container {
+  margin-top: 6rem !important;
+  margin-bottom: 2rem;
+}

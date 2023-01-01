@@ -9,7 +9,8 @@ function NewSnippetCard({ postSnippet }) {
 
   return (
     <form
-      className="primary-box"
+      style={{ width: "80%" }}
+      className="primary-box new-snippet-form"
       onSubmit={(e) => {
         e.preventDefault();
       }}

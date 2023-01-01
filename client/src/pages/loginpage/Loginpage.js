@@ -41,7 +41,7 @@ function Loginpage() {
         src={process.env.PUBLIC_URL + "/assets/Ellipse2.png"}
       />
 
-      <div className=" secondary-box page-title-container">
+      <div className=" secondary-box page-title-container login-page-title-container">
         <h1 className="page-title">
           <span className="turkiz-font page-title">Join</span> the community and
           start asking questions today!{" "}

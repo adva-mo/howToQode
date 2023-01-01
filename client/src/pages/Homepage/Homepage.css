@@ -11,3 +11,6 @@
   align-items: center;
   gap: 2rem;
 }
+.Homepage-page-container {
+  justify-content: center;
+}

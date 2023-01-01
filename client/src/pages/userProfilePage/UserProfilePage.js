@@ -4,6 +4,7 @@ import UserInfo from "../../components/UserInfo/UserInfo";
 import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 import Table from "../../components/Table/Table";
+import Error from "../../components/error/Error";
 
 function UserProfilePage() {
   const [user, setUser] = useState();
@@ -43,6 +44,7 @@ function UserProfilePage() {
 
   return (
     <div className="page-container">
+      {error && <Error msg={error} setError={setError} />}
       <img
         className="test"
         src={process.env.PUBLIC_URL + "/assets/Ellipse1.png"}
