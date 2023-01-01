@@ -9,6 +9,7 @@ function Navbar() {
 
   return (
     <ul className="navbar-ul">
+      {/* <ul className="navbar-ul"> */}
       {/* logo */}
       {/* <img
         className="logo-img"
