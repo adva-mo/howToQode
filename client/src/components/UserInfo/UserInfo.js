@@ -1,7 +1,8 @@
 import axios from "axios";
 import React, { useState, useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
-
+import Tooltip from "react-tooltip-lite";
+import { tooltip } from "../../utils/tooltip.utils";
 import "./UserInfo.css";
 
 function UserInfo({
@@ -27,11 +28,7 @@ function UserInfo({
   const editProfileHandler = async (e) => {
     if (editMood) {
       const updatedUserInfo = Object.fromEntries(new FormData(form.current));
-      // console.log(updatedUserInfo);
-      //* validate form inputes
-      //* if valid: send request:
       await axios.patch(`http://localhost:3001/users/${_id}`, updatedUserInfo);
-      //* if not : set error
       setEditMood(false);
       navigate(`/profile/${_id}`);
       console.log("user updated");
@@ -162,7 +159,9 @@ function UserInfo({
         </div>
         <div>
           {/* <p>RANK </p> */}
-          <p>{rank}</p>
+          <Tooltip content={tooltip} direction="right">
+            <p>{rank}</p>
+          </Tooltip>
           <i className="fa-solid fa-ranking-star blue-font"></i>{" "}
         </div>
       </div>

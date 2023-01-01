@@ -36,7 +36,7 @@
 }
 /* .info-container {
   /* justify-content: flex-start; */
-/* width: 100%; */
+/* width: 50%; */
 /* }  */
 .upload-input {
   display: none;
@@ -47,4 +47,18 @@
   z-index: 5;
   cursor: pointer;
   transform: translate(-70%, -10%);
+}
+.react-tooltip-lite {
+  background: #333;
+  color: white;
+  border-radius: 5px;
+  font-size: smaller;
+}
+
+.react-tooltip-lite-arrow {
+  border-color: #333;
+  border-top: 2px solid transparent;
+  border-bottom: 2px solid transparent;
+
+  border-right: 2px solid #333;
 }
