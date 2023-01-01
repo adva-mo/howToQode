@@ -13,7 +13,12 @@ function CodeInput() {
   return (
     <div className="code-input-container">
       <div className="code-textarea">
-        <p>or code it right here:</p>
+        <p>
+          <span className="blue-font" style={{ fontSize: "xx-large" }}>
+            Or
+          </span>{" "}
+          code it right here:
+        </p>
         <label htmlFor="code"></label>
         <textarea
           className="code-textarea"
@@ -23,12 +28,12 @@ function CodeInput() {
           onChange={handleCodeChange}
         />
       </div>
-      <div className="code-block">
+      {/* <div className="code-block">
         <CodeBlock
           textToFormat={snippetObject.code}
           language={snippetObject.language}
         />
-      </div>
+      </div> */}
     </div>
   );
 }

@@ -1,8 +1,9 @@
 import React, { useState, useContext } from "react";
 import axios from "axios";
 import newSnippetContext from "../../context/snippet.context.js";
+import "./uploadInput.css";
 
-function UploadInput() {
+function UploadInput({ setIsFileUploaded }) {
   const [imageToUpload, setImageToUpload] = useState(null);
 
   const { setSnippetObject } = useContext(newSnippetContext);
@@ -15,6 +16,7 @@ function UploadInput() {
         "http://localhost:3001/files/upload/snippet",
         formData
       );
+      setIsFileUploaded((prev) => !prev);
       setSnippetObject((prev) => ({ ...prev, code: res.data }));
     } catch (e) {
       console.log(e);
@@ -23,9 +25,10 @@ function UploadInput() {
 
   return (
     <div>
-      <p>load a script:</p>
-      <label htmlFor="file">file</label>
+      <span>load a script:</span>{" "}
       <input
+        className="upload-snippet-input"
+        accept="text/plain"
         placeholder="enter your file"
         type="file"
         onChange={(e) => setImageToUpload(e.target.files[0])}

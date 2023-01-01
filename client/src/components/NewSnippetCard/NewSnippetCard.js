@@ -1,24 +1,26 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import CodeInput from "../CodeInput/CodeInput";
 import LanguageSelect from "../LanguageSelect/LanguageSelect";
 import newSnippetContext from "../../context/snippet.context.js";
 import UploadInput from "../uploadInput/UploadInput";
+import "./NewSnippetCard.css";
+import CodeBlock from "../Codeblock/Codeblock";
 
 function NewSnippetCard({ postSnippet }) {
   const { setSnippetObject, snippetObject } = useContext(newSnippetContext);
+  const [isFileUploaded, setIsFileUploaded] = useState(false);
 
   return (
     <form
-      style={{ width: "80%" }}
       className="primary-box new-snippet-form"
       onSubmit={(e) => {
         e.preventDefault();
       }}
     >
       <div>
-        <label htmlFor="title">title</label>
         <input
-          placeholder="enter your title"
+          className="new-title-input"
+          placeholder="Enter title for your question..."
           type="text"
           name="title"
           onChange={({ target }) =>
@@ -33,10 +35,11 @@ function NewSnippetCard({ postSnippet }) {
         <LanguageSelect />
       </div>
       <div>
-        <label htmlFor="description">description</label>
-        <input
-          placeholder="enter your description"
+        {/* <label htmlFor="description">description</label> */}
+        <textarea
+          placeholder="Describe what is the problem"
           type="text"
+          className="new-description-input"
           name="description"
           onChange={({ target }) =>
             setSnippetObject((prev) => ({
@@ -46,8 +49,14 @@ function NewSnippetCard({ postSnippet }) {
           }
         />
       </div>
-      <UploadInput />
-      <CodeInput />
+      <UploadInput setIsFileUploaded={setIsFileUploaded} />
+      {!isFileUploaded && <CodeInput />}
+      <div className="code-block">
+        <CodeBlock
+          textToFormat={snippetObject.code}
+          language={snippetObject.language}
+        />
+      </div>
       <button onClick={() => postSnippet(snippetObject)}>submit</button>
     </form>
   );

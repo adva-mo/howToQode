@@ -1,5 +1,6 @@
 import React, { useContext } from "react";
 import newSnippetContext from "../../context/snippet.context.js";
+import "./LanguageSelect.css";
 
 function LanguageSelect() {
   const { setSnippetObject } = useContext(newSnippetContext);
@@ -8,7 +9,7 @@ function LanguageSelect() {
     setSnippetObject((prev) => ({ ...prev, language: target.value }));
   };
   return (
-    <select onChange={handleLanguageSelect}>
+    <select onChange={handleLanguageSelect} className="language-select">
       <option value="">select coding language</option>
       <option value="python">python</option>
       <option value="javascript">javascript</option>

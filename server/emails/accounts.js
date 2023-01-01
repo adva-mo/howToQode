@@ -4,7 +4,7 @@ sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 
 const msg = {
   to: "advamozes@gmail.com", // Change to your recipient
-  from: "advamozes@gmail.com", // Change to your verified sender
+  from: "howtoqode@gmail.com", // Change to your verified sender
   subject: "Sending with SendGrid is Fun",
   text: "and easy to do anywhere, even with Node.js",
   html: "<strong>and easy to do anywhere, even with Node.js</strong>",

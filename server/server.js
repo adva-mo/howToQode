@@ -16,9 +16,6 @@ const filesRouter = require("./routes/files.routes.js");
 const answersRouter = require("./routes/answers.routes.js");
 const aiRouter = require("./routes/ai.routes.js");
 
-//--------------OPEN AI--------------
-// const openAI = require("./openAI/openAI.js");
-
 //--------------AUTHENTICATION--------------
 const session = require("express-session");
 const passport = require("passport");

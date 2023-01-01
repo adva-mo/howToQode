@@ -1,3 +1,19 @@
 .new-snippet-form {
-  width: 90% !important;
+  width: 90%;
+  gap: 1rem;
+}
+.new-title-input,
+.new-description-input {
+  width: 100%;
+}
+
+.new-snippet-form * input {
+  padding: 0.5rem;
+  /* background-color: ; */
+  color: var(--black);
+  font-size: large;
+}
+
+.new-snippet-form * textarea {
+  color: var(--black);
 }
