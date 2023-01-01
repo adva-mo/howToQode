@@ -3,8 +3,6 @@ import "./userProfilePage.css";
 import UserInfo from "../../components/UserInfo/UserInfo";
 import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
-// import SnippetPrev from "../../components/SnippetPrev/SnippetPrev";
-// import QuestionsChart from "../../components/QuestionsChart/QuestionsChart";
 import Table from "../../components/Table/Table";
 
 function UserProfilePage() {
@@ -57,26 +55,15 @@ function UserProfilePage() {
         alt=""
         key={"2"}
       />
-      {error && console.log(error)}
+      {/* {error && console.log(error)} */}
       {userSnippet && <UserInfo {...user} numOfSnippets={userSnippet.length} />}
       {userSnippet?.length > 0 ? (
-        <Table data={userSnippet} />
+        <Table data={userSnippet} searchTerm={"questions"} />
       ) : (
         <div className="primary-box">
           <p>user doesn't have any snippets yet</p>
         </div>
       )}
-      {/* {userSnippet && (
-        <>
-          <UserInfo {...user} numOfSnippets={userSnippet.length} />
-          {!userSnippet.length === 0 ? (
-            <div className="primary-box">
-              <p>user doesn't have any snippets yet</p>
-            </div>
-          ) : (
-          )}
-        </> */}
-      {/* )} */}
     </div>
   );
 }

@@ -13,10 +13,10 @@ function Homepage() {
         src={process.env.PUBLIC_URL + "/assets/Ellipse2.png"}
       />
       <div className="flex-row-between">
-        {/* <img
+        <img
           className="hero-image"
           src={process.env.PUBLIC_URL + "/assets/hero-image.png"}
-        /> */}
+        />
         <div className="secondary-box">
           <h1 className="page-title"> Welcome</h1>
           <h3 className="page-title">to the Programming Help Community</h3>

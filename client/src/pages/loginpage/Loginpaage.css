@@ -3,7 +3,19 @@
   padding: 2rem 1rem;
   gap: 1rem;
   width: 60%;
+  position: relative;
+  overflow: hidden;
 }
+/* .login-card::after {
+  content: "";
+  background: url("../../../public/assets/Ellipse1.png") center center/cover !important;
+  z-index: 4;
+  top: -10%;
+  left: 0;
+  position: absolute;
+  width: 10rem;
+  height: 10rem;
+} */
 .login-card h3 {
   margin-bottom: 2rem;
 }

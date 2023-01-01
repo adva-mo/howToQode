@@ -64,17 +64,32 @@ function UserInfo({
   };
 
   return (
-    <form ref={form} className="primary-box profile-info-form">
+    <form ref={form} className="primary-box profile-info-form ">
       <img
         className="user-profile-image"
         src={userImg || process.env.PUBLIC_URL + "/assets/avatar.jpg"}
         alt=""
       />
-      <input ref={imageInput} type="file" onChange={uploadProfileImage} />
+
+      <input
+        ref={imageInput}
+        type="file"
+        onChange={uploadProfileImage}
+        className="upload-input"
+      />
+      {/* <i class="fa-solid fa-file-arrow-up"></i> */}
+      <i
+        className="fa-solid fa-file-arrow-up upload-icon turkiz-font"
+        onClick={(e) => {
+          e.preventDefault();
+          imageInput.current.click();
+        }}
+      ></i>
+
       <div className="flex-row info-container">
         <div className="align-left flex-grow">
           <p>
-            Name:
+            Name:{" "}
             <input
               defaultValue={name || ""}
               readOnly={!editMood}
@@ -95,7 +110,7 @@ function UserInfo({
 
         <div className="align-left flex-grow">
           <p>
-            Last Name:
+            Last Name:{" "}
             <input
               defaultValue={lastName || ""}
               readOnly={!editMood}
@@ -136,19 +151,18 @@ function UserInfo({
       </div>
       {/* <div className="turkiz-underline"></div> */}
       <h4 className="stat-h4 turkiz-bottom-border">STATISTICS</h4>
-
       <div className="user-statistics-container flex-row">
         <div>
-          <h4>{numOfSnippets} QUESTIONS</h4>
+          <p>{numOfSnippets} QUESTIONS</p>
           <i className="fa-regular fa-circle-question blue-font"></i>
         </div>
         <div>
-          <h4>{solvedQuestions} ANSWERS</h4>
+          <p>{solvedQuestions} ANSWERS</p>
           <i className="fa-regular fa-circle-check blue-font"></i>{" "}
         </div>
         <div>
-          <h4>RANK </h4>
-          {rank}
+          {/* <p>RANK </p> */}
+          <p>{rank}</p>
           <i className="fa-solid fa-ranking-star blue-font"></i>{" "}
         </div>
       </div>

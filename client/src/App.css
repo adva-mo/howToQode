@@ -33,6 +33,7 @@ textarea {
 .split-component {
   display: flex;
   background-color: var(--bg-purple) !important;
+  position: relative;
 }
 
 .page-container {

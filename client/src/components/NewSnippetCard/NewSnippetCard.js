@@ -1,22 +1,11 @@
-import React, { useRef, useContext } from "react";
+import React, { useContext } from "react";
 import CodeInput from "../CodeInput/CodeInput";
 import LanguageSelect from "../LanguageSelect/LanguageSelect";
 import newSnippetContext from "../../context/snippet.context.js";
 import UploadInput from "../uploadInput/UploadInput";
 
-function NewSnippetCard() {
-  const { setSnippetObject } = useContext(newSnippetContext);
-
-  const title = useRef();
-  const description = useRef();
-
-  const handleSnippetSubmit = () => {
-    setSnippetObject((prev) => ({
-      ...prev,
-      title: title.current.value,
-      description: description.current.value,
-    }));
-  };
+function NewSnippetCard({ postSnippet }) {
+  const { setSnippetObject, snippetObject } = useContext(newSnippetContext);
 
   return (
     <form
@@ -28,11 +17,15 @@ function NewSnippetCard() {
       <div>
         <label htmlFor="title">title</label>
         <input
-          // className={titleClasses}
           placeholder="enter your title"
           type="text"
           name="title"
-          ref={title}
+          onChange={({ target }) =>
+            setSnippetObject((prev) => ({
+              ...prev,
+              title: target.value,
+            }))
+          }
         />
       </div>
       <div>
@@ -41,16 +34,20 @@ function NewSnippetCard() {
       <div>
         <label htmlFor="description">description</label>
         <input
-          // className={descriptionClasses}
           placeholder="enter your description"
           type="text"
           name="description"
-          ref={description}
+          onChange={({ target }) =>
+            setSnippetObject((prev) => ({
+              ...prev,
+              description: target.value,
+            }))
+          }
         />
       </div>
       <UploadInput />
       <CodeInput />
-      <button onClick={handleSnippetSubmit}>submit</button>
+      <button onClick={() => postSnippet(snippetObject)}>submit</button>
     </form>
   );
 }
