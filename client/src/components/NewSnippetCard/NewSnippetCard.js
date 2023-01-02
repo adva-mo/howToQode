@@ -35,7 +35,6 @@ function NewSnippetCard({ postSnippet }) {
         <LanguageSelect />
       </div>
       <div>
-        {/* <label htmlFor="description">description</label> */}
         <textarea
           placeholder="Describe what is the problem"
           type="text"

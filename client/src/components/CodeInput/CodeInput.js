@@ -28,12 +28,6 @@ function CodeInput() {
           onChange={handleCodeChange}
         />
       </div>
-      {/* <div className="code-block">
-        <CodeBlock
-          textToFormat={snippetObject.code}
-          language={snippetObject.language}
-        />
-      </div> */}
     </div>
   );
 }

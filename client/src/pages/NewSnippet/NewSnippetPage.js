@@ -1,17 +1,17 @@
 import axios from "axios";
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useState } from "react";
 import NewSnippetCard from "../../components/NewSnippetCard/NewSnippetCard.js";
 import currentLoggedUser from "../../context/loggedUserContext.js";
 import newSnippetContext from "../../context/snippet.context.js";
-import { Navigate, useNavigate } from "react-router-dom";
 import "./NewSnippetPage.css";
 import { validateSnippetFields } from "../../utils/utils.js";
 import Loginpage from "../loginpage/Loginpage";
 import Error from "../../components/error/Error";
+import SnippetCard from "../../components/SnippetCard/SnippetCard";
 
 function NewSnippetPage() {
   const [error, setError] = useState(false);
-  const [newId, setnewId] = useState(null);
+  const [newSnippetObj, setNewSnippetObj] = useState(null);
 
   const [snippetObject, setSnippetObject] = useState({
     title: "",
@@ -21,7 +21,6 @@ function NewSnippetPage() {
   });
 
   const { loggedUser } = useContext(currentLoggedUser);
-  const navigate = useNavigate;
 
   const postSnippet = async (obj) => {
     console.log(obj);
@@ -33,9 +32,7 @@ function NewSnippetPage() {
       axios
         .post("http://localhost:3001/snippets", postBody)
         .then(({ data }) => {
-          console.log(data._id);
-          setnewId(data._id);
-          // navigate(`/snippets/${data._id}`);
+          setNewSnippetObj(data);
         })
         .catch((e) => {
           setError(e);
@@ -47,10 +44,10 @@ function NewSnippetPage() {
   };
 
   if (!loggedUser) return <Loginpage />;
+  if (newSnippetObj) return <SnippetCard {...newSnippetObj} />;
 
   return (
     <div className="new-snippeet-page page-container">
-      {newId && navigate(`/snippets/${newId}`)}
       {error && <Error msg={error} setError={setError} />}
       <img
         className="test"

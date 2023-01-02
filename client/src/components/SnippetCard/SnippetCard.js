@@ -17,6 +17,7 @@ function SnippetCard({
 }) {
   const navigate = useNavigate();
   const [answersToDisplay, setAnswersToDisplay] = useState(answers);
+
   return (
     <div className="flex-column-center snippet-card">
       <div className="primary-box ">

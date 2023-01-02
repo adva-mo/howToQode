@@ -36,7 +36,9 @@ const confirmAnswer = async (req, res) => {
 
     if (req.body.userid === answer.author) {
       console.log("cant add like, user is the author");
-      return;
+      return res
+        .status(401)
+        .send({ message: "cant add like, user is the author" });
     }
     if (snippet.author === req.body.userid) {
       answer.isHelpful = true;

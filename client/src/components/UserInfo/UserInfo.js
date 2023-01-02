@@ -67,14 +67,12 @@ function UserInfo({
         src={userImg || process.env.PUBLIC_URL + "/assets/avatar.jpg"}
         alt=""
       />
-
       <input
         ref={imageInput}
         type="file"
         onChange={uploadProfileImage}
         className="upload-input"
       />
-      {/* <i class="fa-solid fa-file-arrow-up"></i> */}
       <i
         className="fa-solid fa-file-arrow-up upload-icon turkiz-font"
         onClick={(e) => {
@@ -146,7 +144,6 @@ function UserInfo({
           />
         </p>
       </div>
-      {/* <div className="turkiz-underline"></div> */}
       <h4 className="stat-h4 turkiz-bottom-border">STATISTICS</h4>
       <div className="user-statistics-container flex-row">
         <div>
@@ -158,7 +155,6 @@ function UserInfo({
           <i className="fa-regular fa-circle-check blue-font"></i>{" "}
         </div>
         <div>
-          {/* <p>RANK </p> */}
           <Tooltip content={tooltip} direction="right">
             <p>{rank}</p>
           </Tooltip>

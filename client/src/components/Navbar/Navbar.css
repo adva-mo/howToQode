@@ -21,7 +21,7 @@
   text-decoration: none;
 }
 .navlink {
-  border: 2px solid var(--gary) !important;
+  border: 2px solid var(--black) !important;
   border-width: 0 0 2px 0 !important;
 }
 .small-profile-pic {
