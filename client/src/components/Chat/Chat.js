@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useEffect } from "react";
 import "./Chat.css";
 import io from "socket.io-client";
 import uuid from "react-uuid";
@@ -51,6 +51,7 @@ function Chat() {
     socket.on("updateUserList", (data) => {
       setOnlineUsers(data);
     });
+    // eslint-disable-next-line
   }, [socket]);
 
   useEffect(() => {

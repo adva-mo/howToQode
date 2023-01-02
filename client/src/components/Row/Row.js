@@ -14,6 +14,7 @@ function Row({ fields, id, searchTerm }) {
               </div>
             </td>
           );
+        // eslint-disable-next-line
         else return;
       })}
       <td>

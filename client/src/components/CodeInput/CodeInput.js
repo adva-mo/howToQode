@@ -1,10 +1,10 @@
 import React, { useContext } from "react";
-import CodeBlock from "../Codeblock/Codeblock";
+// import CodeBlock from "../Codeblock/Codeblock";
 import newSnippetContext from "../../context/snippet.context.js";
 import "./CodeInput.css";
 
 function CodeInput() {
-  const { setSnippetObject, snippetObject } = useContext(newSnippetContext);
+  const { setSnippetObject } = useContext(newSnippetContext);
 
   const handleCodeChange = ({ target }) => {
     setSnippetObject((prev) => ({ ...prev, code: target.value }));
@@ -13,16 +13,9 @@ function CodeInput() {
   return (
     <div className="code-input-container">
       <div className="code-textarea">
-        <p>
-          <span className="blue-font" style={{ fontSize: "xx-large" }}>
-            Or
-          </span>{" "}
-          code it right here:
-        </p>
         <label htmlFor="code"></label>
         <textarea
           className="code-textarea"
-          placeholder="enjoy your coding (:"
           type="text"
           name="code"
           onChange={handleCodeChange}

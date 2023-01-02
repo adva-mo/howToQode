@@ -11,18 +11,20 @@ function Table({ data, searchTerm }) {
     <table className="primary-box table-container">
       <thead>
         <tr>
-          {titles.map((value) => {
-            if (value !== "_id")
-              return (
-                // <div className="blue-btn">
-                <td key={uuid()}>
-                  <div className="flex-row ">
-                    <p className="blue-btn title-container">{value}</p>
-                  </div>
-                </td>
-                // </div>
-              );
-          })}
+          {
+            // eslint-disable-next-line
+            titles.map((value) => {
+              if (value !== "_id")
+                return (
+                  <td key={uuid()}>
+                    <div className="flex-row ">
+                      <p className="blue-btn title-container">{value}</p>
+                    </div>
+                  </td>
+                  // </div>
+                );
+            })
+          }
         </tr>
       </thead>
       <tbody>

@@ -1,5 +1,5 @@
 import axios from "axios";
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import Tooltip from "react-tooltip-lite";
 import { tooltip } from "../../utils/tooltip.utils";
@@ -19,7 +19,7 @@ function UserInfo({
   _id,
 }) {
   const [editMood, setEditMood] = useState(false);
-  const [error, setError] = useState(false);
+  // const [error, setError] = useState(false);
   const [userImg, setUserImg] = useState(img);
   const imageInput = useRef();
   const navigate = useNavigate();
@@ -56,7 +56,7 @@ function UserInfo({
       await axios.delete(`http://localhost:3001/users/${_id}`);
       navigate(`/login`);
     } catch (e) {
-      setError(e.message);
+      // setError(e.message);
     }
   };
 

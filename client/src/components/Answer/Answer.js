@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 import currentLoggedUser from "../../context/loggedUserContext";
 import axios from "axios";
 import uuid from "react-uuid";
-import Error from "../error/Error";
+// import Error from "../error/Error";
 import errorCtx from "../../context/error.context";
 
 function Answer({
@@ -26,7 +26,7 @@ function Answer({
   const [isLoggedUserLiked, setisLoggedUserLiked] = useState(
     likes.includes(loggedUser)
   );
-  const { error, setError } = useContext(errorCtx);
+  const { setError } = useContext(errorCtx);
 
   const navigate = useNavigate();
 

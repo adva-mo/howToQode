@@ -1,8 +1,8 @@
-import React, { useState } from "react";
+import React from "react";
 import "./LoginCard.css";
 import useInput from "../../hooks/useInput";
 // import axios from "axios";
-import { useNavigate } from "react-router-dom";
+// import { useNavigate } from "react-router-dom";
 
 const isEmailInputValid = (value) => value.trim() !== "" && value.includes("@");
 const isPasswordInputValid = (value) =>
@@ -17,7 +17,7 @@ function LoginCard({ setUserToRegister, isNewUser, setIsNewUser }) {
     hasError: emailHasError,
     valueChangeHandler: emailChangeHandler,
     inputBlurHandler: emailBlurHndler,
-    reset: resetEmail,
+    // reset: resetEmail,
   } = useInput(isEmailInputValid);
 
   const {
@@ -26,7 +26,7 @@ function LoginCard({ setUserToRegister, isNewUser, setIsNewUser }) {
     hasError: passwordHasError,
     valueChangeHandler: passwordChangeHandler,
     inputBlurHandler: passwordBlurHandler,
-    reset: resetPassword,
+    // reset: resetPassword,
   } = useInput(isPasswordInputValid);
 
   const {
@@ -34,7 +34,7 @@ function LoginCard({ setUserToRegister, isNewUser, setIsNewUser }) {
     isTouched,
     valueChangeHandler: confirmedpasswordChangeHandler,
     inputBlurHandler: confirmedpasswordBlurHandler,
-    reset: resetConfirmedPassword,
+    // reset: resetConfirmedPassword,
   } = useInput(isPasswordInputValid);
 
   const confirmedPasswordHasError =

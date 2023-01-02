@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React from "react";
 import SyntaxHighlighter from "react-syntax-highlighter";
 import { docco } from "react-syntax-highlighter/dist/esm/styles/hljs";
 
@@ -15,6 +15,7 @@ const Codeblock = ({ language, textToFormat }) => {
         color: "rgb(26, 26, 26)", //todo
         borderRadius: "2px",
         flexWrap: "wrap",
+        minHeight: "3rem",
       }}
     >
       {textToFormat}

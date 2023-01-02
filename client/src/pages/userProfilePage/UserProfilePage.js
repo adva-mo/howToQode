@@ -31,7 +31,7 @@ function UserProfilePage() {
       .catch((e) => {
         console.log(e);
       });
-  }, [user]);
+  }, [user, id]);
 
   useEffect(() => {
     if (!user && error) {
@@ -40,7 +40,7 @@ function UserProfilePage() {
         navigate(-1);
       }, 2000);
     }
-  }, [error, navigate]);
+  }, [error, navigate, user]);
 
   return (
     <div className="page-container">

@@ -48,13 +48,22 @@ function NewSnippetCard({ postSnippet }) {
           }
         />
       </div>
+
       <UploadInput setIsFileUploaded={setIsFileUploaded} />
-      {!isFileUploaded && <CodeInput />}
-      <div className="code-block">
-        <CodeBlock
-          textToFormat={snippetObject.code}
-          language={snippetObject.language}
-        />
+      <p>
+        <span className="blue-font" style={{ fontSize: "xx-large" }}>
+          Or
+        </span>{" "}
+        code it right here:
+      </p>
+      <div style={{ position: "relative" }}>
+        <div className="code-block">
+          <CodeBlock
+            textToFormat={snippetObject.code}
+            language={snippetObject.language}
+          />
+        </div>
+        {!isFileUploaded && <CodeInput />}
       </div>
       <button onClick={() => postSnippet(snippetObject)}>submit</button>
     </form>

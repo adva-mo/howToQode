@@ -28,6 +28,7 @@ function Loginpage() {
       .catch((e) => {
         console.log(e.response.data);
       });
+    // eslint-disable-next-line
   }, [userToRegister]);
 
   return (
@@ -35,10 +36,14 @@ function Loginpage() {
       <img
         className="test"
         src={process.env.PUBLIC_URL + "/assets/Ellipse1.png"}
+        alt=""
+        key="1"
       />
       <img
         className="test2"
         src={process.env.PUBLIC_URL + "/assets/Ellipse2.png"}
+        alt=""
+        key="2"
       />
 
       <div className=" secondary-box page-title-container login-page-title-container">
