@@ -1,21 +1,25 @@
 const multer = require("multer");
+const path = require("path");
 
-const upload = multer({
+const storage = multer.diskStorage({
+  destination: (req, file, cb) => {
+    cb(null, `Images`);
+  },
+  filename: (req, file, cb) => {
+    console.log(file);
+    cb(null, Date.now() + path.extname(file.originalname));
+  },
+});
+const upload = multer({ storage });
+
+const uploadFile = multer({
   dest: "images",
   limits: {
     fileSize: 1000000,
   },
-  // fileFilter(req, file, cb) {
-  //   if (!file.originalname.endsWith(".py")) {
-  //     return cb(new Error("File must be a text file (.js .py. etc)"));
-  //   }
-  //   // this.fi
-  //   cb(undefined, true);
-  //   // cb(undefined, false);
-  // },
   filename: (req, file, cb) => {
-    cb(null, new Date().toISOString.replace(/:/g, "-") + file.originalname);
+    cb(null, file.originalname);
   },
 });
 
-module.exports = upload;
+module.exports = { upload, uploadFile };

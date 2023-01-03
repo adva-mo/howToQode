@@ -59,6 +59,7 @@ textarea {
   z-index: 3;
   line-height: 1.7rem;
   gap: 1rem;
+  width: 85%;
 }
 .secondary-box {
   /* width: ; */
@@ -81,6 +82,7 @@ button {
 .turkiz-bottom-border {
   border: 1px var(--turkiz) solid;
   border-width: 0 0 1px 0;
+  padding-bottom: 1rem;
 }
 .white-underline {
   border: 1px solid whitesmoke;
@@ -140,4 +142,10 @@ button {
   background-color: var(--turkiz);
   padding: 0.2rem 0.7rem;
   min-width: none;
+}
+.margin-bottom-2 {
+  margin-bottom: 2rem;
+}
+.title-font {
+  font-size: 1.5rem;
 }

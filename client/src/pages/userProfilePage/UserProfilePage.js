@@ -22,6 +22,7 @@ function UserProfilePage() {
       .catch((e) => {
         setError(e.response?.data);
       });
+    // .finally(console.log(user));
   }, [id]);
 
   useEffect(() => {
@@ -44,6 +45,7 @@ function UserProfilePage() {
 
   return (
     <div className="page-container">
+      {user && console.log(user)}
       {error && <Error msg={error} setError={setError} />}
       <img
         className="test"

@@ -3,6 +3,7 @@ import Codeblock from "../Codeblock/Codeblock";
 import Answer from "../Answer/Answer";
 import { useNavigate } from "react-router-dom";
 import NewAnswerForm from "../NewAnswerForm/NewAnswerForm";
+import "./SnippetCard.css";
 
 function SnippetCard({
   author,
@@ -20,18 +21,16 @@ function SnippetCard({
 
   return (
     <div className="flex-column-center snippet-card">
-      <div className="primary-box ">
-        <h2 className="turkiz-bottom-border">{title}</h2>
-        <div className="flex-row">
+      <div className="primary-box snippet-info-container">
+        <h2 className="turkiz-bottom-border margin-bottom-2">{title}</h2>
+        <div className="flex-row margin-bottom-2">
           <div>
-            DATE
-            <i className="fa-solid fa-calendar-days turkiz-font"></i>
+            DATE <i className="fa-solid fa-calendar-days turkiz-font"></i>
             <br />
             <p className="profile-link">{date}</p>
           </div>
           <div>
-            ASKED BY
-            <i className="fa-regular fa-user turkiz-font"></i>
+            ASKED BY <i className="fa-regular fa-user turkiz-font"></i>
             <br />
             <p
               onClick={({ target }) => {
@@ -45,14 +44,25 @@ function SnippetCard({
           </div>
           <div>
             SOLVED
-            <i className="fa-solid fa-xmark turkiz-font" />
-            {/* //todo change icon */}
+            <i className="fa-solid fa-question turkiz-font"></i>
             <br />
-            <p>{solved ? "YES" : "NO"}</p>
+            <p>
+              {solved ? (
+                <i className="fa-solid fa-check"></i>
+              ) : (
+                <i className="fa-solid fa-xmark turkiz-font" />
+              )}
+            </p>
           </div>
         </div>
-        <p>coding language: {language}</p>
-        <h3 className="align-left">description: {description}</h3>
+        <p className="margin-bottom-2">
+          coding language:
+          <span className="blue-font">{" " + language}</span>
+        </p>
+        <p className="align-left margin-bottom-2 ">
+          <strong className="title-font">description: </strong>
+          {description + " "}
+        </p>
         <Codeblock language={language} textToFormat={code} />
       </div>
 

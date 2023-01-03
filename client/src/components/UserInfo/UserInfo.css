@@ -19,6 +19,7 @@
 }
 .profile-info-form {
   position: relative;
+  width: 70%;
 }
 .profile-info-form * input {
   flex-grow: 1;

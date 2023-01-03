@@ -40,12 +40,17 @@ function UserInfo({
     const reader = new FileReader();
 
     reader.addEventListener("load", async () => {
-      console.log(reader.result);
-      await axios.patch(`http://localhost:3001/users/${_id}`, {
-        img: reader.result,
-      });
-      setUserImg(reader.result);
-      imageInput.current.value = "";
+      try {
+        // console.log(reader.result);
+        await axios.patch(`http://localhost:3001/users/${_id}`, {
+          img: reader.result,
+        });
+        setUserImg(reader.result);
+        imageInput.current.value = "";
+        console.log("done");
+      } catch (e) {
+        console.log(e);
+      }
     });
 
     reader.readAsDataURL(file);
@@ -84,7 +89,7 @@ function UserInfo({
       <div className="flex-row info-container">
         <div className="align-left flex-grow">
           <p>
-            Name:{" "}
+            <strong>Name: </strong>
             <input
               defaultValue={name || ""}
               readOnly={!editMood}
@@ -93,7 +98,7 @@ function UserInfo({
             />
           </p>
           <p>
-            City:{" "}
+            <strong>City: </strong>
             <input
               defaultValue={city || ""}
               readOnly={!editMood}
@@ -105,7 +110,7 @@ function UserInfo({
 
         <div className="align-left flex-grow">
           <p>
-            Last Name:{" "}
+            <strong>Last Name: </strong>
             <input
               defaultValue={lastName || ""}
               readOnly={!editMood}
@@ -114,7 +119,7 @@ function UserInfo({
             />
           </p>
           <p>
-            Country:{" "}
+            <strong>Country: </strong>
             <input
               defaultValue={country || ""}
               readOnly={!editMood}
@@ -126,7 +131,7 @@ function UserInfo({
       </div>
       <div className="align-left">
         <p>
-          learning:{" "}
+          <strong>learning: </strong>
           <input
             defaultValue={learning || ""}
             readOnly={!editMood}
@@ -135,7 +140,7 @@ function UserInfo({
           />
         </p>
         <p>
-          school:{" "}
+          <strong>school: </strong>
           <input
             defaultValue={school || ""}
             readOnly={!editMood}
