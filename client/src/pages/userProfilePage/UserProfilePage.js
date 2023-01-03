@@ -12,7 +12,6 @@ function UserProfilePage() {
   const { id } = useParams();
   const [error, setError] = useState(null);
   const navigate = useNavigate();
-  // console.log(id);
 
   useEffect(() => {
     if (!id) return;
@@ -22,7 +21,6 @@ function UserProfilePage() {
       .catch((e) => {
         setError(e.response?.data);
       });
-    // .finally(console.log(user));
   }, [id]);
 
   useEffect(() => {
@@ -37,7 +35,6 @@ function UserProfilePage() {
   useEffect(() => {
     if (!user && error) {
       setTimeout(() => {
-        //todo: display error component
         navigate(-1);
       }, 2000);
     }
@@ -45,7 +42,6 @@ function UserProfilePage() {
 
   return (
     <div className="page-container">
-      {user && console.log(user)}
       {error && <Error msg={error} setError={setError} />}
       <img
         className="test"
@@ -59,7 +55,6 @@ function UserProfilePage() {
         alt=""
         key={"2"}
       />
-      {/* {error && console.log(error)} */}
       {userSnippet && <UserInfo {...user} numOfSnippets={userSnippet.length} />}
       {userSnippet?.length > 0 ? (
         <Table data={userSnippet} searchTerm={"questions"} />

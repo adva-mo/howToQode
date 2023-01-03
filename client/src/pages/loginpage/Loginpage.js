@@ -13,14 +13,13 @@ function Loginpage() {
 
   useEffect(() => {
     if (!userToRegister) return;
-    console.log(isNewUser);
     const path = isNewUser
       ? "http://localhost:3001/users/register"
       : "http://localhost:3001/users/login";
     axios
       .post(path, userToRegister)
       .then(({ data }) => {
-        console.log(data);
+        // console.log(data);
         localStorage.setItem("QODE_APP", JSON.stringify([data._id]));
         setLoggedUser(data._id);
         if (data._id) navigate(`/profile/${data._id}`);
@@ -53,7 +52,6 @@ function Loginpage() {
         </h1>
       </div>
 
-      {/* <div>Join the community and start asking questions today!</div> */}
       <LoginCard
         setUserToRegister={setUserToRegister}
         isNewUser={isNewUser}

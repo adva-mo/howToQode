@@ -7,11 +7,7 @@ function Comment({ author, description, likes, img, createdAt }) {
 
   return (
     <div className=" primary-box comment-container align-left flex-row">
-      <img
-        className="user-profile-image-comment"
-        src={img || process.env.PUBLIC_URL + "/assets/avatar.jpg"}
-        alt=""
-      />
+      <i className="fa-regular fa-message"></i>
       <div>
         <p
           id={author}

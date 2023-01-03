@@ -6,7 +6,6 @@ import { useNavigate } from "react-router-dom";
 import currentLoggedUser from "../../context/loggedUserContext";
 import axios from "axios";
 import uuid from "react-uuid";
-// import Error from "../error/Error";
 import errorCtx from "../../context/error.context";
 
 function Answer({
@@ -46,7 +45,6 @@ function Answer({
 
   return (
     <>
-      {/* {error && <Error msg={error} serError={serError} />} */}
       <div className="answer-container primary-box flex-column-center">
         <p> {description}</p>
 
