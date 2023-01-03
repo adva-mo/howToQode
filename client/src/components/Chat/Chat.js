@@ -102,7 +102,8 @@ function Chat() {
                 }}
               />
               <button className="send-msg-btn" onClick={sendMessage}>
-                &#9658;
+                {/* &#9658; */}
+                <i className="fa-regular fa-paper-plane"></i>
               </button>
             </div>
           </div>

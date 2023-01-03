@@ -6,4 +6,8 @@
 .new-answer-textarea {
   width: 100%;
   margin-left: 0;
+  color: var(--black);
+}
+.new-answer-title-input {
+  padding: 0.5rem;
 }

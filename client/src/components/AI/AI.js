@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import "./AI.css";
 import ScrollToBottom from "react-scroll-to-bottom";
+import v4 from "react-uuid";
 
 function AI() {
   const [message, setMessage] = useState("");
@@ -9,12 +10,13 @@ function AI() {
 
   const handleSubmt = async (e) => {
     try {
+      setResponse((prev) => [...prev, message]);
+      setMessage("");
       e.preventDefault();
       const result = await axios.post("http://127.0.0.1:3001/ai", {
         body: message,
       });
-      setResponse((prev) => [...prev, message, result.data.message]);
-      setMessage("");
+      setResponse((prev) => [...prev, result.data.message]);
     } catch (e) {
       console.log(e);
     }
@@ -24,7 +26,9 @@ function AI() {
       <div className="primary-box ai-response-box">
         <ScrollToBottom>
           {responses.map((r, i) => (
-            <p className={i % 2 === 0 ? "user" : "ai"}>{r}</p>
+            <p key={v4()} className={i % 2 === 0 ? "user" : "ai"}>
+              {r}
+            </p>
           ))}
         </ScrollToBottom>
       </div>
@@ -34,7 +38,10 @@ function AI() {
           value={message}
           onChange={({ target }) => setMessage(target.value)}
         ></input>
-        <button type="submit">Send</button>
+        <button type="submit" className="send-msg-btn send-msg-ai">
+          {" "}
+          <i className="fa-regular fa-paper-plane"></i>
+        </button>
       </form>
     </>
   );

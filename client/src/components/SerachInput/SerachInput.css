@@ -1,3 +1,10 @@
 .form-search-box {
   z-index: 3;
+  background-color: whitesmoke;
+  border-radius: 5px;
+  padding: 0.5rem;
+}
+.form-search-box select,
+.form-search-box input {
+  color: var(--black);
 }

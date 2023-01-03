@@ -1,4 +1,6 @@
 import axios from "axios";
+import { storage } from "../../utils/database-config";
+import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
 import React, { useState, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import Tooltip from "react-tooltip-lite";
@@ -19,7 +21,6 @@ function UserInfo({
   _id,
 }) {
   const [editMood, setEditMood] = useState(false);
-  // const [error, setError] = useState(false);
   const [userImg, setUserImg] = useState(img);
   const imageInput = useRef();
   const navigate = useNavigate();
@@ -31,29 +32,25 @@ function UserInfo({
       await axios.patch(`http://localhost:3001/users/${_id}`, updatedUserInfo);
       setEditMood(false);
       navigate(`/profile/${_id}`);
-      console.log("user updated");
     } else setEditMood((prev) => !prev);
   };
 
   const uploadProfileImage = async (e) => {
-    const file = e.target.files[0];
-    const reader = new FileReader();
-
-    reader.addEventListener("load", async () => {
-      try {
-        // console.log(reader.result);
-        await axios.patch(`http://localhost:3001/users/${_id}`, {
-          img: reader.result,
-        });
-        setUserImg(reader.result);
-        imageInput.current.value = "";
-        console.log("done");
-      } catch (e) {
-        console.log(e);
-      }
-    });
-
-    reader.readAsDataURL(file);
+    const imageRef = ref(
+      storage,
+      `profile-pic/${Date.now() + e.target.files[0].name + _id}`
+    );
+    try {
+      e.preventDefault();
+      await uploadBytes(imageRef, e.target.files[0]);
+      const url = await getDownloadURL(imageRef);
+      setUserImg(url);
+      await axios.patch(`http://localhost:3001/users/${_id}`, {
+        img: url,
+      });
+    } catch (e) {
+      console.log(e);
+    }
   };
 
   const deleteProfileHandler = async () => {
@@ -86,86 +83,90 @@ function UserInfo({
         }}
       ></i>
 
-      <div className="flex-row info-container">
-        <div className="align-left flex-grow">
+      <div>
+        <div className="flex-row info-container">
+          <div className="align-left flex-grow">
+            <p>
+              <strong>Name: </strong>
+              <input
+                defaultValue={name || ""}
+                readOnly={!editMood}
+                name="name"
+                className={editMood ? "edit-input" : ""}
+              />
+            </p>
+            <p>
+              <strong>City: </strong>
+              <input
+                defaultValue={city || ""}
+                readOnly={!editMood}
+                name="city"
+                className={editMood ? "edit-input" : ""}
+              />
+            </p>
+          </div>
+
+          <div className="align-left flex-grow">
+            <p>
+              <strong>Last Name: </strong>
+              <input
+                defaultValue={lastName || ""}
+                readOnly={!editMood}
+                name="lastName"
+                className={editMood ? "edit-input" : ""}
+              />
+            </p>
+            <p>
+              <strong>Country: </strong>
+              <input
+                defaultValue={country || ""}
+                readOnly={!editMood}
+                name="country"
+                className={editMood ? "edit-input" : ""}
+              />
+            </p>
+          </div>
+        </div>
+        <div className="align-left ">
           <p>
-            <strong>Name: </strong>
+            <strong>learning: </strong>
             <input
-              defaultValue={name || ""}
+              defaultValue={learning || ""}
               readOnly={!editMood}
-              name="name"
+              name="learning"
               className={editMood ? "edit-input" : ""}
             />
           </p>
           <p>
-            <strong>City: </strong>
+            <strong>school: </strong>
             <input
-              defaultValue={city || ""}
+              defaultValue={school || ""}
               readOnly={!editMood}
-              name="city"
+              name="school"
               className={editMood ? "edit-input" : ""}
             />
           </p>
         </div>
 
-        <div className="align-left flex-grow">
-          <p>
-            <strong>Last Name: </strong>
-            <input
-              defaultValue={lastName || ""}
-              readOnly={!editMood}
-              name="lastName"
-              className={editMood ? "edit-input" : ""}
-            />
-          </p>
-          <p>
-            <strong>Country: </strong>
-            <input
-              defaultValue={country || ""}
-              readOnly={!editMood}
-              name="country"
-              className={editMood ? "edit-input" : ""}
-            />
-          </p>
+        <h4 className="stat-h4 turkiz-bottom-border">STATISTICS</h4>
+        <div className="user-statistics-container flex-row-between">
+          <div>
+            <p>{numOfSnippets} QUESTIONS</p>
+            <i className="fa-regular fa-circle-question blue-font"></i>
+          </div>
+          <div>
+            <p>{solvedQuestions} ANSWERS</p>
+            <i className="fa-regular fa-circle-check blue-font"></i>{" "}
+          </div>
+          <div>
+            <Tooltip content={tooltip} direction="right">
+              <p>{rank}</p>
+            </Tooltip>
+            <i className="fa-solid fa-ranking-star blue-font"></i>{" "}
+          </div>
         </div>
       </div>
-      <div className="align-left">
-        <p>
-          <strong>learning: </strong>
-          <input
-            defaultValue={learning || ""}
-            readOnly={!editMood}
-            name="learning"
-            className={editMood ? "edit-input" : ""}
-          />
-        </p>
-        <p>
-          <strong>school: </strong>
-          <input
-            defaultValue={school || ""}
-            readOnly={!editMood}
-            name="school"
-            className={editMood ? "edit-input" : ""}
-          />
-        </p>
-      </div>
-      <h4 className="stat-h4 turkiz-bottom-border">STATISTICS</h4>
-      <div className="user-statistics-container flex-row">
-        <div>
-          <p>{numOfSnippets} QUESTIONS</p>
-          <i className="fa-regular fa-circle-question blue-font"></i>
-        </div>
-        <div>
-          <p>{solvedQuestions} ANSWERS</p>
-          <i className="fa-regular fa-circle-check blue-font"></i>{" "}
-        </div>
-        <div>
-          <Tooltip content={tooltip} direction="right">
-            <p>{rank}</p>
-          </Tooltip>
-          <i className="fa-solid fa-ranking-star blue-font"></i>{" "}
-        </div>
-      </div>
+
       <div className="edit-profile-container flex-column-center">
         <i
           className={editMood ? "fa-solid fa-check" : "fa-solid fa-pencil"}

@@ -68,7 +68,7 @@ function QuestionsPage() {
         alt=""
         key="2"
       />
-      <div className=" secondary-box page-title-container">
+      <div className=" secondary-box page-title-container margin-bottom-2">
         <h2 className="page-title">
           Explore our community and discover new resources and connections!
         </h2>

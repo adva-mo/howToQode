@@ -12,7 +12,7 @@ function Answer({
   author,
   description,
   isHelpful,
-  createdAt,
+  date,
   comments,
   _id,
   snippetId,
@@ -52,7 +52,7 @@ function Answer({
         <div className="flex-row-around">
           <div>
             <i className="fa-solid fa-calendar-days turkiz-font"></i>
-            <p>{createdAt}</p>
+            <p>{date}</p>
           </div>
           <div>
             <i className="fa-regular fa-user turkiz-font"></i>

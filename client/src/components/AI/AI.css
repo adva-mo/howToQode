@@ -1,5 +1,5 @@
 .ai-response-box {
-  height: 70vh;
+  height: 65vh;
   text-align: left;
   overflow-y: scroll;
   overflow-x: hidden;
@@ -7,10 +7,19 @@
 }
 .ai-form {
   width: 70%;
+  background-color: whitesmoke;
+  border-radius: 5px;
 }
 .ai-input {
   flex-grow: 1;
+  color: var(--black);
+  padding-left: 0.5rem;
+  z-index: 3;
 }
 .user {
   color: var(--primary-blue);
+}
+.send-msg-ai {
+  border-radius: 0 5px 5px 0 !important;
+  padding: 0.5rem !important;
 }

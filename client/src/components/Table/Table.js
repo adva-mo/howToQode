@@ -5,8 +5,7 @@ import "./table.css";
 
 function Table({ data, searchTerm }) {
   const titles = data[0] ? Object.keys(data[0]) : [];
-  console.log(searchTerm);
-  // const path = serachTerm==="questions"?"/snippets/${}"
+
   return (
     <table className="primary-box table-container">
       <thead>
@@ -21,14 +20,12 @@ function Table({ data, searchTerm }) {
                       <p className="blue-btn title-container">{value}</p>
                     </div>
                   </td>
-                  // </div>
                 );
             })
           }
         </tr>
       </thead>
       <tbody>
-        {/* <Row fields={titles} /> */}
         {data?.map((obj) => {
           return (
             <Row

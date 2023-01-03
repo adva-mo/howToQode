@@ -35,10 +35,9 @@
 .profile-info-form * p {
   display: flex;
 }
-/* .info-container {
-  /* justify-content: flex-start; */
-/* width: 50%; */
-/* }  */
+.info-container {
+  margin-bottom: 1rem;
+}
 .upload-input {
   display: none;
 }
