@@ -1,9 +1,9 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useEffect } from "react";
 import "./Chat.css";
 import io from "socket.io-client";
 import uuid from "react-uuid";
 import ScrollToBottom from "react-scroll-to-bottom";
-import loggedUserContext from "../../context/loggedUserContext";
+// import loggedUserContext from "../../context/loggedUserContext";
 
 const socket = io.connect("http://127.0.0.1:3001");
 
@@ -13,7 +13,7 @@ function Chat() {
   const [messageList, setMessageList] = useState([]);
   const [onlineUsers, setOnlineUsers] = useState([]);
 
-  const { loggedUser } = useContext(loggedUserContext);
+  // const { loggedUser } = useContext(loggedUserContext);
 
   const joinChat = () => {
     setIsConnected(true);
@@ -64,13 +64,13 @@ function Chat() {
         {isConnected ? (
           <div className="chat-room">
             {/* <button onClick={}>go offline</button> */}
-            <div className="online-users-container">
+            <div className="online-users-container white-underline">
               {/* <p>online users:</p> */}
               {onlineUsers.map((user, i) => {
                 // if (i !== 0) {
                 return (
                   <div
-                    className="online-user-container flex-row-between"
+                    className="online-user-container flex-row-between "
                     key={uuid()}
                   >
                     <p>{user.socket.slice(0, 6)}</p>

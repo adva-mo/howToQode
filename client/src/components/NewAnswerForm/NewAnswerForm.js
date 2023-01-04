@@ -33,29 +33,30 @@ function NewAnswerForm({ setAnswersToDisplay }) {
       setError(e.message);
     }
   };
-  return (
-    <>
-      <form
-        onSubmit={(e) => e.preventDefault()}
-        className="flex-column-center new-answer-form"
-      >
-        <h3 className="margin-bottom-1">YOUR ANSWER</h3>
-        <input
-          type="text"
-          name="title"
-          placeholder="Your title here..."
-          className="new-answer-title-input margin-bottom-1"
-          ref={title}
-        />
-        <textarea
-          placeholder="Your answer here..."
-          className="new-answer-textarea margin-bottom-1"
-          ref={description}
-        />
-        <button onClick={() => postAnswer()}>post answer</button>
-      </form>
-    </>
-  );
+  if (loggedUser)
+    return (
+      <>
+        <form
+          onSubmit={(e) => e.preventDefault()}
+          className="flex-column-center new-answer-form"
+        >
+          <h3 className="margin-bottom-1">YOUR ANSWER</h3>
+          <input
+            type="text"
+            name="title"
+            placeholder="Your title here..."
+            className="new-answer-title-input margin-bottom-1"
+            ref={title}
+          />
+          <textarea
+            placeholder="Your answer here..."
+            className="new-answer-textarea margin-bottom-1"
+            ref={description}
+          />
+          <button onClick={() => postAnswer()}>post answer</button>
+        </form>
+      </>
+    );
 }
 
 export default NewAnswerForm;

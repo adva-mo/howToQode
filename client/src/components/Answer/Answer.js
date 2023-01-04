@@ -62,7 +62,7 @@ function Answer({
                 navigate(`/profile/${target.textContent}`);
               }}
             >
-              {author}
+              {author.slice(0, 6)}
             </p>
           </div>
           <div>

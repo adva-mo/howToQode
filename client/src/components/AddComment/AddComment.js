@@ -25,19 +25,20 @@ function AddComment({ answerId, snippetId, setAnswerComments }) {
         setAnswerComments((prev) => [...prev, comment]);
       });
   };
-  return (
-    <form className="add-comment-form" onSubmit={(e) => e.preventDefault()}>
-      <textarea
-        className="comment-textarea"
-        tyep="text"
-        placeholder="Add a comment..."
-        ref={commentInput}
-      />
-      <button type="submit" onClick={handlesubmit}>
-        send
-      </button>
-    </form>
-  );
+  if (loggedUser)
+    return (
+      <form className="add-comment-form" onSubmit={(e) => e.preventDefault()}>
+        <textarea
+          className="comment-textarea"
+          tyep="text"
+          placeholder="Add a comment..."
+          ref={commentInput}
+        />
+        <button type="submit" onClick={handlesubmit}>
+          send
+        </button>
+      </form>
+    );
 }
 
 export default AddComment;

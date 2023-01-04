@@ -39,7 +39,7 @@ function SnippetCard({
               }}
               className="profile-link"
             >
-              {author}
+              {author.slice(0, 6)}
             </p>
           </div>
           <div>
