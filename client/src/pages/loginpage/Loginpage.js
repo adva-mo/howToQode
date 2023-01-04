@@ -14,12 +14,11 @@ function Loginpage() {
   useEffect(() => {
     if (!userToRegister) return;
     const path = isNewUser
-      ? "http://localhost:3001/users/register"
-      : "http://localhost:3001/users/login";
+      ? "https://howtoqode.onrender.com/users/register"
+      : "https://howtoqode.onrender.com/users/login";
     axios
       .post(path, userToRegister)
       .then(({ data }) => {
-        // console.log(data);
         localStorage.setItem("QODE_APP", JSON.stringify([data._id]));
         setLoggedUser(data._id);
         if (data._id) navigate(`/profile/${data._id}`);
