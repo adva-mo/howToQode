@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import "./Chat.css";
 import io from "socket.io-client";
 import uuid from "react-uuid";
 import ScrollToBottom from "react-scroll-to-bottom";
-// import loggedUserContext from "../../context/loggedUserContext";
+import loggedUserContext from "../../context/loggedUserContext";
 
 const socket = io.connect("http://127.0.0.1:3001");
 
@@ -13,7 +13,7 @@ function Chat() {
   const [messageList, setMessageList] = useState([]);
   const [onlineUsers, setOnlineUsers] = useState([]);
 
-  // const { loggedUser } = useContext(loggedUserContext);
+  const { loggedUser } = useContext(loggedUserContext);
 
   const joinChat = () => {
     setIsConnected(true);
@@ -65,26 +65,39 @@ function Chat() {
           <div className="chat-room">
             {/* <button onClick={}>go offline</button> */}
             <div className="online-users-container">
-              <p>online users:</p>
-              {onlineUsers.map((user) => (
-                <p key={user.socket}>{user.socket}</p>
-              ))}
+              {/* <p>online users:</p> */}
+              {onlineUsers.map((user, i) => {
+                // if (i !== 0) {
+                return (
+                  <div
+                    className="online-user-container flex-row-between"
+                    key={uuid()}
+                  >
+                    <p>{user.socket.slice(0, 6)}</p>
+                    <div className="green-circle"></div>
+                  </div>
+                );
+                // }
+              })}
             </div>
-            <h4>live chat</h4>
+            {/* <h4>live chat</h4> */}
             <ScrollToBottom className="message-container">
               {messageList.map((data) => {
                 return (
                   <div
+                    className="message"
                     id={data.author === socket.id ? "you" : "other"}
                     key={uuid()}
                   >
                     <div>
-                      <p>{data.message}</p>
-                    </div>
-                    <div>
-                      {" "}
-                      <p>{data.time}</p>
-                      {/* <p>{data.author}</p> */}
+                      <div className="message-content">
+                        <p>{data.message}</p>
+                      </div>
+                      <div className="message-meta flex-row-center">
+                        {" "}
+                        <p id="time">{data.time}</p>
+                        <p id="author">{data.author.slice(0, 6)}</p>
+                      </div>
                     </div>
                   </div>
                 );
@@ -102,7 +115,6 @@ function Chat() {
                 }}
               />
               <button className="send-msg-btn" onClick={sendMessage}>
-                {/* &#9658; */}
                 <i className="fa-regular fa-paper-plane"></i>
               </button>
             </div>

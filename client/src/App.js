@@ -12,15 +12,13 @@ import Error from "./components/error/Error";
 
 function App() {
   const [loggedUser, setLoggedUser] = useLocalStorage("QODE_APP", false);
-  const [toggleUpdate, setToggleUpdate] = useState(false);
+  // const [toggleUpdate, setToggleUpdate] = useState(false);
   const [error, setError] = useState(false);
 
   const size = useWindowSize();
   return (
     <div className="App">
-      <currentLoggedUser.Provider
-        value={{ loggedUser, setLoggedUser, setToggleUpdate, toggleUpdate }}
-      >
+      <currentLoggedUser.Provider value={{ loggedUser, setLoggedUser }}>
         {size.width < 800 ? <SideBar /> : <Navbar />}
         <div className="split-component">
           <errorCtx.Provider value={{ error, setError }}>
