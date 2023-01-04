@@ -1,6 +1,26 @@
 .upload-snippet-input {
-  /* display: none; */
   font-size: small !important;
-  padding: 0 !important;
   margin: 1rem 0;
+  /* width: 350px; */
+  max-width: 100%;
+  color: whitesmoke !important;
+  padding: 5px;
+  border-radius: 10px;
+  border: 1px solid var(--turkiz);
+  background-color: transparent;
+}
+.upload-snippet-input::file-selector-button {
+  margin-right: 20px;
+  border: none;
+  background: var(--turkiz);
+  padding: 10px 20px;
+  border-radius: 10px;
+  color: #fff;
+  cursor: pointer;
+  transition: background 0.2s ease-in-out;
+}
+
+.upload-snippet-input::file-selector-button:hover {
+  background: rgb(4, 186, 164);
+  /* outline: 1px solid rgb(4, 186, 164); */
 }

@@ -1,4 +1,18 @@
-.language-select {
+/* .language-select {
   color: var(--black);
+} */
+.select-primary {
   margin: 1rem 0;
+  border: 1px solid var(--turkiz);
+  background-color: transparent;
+  padding: 5px;
+  color: whitesmoke;
+  padding-right: 0.9rem;
+  /* appearance: none; */
+  padding-right: 0.5rem;
+  /* transition: outline 0.2s ease-in-out; */
+}
+.select-primary:hover {
+  cursor: pointer;
+  outline: 1px solid rgb(4, 186, 164);
 }

@@ -13,7 +13,6 @@ function CodeInput() {
   return (
     <div className="code-input-container">
       <div className="code-textarea">
-        <label htmlFor="code"></label>
         <textarea
           className="code-textarea"
           type="text"

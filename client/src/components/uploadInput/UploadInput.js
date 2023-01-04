@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import axios from "axios";
 import newSnippetContext from "../../context/snippet.context.js";
 import "./uploadInput.css";
@@ -8,7 +8,7 @@ function UploadInput({ setIsFileUploaded }) {
 
   const { setSnippetObject } = useContext(newSnippetContext);
 
-  const uploadFileHandler = async () => {
+  const uploadFile = async () => {
     try {
       let formData = new FormData();
       formData.append("upload-snippet", imageToUpload);
@@ -23,9 +23,13 @@ function UploadInput({ setIsFileUploaded }) {
     }
   };
 
+  useEffect(() => {
+    uploadFile();
+  }, [imageToUpload]);
+
   return (
     <div>
-      <span>load a script:</span>{" "}
+      <p>load a script:</p>{" "}
       <input
         className="upload-snippet-input"
         accept="text/plain"
@@ -33,7 +37,7 @@ function UploadInput({ setIsFileUploaded }) {
         type="file"
         onChange={(e) => setImageToUpload(e.target.files[0])}
       />
-      <button onClick={uploadFileHandler}>upload</button>
+      {/* <button onClick={uploadFileHandler}>upload</button> */}
     </div>
   );
 }

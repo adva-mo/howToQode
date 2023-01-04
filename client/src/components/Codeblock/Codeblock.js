@@ -16,6 +16,7 @@ const Codeblock = ({ language, textToFormat }) => {
         borderRadius: "2px",
         flexWrap: "wrap",
         minHeight: "3rem",
+        width: "100%",
       }}
     >
       {textToFormat}
