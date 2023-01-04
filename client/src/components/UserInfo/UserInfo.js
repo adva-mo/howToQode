@@ -3,7 +3,8 @@ import { storage } from "../../utils/database-config";
 import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
 import React, { useState, useRef } from "react";
 import { useNavigate } from "react-router-dom";
-import Tooltip from "react-tooltip-lite";
+import { Tooltip } from "react-tooltip";
+import "react-tooltip/dist/react-tooltip.css";
 import { tooltip } from "../../utils/tooltip.utils";
 import "./UserInfo.css";
 
@@ -159,9 +160,8 @@ function UserInfo({
             <i className="fa-regular fa-circle-check blue-font"></i>{" "}
           </div>
           <div>
-            <Tooltip content={tooltip} direction="right">
-              <p>{rank}</p>
-            </Tooltip>
+            <p id="tooltip-data">{rank}</p>
+            <Tooltip anchorId="tooltip-data" content={tooltip} place="right" />
             <i className="fa-solid fa-ranking-star blue-font"></i>{" "}
           </div>
         </div>

@@ -13,4 +13,5 @@
   --purple: rgb(134, 85, 255);
   --black: rgb(44, 44, 44);
   color: whitesmoke;
+  overflow-x: hidden;
 }

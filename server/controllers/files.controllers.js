@@ -2,7 +2,6 @@ const fs = require("fs");
 const Image = require("../models/Image");
 
 const getFileContent = async (req, res) => {
-  console.log("k");
   try {
     const filePath = req.file.filename;
     const path = process.cwd() + "/images/" + filePath;

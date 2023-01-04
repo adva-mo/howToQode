@@ -25,6 +25,7 @@ function UploadInput({ setIsFileUploaded }) {
 
   useEffect(() => {
     uploadFile();
+    // eslint-disable-next-line
   }, [imageToUpload]);
 
   return (

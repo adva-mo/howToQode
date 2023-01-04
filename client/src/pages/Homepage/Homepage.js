@@ -4,7 +4,7 @@ import "./Homepage.css";
 function Homepage() {
   return (
     <div className="Homepage page-container Homepage-page-container">
-      <img
+      {/* <img
         className="test"
         src={process.env.PUBLIC_URL + "/assets/Ellipse1.png"}
         alt=""
@@ -15,13 +15,17 @@ function Homepage() {
         src={process.env.PUBLIC_URL + "/assets/Ellipse2.png"}
         alt=""
         key="1"
-      />
+      /> */}
       <div className="flex-row-between">
-        <img
+        {/* <img
           className="hero-image"
           src={process.env.PUBLIC_URL + "/assets/hero-image.png"}
           alt=""
-        />
+        /> */}
+        <div class="space">
+          <div class="earth"></div>
+          <div class="moon"></div>
+        </div>
         <div className="secondary-box">
           <h1 className="page-title"> Welcome</h1>
           <h3 className="page-title">to the Programming Help Community</h3>

@@ -14,3 +14,52 @@
 .Homepage-page-container {
   justify-content: center;
 }
+.space {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 200px;
+  height: 200px;
+  /* background: lightgray; */
+}
+
+.earth {
+  box-sizing: border-box;
+  position: absolute;
+  width: 60px;
+  height: 60px;
+  background: linear-gradient(var(--turkiz), var(--purple));
+  border: 1px solid var(--turkiz);
+  border-radius: 50%;
+  animation: animate-earth 3s linear infinite;
+}
+
+.moon {
+  box-sizing: border-box;
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  background: linear-gradient(gray, white);
+  border: 1px solid gray;
+  border-radius: 50%;
+  animation: animate-moon 3s linear infinite;
+}
+
+@keyframes animate-earth {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes animate-moon {
+  0% {
+    transform: rotate(0deg) translate(55px);
+  }
+  100% {
+    transform: rotate(360deg) translate(55px);
+  }
+}
