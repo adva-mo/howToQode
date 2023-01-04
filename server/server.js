@@ -22,7 +22,13 @@ const passport = require("passport");
 
 const port = process.env.PORT || 3001;
 
-app.use(cors({ origin: "http://localhost:3000" }));
+// app.use(cors({ origin: "http://localhost:3000" }));
+app.use(
+  cors({
+    origin:
+      "https://63b570cd527500000bc801ea--legendary-chimera-72520c.netlify.app/",
+  })
+);
 app.use(express.json());
 app.use(validateRequest);
 
