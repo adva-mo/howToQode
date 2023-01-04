@@ -20,7 +20,7 @@ function QuestionsPage() {
       })
       .catch((e) => console.log(e));
     axios
-      .get("https://howtoqode.onrender.com//users")
+      .get("https://howtoqode.onrender.com/users")
       .then(({ data }) => {
         console.log(data);
         setUsers(data);
