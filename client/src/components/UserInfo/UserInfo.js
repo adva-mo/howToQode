@@ -59,7 +59,7 @@ function UserInfo({
 
   const deleteProfileHandler = async () => {
     try {
-      await axios.delete(`http://localhost:3001/users/${_id}`);
+      await axios.delete(`https://howtoqode.onrender.com/users/${_id}`);
       navigate(`/login`);
     } catch (e) {
       // setError(e.message);
