@@ -30,7 +30,7 @@ function NewSnippetPage() {
         author: `${loggedUser}`,
       };
       axios
-        .post("http://localhost:3001/snippets", postBody)
+        .post("https://howtoqode.onrender.com/snippets", postBody)
         .then(({ data }) => {
           setNewSnippetObj(data);
         })

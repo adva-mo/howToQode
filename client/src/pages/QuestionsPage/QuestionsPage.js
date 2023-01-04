@@ -12,7 +12,7 @@ function QuestionsPage() {
 
   useEffect(() => {
     axios
-      .get("http://localhost:3001/snippets")
+      .get("https://howtoqode.onrender.com/snippets")
       .then(({ data }) => {
         setquestions(data);
         setqueryResults(data);
@@ -20,7 +20,7 @@ function QuestionsPage() {
       })
       .catch((e) => console.log(e));
     axios
-      .get("http://localhost:3001/users")
+      .get("https://howtoqode.onrender.com//users")
       .then(({ data }) => {
         console.log(data);
         setUsers(data);

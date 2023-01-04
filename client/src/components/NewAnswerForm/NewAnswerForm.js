@@ -22,7 +22,7 @@ function NewAnswerForm({ setAnswersToDisplay }) {
         description: description.current.value,
       };
       const { data } = await axios.post(
-        `http://localhost:3001/answers/${snippetId}`,
+        `https://howtoqode.onrender.com/answers/${snippetId}`,
         newAnswer
       );
       setAnswersToDisplay((prev) => [...prev, data]);

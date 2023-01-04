@@ -13,7 +13,7 @@ function AI() {
       setResponse((prev) => [...prev, message]);
       setMessage("");
       e.preventDefault();
-      const result = await axios.post("http://127.0.0.1:3001/ai", {
+      const result = await axios.post("https://howtoqode.onrender.com/ai", {
         body: message,
       });
       setResponse((prev) => [...prev, result.data.message]);

@@ -30,7 +30,10 @@ function UserInfo({
   const editProfileHandler = async (e) => {
     if (editMood) {
       const updatedUserInfo = Object.fromEntries(new FormData(form.current));
-      await axios.patch(`http://localhost:3001/users/${_id}`, updatedUserInfo);
+      await axios.patch(
+        `https://howtoqode.onrender.com/users/${_id}`,
+        updatedUserInfo
+      );
       setEditMood(false);
       navigate(`/profile/${_id}`);
     } else setEditMood((prev) => !prev);
@@ -46,7 +49,7 @@ function UserInfo({
       await uploadBytes(imageRef, e.target.files[0]);
       const url = await getDownloadURL(imageRef);
       setUserImg(url);
-      await axios.patch(`http://localhost:3001/users/${_id}`, {
+      await axios.patch(`https://howtoqode.onrender.com/users/${_id}`, {
         img: url,
       });
     } catch (e) {

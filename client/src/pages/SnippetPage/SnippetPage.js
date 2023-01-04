@@ -11,7 +11,7 @@ function SnippetPage() {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:3001/snippets/${id}`)
+      .get(`https://howtoqode.onrender.com/snippets/${id}`)
       .then(({ data }) => setCurrentSnippet(data))
       .catch((e) => setError(e.response.data))
       .finally(() => console.log(currentSnippet));

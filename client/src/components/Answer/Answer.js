@@ -31,10 +31,13 @@ function Answer({
 
   const addLike = async () => {
     try {
-      await axios.post(`http://localhost:3001/answers/${snippetId}/confirm`, {
-        answerId: _id,
-        userid: loggedUser,
-      });
+      await axios.post(
+        `https://howtoqode.onrender.com/answers/${snippetId}/confirm`,
+        {
+          answerId: _id,
+          userid: loggedUser,
+        }
+      );
       setNumOfLikes((prev) => (prev += 1));
       setisLoggedUserLiked((prev) => !prev);
     } catch (e) {

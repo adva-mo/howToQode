@@ -16,7 +16,7 @@ function UserProfilePage() {
   useEffect(() => {
     if (!id) return;
     axios
-      .get(`http://localhost:3001/users/${`${id}`}`)
+      .get(`https://howtoqode.onrender.com/users/${`${id}`}`)
       .then(({ data }) => setUser(data))
       .catch((e) => {
         setError(e.response?.data);
@@ -25,7 +25,7 @@ function UserProfilePage() {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:3001/snippets?user=${id}`)
+      .get(`https://howtoqode.onrender.com/snippets?user=${id}`)
       .then(({ data }) => setUserSnippet(data))
       .catch((e) => {
         console.log(e);

@@ -13,7 +13,7 @@ function UploadInput({ setIsFileUploaded }) {
       let formData = new FormData();
       formData.append("upload-snippet", imageToUpload);
       const res = await axios.post(
-        "http://localhost:3001/files/upload/snippet",
+        "https://howtoqode.onrender.com/files/upload/snippet",
         formData
       );
       setIsFileUploaded((prev) => !prev);

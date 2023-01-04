@@ -5,7 +5,7 @@ import uuid from "react-uuid";
 import ScrollToBottom from "react-scroll-to-bottom";
 // import loggedUserContext from "../../context/loggedUserContext";
 
-const socket = io.connect("http://127.0.0.1:3001");
+const socket = io.connect("https://howtoqode.onrender.com/");
 
 function Chat() {
   const [isConnected, setIsConnected] = useState(false);
