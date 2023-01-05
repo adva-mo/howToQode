@@ -63,6 +63,7 @@ function UserInfo({
       navigate(`/login`);
     } catch (e) {
       // setError(e.message);
+      console.log(e);
     }
   };
 
