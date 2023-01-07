@@ -4,7 +4,6 @@
 }
 .user-profile-image {
   width: 5rem;
-  /* height:  5rem; */
   border-radius: 5px;
 }
 .edit-profile-container {
@@ -48,19 +47,9 @@
   cursor: pointer;
   transform: translate(-70%, 50%);
 }
-.react-tooltip-lite {
-  background: #333;
-  color: white;
-  border-radius: 5px;
-  font-size: smaller;
-}
 
-.react-tooltip-lite-arrow {
-  border-color: #333;
-  border-top: 2px solid transparent;
-  border-bottom: 2px solid transparent;
-
-  border-right: 2px solid #333;
+.tooltip-cont {
+  width: 10rem;
 }
 @media (max-width: 600px) {
   .info-container {

@@ -8,6 +8,7 @@ import "react-tooltip/dist/react-tooltip.css";
 import { tooltip } from "../../utils/tooltip.utils";
 import "./UserInfo.css";
 import currentLoggedUser from "../../context/loggedUserContext";
+import { getRank } from "../../utils/utils.js";
 
 function UserInfo({
   name,
@@ -173,8 +174,14 @@ function UserInfo({
             <i className="fa-regular fa-circle-check blue-font"></i>{" "}
           </div>
           <div>
-            <p id="tooltip-data">{rank}</p>
-            <Tooltip anchorId="tooltip-data" content={tooltip} place="right" />
+            <p id="tooltip-data">{getRank(solvedQuestions)}</p>
+            <Tooltip
+              anchorId="tooltip-data"
+              content={tooltip}
+              place="bottom"
+              noArrow={false}
+              className="tooltip-cont"
+            />
             <i className="fa-solid fa-ranking-star blue-font"></i>{" "}
           </div>
         </div>

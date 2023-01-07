@@ -11,3 +11,8 @@ export const validateSnippetFields = (obj) => {
   }
   return true;
 };
+export const getRank = (number) => {
+  if (number >= 10) return "expert";
+  else if (number >= 5) return "intermediate";
+  else return "begginer";
+};
