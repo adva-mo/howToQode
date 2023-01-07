@@ -63,11 +63,8 @@ function Chat() {
       <div className="chat">
         {isConnected ? (
           <div className="chat-room">
-            {/* <button onClick={}>go offline</button> */}
-            <div className="online-users-container white-underline">
-              {/* <p>online users:</p> */}
+            <div onk className="online-users-container white-underline">
               {onlineUsers.map((user, i) => {
-                // if (i !== 0) {
                 return (
                   <div
                     className="online-user-container flex-row-between "
@@ -77,10 +74,8 @@ function Chat() {
                     <div className="green-circle"></div>
                   </div>
                 );
-                // }
               })}
             </div>
-            {/* <h4>live chat</h4> */}
             <ScrollToBottom className="message-container">
               {messageList.map((data) => {
                 return (

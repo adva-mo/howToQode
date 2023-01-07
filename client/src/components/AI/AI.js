@@ -3,12 +3,15 @@ import axios from "axios";
 import "./AI.css";
 import ScrollToBottom from "react-scroll-to-bottom";
 import v4 from "react-uuid";
+import Spinner from "../Spinner/Spinner";
 
 function AI() {
   const [message, setMessage] = useState("");
   const [responses, setResponse] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
 
   const handleSubmt = async (e) => {
+    setIsLoading(true);
     try {
       setResponse((prev) => [...prev, message]);
       setMessage("");
@@ -17,7 +20,9 @@ function AI() {
         body: message,
       });
       setResponse((prev) => [...prev, result.data.message]);
+      setIsLoading(false);
     } catch (e) {
+      setIsLoading(false);
       console.log(e);
     }
   };
@@ -30,6 +35,7 @@ function AI() {
               {r}
             </p>
           ))}
+          {isLoading && <Spinner />}
         </ScrollToBottom>
       </div>
       <form onSubmit={handleSubmt} className="ai-form flex-row">

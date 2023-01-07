@@ -1,0 +1,31 @@
+/* @animationTime: 0.8s;
+@dotSize: 20px; */
+.loader {
+  text-align: center;
+  display: flex;
+}
+.loader span {
+  display: inline-block;
+  vertical-align: middle;
+  width: 10px;
+  height: 10px;
+  background: rgb(252, 250, 250);
+  border-radius: 20px;
+  animation: loader 0.8s infinite alternate;
+}
+.loader span:nth-of-type(2) {
+  animation-delay: 0.2s;
+}
+.loader span:nth-of-type(3) {
+  animation-delay: 0.6s;
+}
+@keyframes loader {
+  0% {
+    opacity: 0.9;
+    transform: scale(0.5);
+  }
+  100% {
+    opacity: 0.1;
+    transform: scale(1);
+  }
+}

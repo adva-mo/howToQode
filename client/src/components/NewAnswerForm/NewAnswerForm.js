@@ -6,7 +6,7 @@ import { useParams } from "react-router-dom";
 import errorCtx from "../../context/error.context";
 
 function NewAnswerForm({ setAnswersToDisplay }) {
-  const title = useRef();
+  // const title = useRef();
   const description = useRef();
   const { loggedUser } = useContext(loggedUserContext);
   const { id: snippetId } = useParams();
@@ -14,11 +14,10 @@ function NewAnswerForm({ setAnswersToDisplay }) {
 
   const postAnswer = async () => {
     try {
-      if (title.current.value === "" || description.current.value === "")
-        return setError("missing fields");
+      if (description.current.value === "") return setError("missing fields");
       const newAnswer = {
         author: loggedUser,
-        title: title.current.value,
+        title: "title",
         description: description.current.value,
       };
       const { data } = await axios.post(
@@ -27,7 +26,7 @@ function NewAnswerForm({ setAnswersToDisplay }) {
       );
       setAnswersToDisplay((prev) => [...prev, data]);
       description.current.value = "";
-      title.current.value = "";
+      // title.current.value = "";
     } catch (e) {
       console.log(e.message);
       setError(e.message);
@@ -41,13 +40,13 @@ function NewAnswerForm({ setAnswersToDisplay }) {
           className="flex-column-center new-answer-form"
         >
           <h3 className="margin-bottom-1">YOUR ANSWER</h3>
-          <input
+          {/* <input
             type="text"
             name="title"
             placeholder="Your title here..."
             className="new-answer-title-input margin-bottom-1"
             ref={title}
-          />
+          /> */}
           <textarea
             placeholder="Your answer here..."
             className="new-answer-textarea margin-bottom-1"
