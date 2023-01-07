@@ -105,3 +105,9 @@
   align-items: center;
   text-align: center;
 }
+@media (max-width: 800px) {
+  .chat {
+    top: 0;
+    height: 100vh;
+  }
+}

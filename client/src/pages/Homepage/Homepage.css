@@ -45,7 +45,10 @@
   border-radius: 50%;
   animation: animate-moon 3s linear infinite;
 }
-
+.welcome-title {
+  font-size: 5rem;
+  transition: all ease-in 0s;
+}
 @keyframes animate-earth {
   0% {
     transform: rotate(0deg);
@@ -61,5 +64,10 @@
   }
   100% {
     transform: rotate(360deg) translate(55px);
+  }
+}
+@media (max-width: 800px) {
+  .welcome-title {
+    font-size: 3rem;
   }
 }

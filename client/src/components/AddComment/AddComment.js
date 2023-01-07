@@ -22,7 +22,10 @@ function AddComment({ answerId, snippetId, setAnswerComments }) {
       })
       .catch((e) => console.log(e))
       .finally(() => {
-        setAnswerComments((prev) => [...prev, comment]);
+        setAnswerComments((prev) => [
+          ...prev,
+          { ...comment, date: new Date().toLocaleDateString() },
+        ]);
       });
   };
   if (loggedUser)

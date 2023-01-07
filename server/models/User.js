@@ -22,7 +22,8 @@ const userSchema = new mongoose.Schema(
     },
     img: {
       type: String,
-      default: "",
+      default:
+        "https://firebasestorage.googleapis.com/v0/b/sharry-1319e.appspot.com/o/QODE%2FASSETS%2Fuser.png?alt=media&token=b4738b32-3f70-4718-a8fa-56d72c526396",
     },
     name: {
       type: String,

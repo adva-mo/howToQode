@@ -26,7 +26,7 @@ function SnippetCard({
       .get(`http://127.0.0.1:3001/users/name/${author}`)
       .then(({ data }) => setauthorName(data))
       .catch((e) => console.log(e));
-  }, []);
+  }, [author]);
 
   return (
     <div className="flex-column-center snippet-card">

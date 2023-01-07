@@ -39,7 +39,20 @@
 @media (max-width: 800px) {
   .navbar-ul {
     flex-direction: column;
-    background: none;
-    background-color: none;
+    /* background: none; */
+    /* background-color: none; */
+    position: static;
+    height: 100%;
+  }
+  .bm-menu {
+    padding: 0 !important;
+  }
+  .bm-item-list {
+    padding: 0 !important;
+  }
+
+  #react-burger-cross-btn {
+    background-color: aqua !important;
+    /* background-image:  */
   }
 }

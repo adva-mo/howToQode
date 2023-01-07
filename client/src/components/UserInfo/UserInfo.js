@@ -1,12 +1,13 @@
 import axios from "axios";
 import { storage } from "../../utils/database-config";
 import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { Tooltip } from "react-tooltip";
 import "react-tooltip/dist/react-tooltip.css";
 import { tooltip } from "../../utils/tooltip.utils";
 import "./UserInfo.css";
+import currentLoggedUser from "../../context/loggedUserContext";
 
 function UserInfo({
   name,
@@ -26,6 +27,7 @@ function UserInfo({
   const imageInput = useRef();
   const navigate = useNavigate();
   const form = useRef();
+  const { loggedUser } = useContext(currentLoggedUser);
 
   const editProfileHandler = async (e) => {
     if (editMood) {
@@ -70,20 +72,30 @@ function UserInfo({
 
   return (
     <form ref={form} className="primary-box profile-info-form ">
-      <img className="user-profile-image" src={userImg} alt={userImg} />
+      <img
+        className="user-profile-image"
+        src={
+          userImg ||
+          img ||
+          "https://firebasestorage.googleapis.com/v0/b/sharry-1319e.appspot.com/o/QODE%2FASSETS%2Fuser.png?alt=media&token=b4738b32-3f70-4718-a8fa-56d72c526396"
+        }
+        alt={userImg}
+      />
       <input
         ref={imageInput}
         type="file"
         onChange={uploadProfileImage}
         className="upload-input"
       />
-      <i
-        className="fa-solid fa-file-arrow-up upload-icon turkiz-font"
-        onClick={(e) => {
-          e.preventDefault();
-          imageInput.current.click();
-        }}
-      ></i>
+      {loggedUser === _id && (
+        <i
+          className="fa-solid fa-file-arrow-up upload-icon blue-font"
+          onClick={(e) => {
+            e.preventDefault();
+            imageInput.current.click();
+          }}
+        ></i>
+      )}
 
       <div>
         <div className="flex-row info-container">
@@ -168,20 +180,22 @@ function UserInfo({
         </div>
       </div>
 
-      <div className="edit-profile-container flex-column-center">
-        <i
-          className={editMood ? "fa-solid fa-check" : "fa-solid fa-pencil"}
-          onClick={editProfileHandler}
-        ></i>
-        {editMood ? (
+      {loggedUser === _id && (
+        <div className="edit-profile-container flex-column-center">
           <i
-            className="fa-solid fa-trash-can"
-            onClick={deleteProfileHandler}
+            className={editMood ? "fa-solid fa-check" : "fa-solid fa-pencil"}
+            onClick={editProfileHandler}
           ></i>
-        ) : (
-          ""
-        )}
-      </div>
+          {editMood ? (
+            <i
+              className="fa-solid fa-trash-can"
+              onClick={deleteProfileHandler}
+            ></i>
+          ) : (
+            ""
+          )}
+        </div>
+      )}
     </form>
   );
 }

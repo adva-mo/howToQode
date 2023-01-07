@@ -13,7 +13,7 @@ function Comment({ author, description, date }) {
       .get(`http://127.0.0.1:3001/users/name/${author}`)
       .then(({ data }) => setauthorName(data))
       .catch((e) => console.log(e));
-  }, []);
+  }, [author]);
 
   return (
     <div className=" primary-box comment-container align-left flex-row">

@@ -46,7 +46,7 @@
   height: 2rem;
   z-index: 5;
   cursor: pointer;
-  transform: translate(-70%, -10%);
+  transform: translate(-70%, 50%);
 }
 .react-tooltip-lite {
   background: #333;
@@ -61,4 +61,16 @@
   border-bottom: 2px solid transparent;
 
   border-right: 2px solid #333;
+}
+@media (max-width: 600px) {
+  .info-container {
+    flex-direction: column !important;
+  }
+  .user-statistics-container {
+    flex-direction: column;
+  }
+  .profile-info-form {
+    padding: 0.3rem;
+    width: 90%;
+  }
 }
