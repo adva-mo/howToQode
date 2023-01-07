@@ -52,6 +52,7 @@ function UserInfo({
       await axios.patch(`https://howtoqode.onrender.com/users/${_id}`, {
         img: url,
       });
+      console.log("image uploaded");
     } catch (e) {
       console.log(e);
     }
@@ -69,11 +70,7 @@ function UserInfo({
 
   return (
     <form ref={form} className="primary-box profile-info-form ">
-      <img
-        className="user-profile-image"
-        src={userImg || process.env.PUBLIC_URL + "/assets/avatar.jpg"}
-        alt=""
-      />
+      <img className="user-profile-image" src={userImg} alt={userImg} />
       <input
         ref={imageInput}
         type="file"

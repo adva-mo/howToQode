@@ -1,9 +1,10 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Codeblock from "../Codeblock/Codeblock";
 import Answer from "../Answer/Answer";
 import { useNavigate } from "react-router-dom";
 import NewAnswerForm from "../NewAnswerForm/NewAnswerForm";
 import "./SnippetCard.css";
+import axios from "axios";
 
 function SnippetCard({
   author,
@@ -18,6 +19,14 @@ function SnippetCard({
 }) {
   const navigate = useNavigate();
   const [answersToDisplay, setAnswersToDisplay] = useState(answers);
+  const [authorName, setauthorName] = useState("");
+
+  useEffect(() => {
+    axios
+      .get(`http://127.0.0.1:3001/users/name/${author}`)
+      .then(({ data }) => setauthorName(data))
+      .catch((e) => console.log(e));
+  }, []);
 
   return (
     <div className="flex-column-center snippet-card">
@@ -33,13 +42,15 @@ function SnippetCard({
             ASKED BY <i className="fa-regular fa-user turkiz-font"></i>
             <br />
             <p
+              id={author}
               onClick={({ target }) => {
-                console.log(target.textContent);
-                navigate(`/profile/${target.textContent}`);
+                if (authorName === "deleted user") return;
+                navigate(`/profile/${target.id}`);
               }}
               className="profile-link"
             >
-              {author.slice(0, 6)}
+              {/* {author} */}
+              {authorName}
             </p>
           </div>
           <div>

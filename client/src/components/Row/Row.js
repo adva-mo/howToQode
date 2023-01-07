@@ -5,10 +5,18 @@ import uuid from "react-uuid";
 function Row({ fields, id, searchTerm }) {
   return (
     <tr>
-      {fields.map((value) => {
+      {fields.map((value, i) => {
         if (value !== id)
           return (
-            <td key={uuid()} className=" right-blue-border">
+            <td
+              key={uuid()}
+              className={
+                // value === "title"
+                //   ? "right-blue-border first-td"
+                //   :
+                "right-blue-border"
+              }
+            >
               <div className="flex-row">
                 {typeof value === "string" ? value : value ? "yes" : "no"}
               </div>

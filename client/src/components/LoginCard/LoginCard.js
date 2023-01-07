@@ -9,15 +9,12 @@ const isPasswordInputValid = (value) =>
   value.trim() !== "" && value.length >= 6;
 
 function LoginCard({ setUserToRegister, isNewUser, setIsNewUser }) {
-  // const [isNewUser, setIsNewUser] = useState(true);
-
   const {
     value: emailValue,
     isValid: isEmailValid,
     hasError: emailHasError,
     valueChangeHandler: emailChangeHandler,
     inputBlurHandler: emailBlurHndler,
-    // reset: resetEmail,
   } = useInput(isEmailInputValid);
 
   const {
@@ -26,7 +23,6 @@ function LoginCard({ setUserToRegister, isNewUser, setIsNewUser }) {
     hasError: passwordHasError,
     valueChangeHandler: passwordChangeHandler,
     inputBlurHandler: passwordBlurHandler,
-    // reset: resetPassword,
   } = useInput(isPasswordInputValid);
 
   const {
@@ -34,13 +30,11 @@ function LoginCard({ setUserToRegister, isNewUser, setIsNewUser }) {
     isTouched,
     valueChangeHandler: confirmedpasswordChangeHandler,
     inputBlurHandler: confirmedpasswordBlurHandler,
-    // reset: resetConfirmedPassword,
   } = useInput(isPasswordInputValid);
 
   const confirmedPasswordHasError =
     isTouched && confirmedPasswordValue !== passwordValue;
 
-  if (confirmedPasswordHasError) console.log("kkk");
   const emailClasses = emailHasError
     ? "error-class and bottom-border"
     : "bottom-border";
@@ -125,9 +119,13 @@ function LoginCard({ setUserToRegister, isNewUser, setIsNewUser }) {
         )}
       </div>
 
-      <button className="purple-btn">{isNewUser ? "Sign up" : "Login"}</button>
+      <button className="select-primary">
+        {isNewUser ? "Sign up" : "Login"}
+      </button>
       <div>
         <button
+          style={{ fontSize: "0.7rem" }}
+          className="select-primary"
           type="button"
           // className="blue-btn"
           onClick={() => {

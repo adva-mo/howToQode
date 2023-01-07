@@ -1,0 +1,12 @@
+.seondary-btn {
+  border: 1px solid var(--turkiz);
+  background-color: transparent;
+}
+.bottom-border {
+  border-radius: 0;
+  border: 1px gray solid;
+  border-width: 0 0 1px 0;
+}
+.input-container {
+  height: 4rem;
+}

@@ -9,6 +9,7 @@ const {
   loginUser,
   logoutUser,
   addUser,
+  getUserName,
 } = require("../controllers/users.controllers.js");
 
 const usersRouter = express.Router();
@@ -28,5 +29,7 @@ usersRouter.post("/register", registerUser);
 usersRouter.post("/login", loginUser);
 
 usersRouter.get("/logout", logoutUser);
+
+usersRouter.get("/name/:id", getUserName);
 
 module.exports = usersRouter;

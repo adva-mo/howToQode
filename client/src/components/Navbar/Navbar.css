@@ -30,8 +30,8 @@
   border-radius: 90%;
 }
 .logo-img {
-  width: 7rem;
-  transform: translateY(-0.7rem);
+  width: 4rem;
+  /* transform: translateY(-0.7rem); */
 }
 .logout-btn {
   transform: translateY(-0.5rem);

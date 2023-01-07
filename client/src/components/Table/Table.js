@@ -15,7 +15,14 @@ function Table({ data, searchTerm }) {
             titles.map((value) => {
               if (value !== "_id")
                 return (
-                  <td key={uuid()}>
+                  <td
+                    key={uuid()}
+                    className={
+                      value === "title"
+                        ? "right-blue-border first-td"
+                        : "right-blue-border"
+                    }
+                  >
                     <div className="flex-row ">
                       <p className="blue-btn title-container">{value}</p>
                     </div>

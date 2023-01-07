@@ -23,6 +23,17 @@ const getUser = async (req, res) => {
   }
 };
 
+const getUserName = async (req, res) => {
+  console.log(req.params.id);
+  try {
+    const user = await User.findById(req.params.id);
+    if (!user) return res.send("deleted user");
+    res.send(user.name);
+  } catch (e) {
+    res.status(500).send("deleted user");
+  }
+};
+
 const getUsers = async (req, res) => {
   try {
     const users = await User.find(
@@ -92,7 +103,6 @@ const registerUser = (req, res) => {
   });
 };
 
-//providing username and password only in body
 const loginUser = async (req, res) => {
   const { username } = req.body;
   try {
@@ -112,7 +122,6 @@ const loginUser = async (req, res) => {
 };
 
 const logoutUser = (req, res) => {
-  console.log("request");
   req.logout();
   res.send("user logged out succesfully");
 };
@@ -126,4 +135,5 @@ module.exports = {
   loginUser,
   logoutUser,
   addUser,
+  getUserName,
 };

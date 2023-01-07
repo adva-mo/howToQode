@@ -9,19 +9,16 @@ function Navbar() {
 
   return (
     <ul className="navbar-ul">
-      {/* <ul className="navbar-ul"> */}
-      {/* logo */}
-      {/* <img
-        className="logo-img"
-        src="https://firebasestorage.googleapis.com/v0/b/sharry-1319e.appspot.com/o/assets%2Flogo.png?alt=media&token=026310f7-4bdc-4b4b-ba0a-52f0696d5988"
-        alt=""
-      /> */}
       <li>
         <NavLink
           className={(navData) => (navData.isActive ? "active" : "")}
           to={"/homepage"}
         >
-          LOGO
+          <img
+            className="logo-img"
+            src="https://firebasestorage.googleapis.com/v0/b/sharry-1319e.appspot.com/o/QODE%2FASSETS%2FScreen%20Shot%202023-01-04%20at%205.28.15%20PM_prev_ui.png?alt=media&token=638f374e-e17a-46cf-8e6e-e70317864c48"
+            alt=""
+          />{" "}
         </NavLink>
       </li>
       <li>

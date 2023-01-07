@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import "./Answer.css";
 import Comment from "../Comment/Comment";
 import AddComment from "../AddComment/AddComment";
@@ -21,13 +21,23 @@ function Answer({
   const [NumOfLikes, setNumOfLikes] = useState(likes.length);
   const [showComments, setshowComments] = useState(false);
   const [answerComments, setAnswerComments] = useState(comments);
+  const [authorName, setauthorName] = useState("");
+
+  const { setError } = useContext(errorCtx);
   const { loggedUser } = useContext(currentLoggedUser);
+
   const [isLoggedUserLiked, setisLoggedUserLiked] = useState(
     likes.includes(loggedUser)
   );
-  const { setError } = useContext(errorCtx);
 
   const navigate = useNavigate();
+
+  useEffect(() => {
+    axios
+      .get(`http://127.0.0.1:3001/users/name/${author}`)
+      .then(({ data }) => setauthorName(data))
+      .catch((e) => console.log(e));
+  }, []);
 
   const addLike = async () => {
     try {
@@ -60,12 +70,13 @@ function Answer({
           <div>
             <i className="fa-regular fa-user turkiz-font"></i>
             <p
+              id={author}
               className="profile-link"
               onClick={({ target }) => {
-                navigate(`/profile/${target.textContent}`);
+                navigate(`/profile/${target.id}`);
               }}
             >
-              {author.slice(0, 6)}
+              {authorName}
             </p>
           </div>
           <div>
@@ -90,8 +101,8 @@ function Answer({
             <i
               className={
                 isLoggedUserLiked
-                  ? "fa-solid fa-thumbs-up turkiz-font"
-                  : "fa-regular fa-thumbs-up turkiz-font"
+                  ? "fa-solid fa-thumbs-up turkiz-font "
+                  : "fa-regular fa-thumbs-up turkiz-font unclicked-like"
               }
               onClick={
                 loggedUser
