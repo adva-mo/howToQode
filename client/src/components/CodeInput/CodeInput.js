@@ -1,5 +1,4 @@
 import React, { useContext } from "react";
-// import CodeBlock from "../Codeblock/Codeblock";
 import newSnippetContext from "../../context/snippet.context.js";
 import "./CodeInput.css";
 

@@ -7,7 +7,7 @@ const Codeblock = ({ language, textToFormat }) => {
     <SyntaxHighlighter
       language={language}
       style={docco}
-      showLineNumbers={true}
+      // showLineNumbers={true}
       customStyle={{
         backgroundColor: "rgb(190, 190, 190)",
         opacity: "1",

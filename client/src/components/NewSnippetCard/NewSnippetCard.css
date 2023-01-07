@@ -11,22 +11,16 @@
 
 .new-snippet-form * input {
   padding: 0.5rem;
-  /* background-color: ; */
   color: var(--black);
   font-size: large;
 }
 
 .new-snippet-form * textarea {
-  color: var(--black);
-  padding-left: 1.8rem;
   padding-top: 0.6rem;
   font-size: 16px;
   background-color: transparent;
-  /* color: transparent; */
+  color: transparent;
   width: 100%;
   height: 100%;
-  line-height: 1.6rem;
+  line-height: 1.65rem;
 }
-/* .code-block {
-  position: absolute;
-} */
