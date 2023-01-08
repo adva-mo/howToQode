@@ -47,10 +47,12 @@ const confirmAnswer = async (req, res) => {
         repliedUser.solvedQuestions += 1;
         await repliedUser.save();
       }
+      res.send("confirmed");
     }
     answer.likes.push(req.body.userid);
     await snippet.save();
-    res.send();
+    console.log("add like");
+    res.send("add like");
   } catch (e) {
     console.log(e);
   }

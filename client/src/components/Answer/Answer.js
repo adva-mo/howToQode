@@ -22,6 +22,7 @@ function Answer({
   const [showComments, setshowComments] = useState(false);
   const [answerComments, setAnswerComments] = useState(comments);
   const [authorName, setauthorName] = useState("");
+  const [isSolved, setisSolved] = useState(isHelpful);
 
   const { setError } = useContext(errorCtx);
   const { loggedUser } = useContext(currentLoggedUser);
@@ -41,13 +42,14 @@ function Answer({
 
   const addLike = async () => {
     try {
-      await axios.post(
+      const { data } = await axios.post(
         `https://howtoqode.onrender.com/answers/${snippetId}/confirm`,
         {
           answerId: _id,
           userid: loggedUser,
         }
       );
+      console.log(data);
       setNumOfLikes((prev) => (prev += 1));
       setisLoggedUserLiked((prev) => !prev);
     } catch (e) {
