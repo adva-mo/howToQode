@@ -36,6 +36,7 @@ function NewSnippetCard({ postSnippet }) {
       </div>
       <div>
         <textarea
+          style={{ color: "rgb(44, 44, 44)" }}
           placeholder="Describe what is the problem"
           type="text"
           className="new-description-input"

@@ -50,7 +50,6 @@ function SnippetCard({
               }}
               className="profile-link"
             >
-              {/* {author} */}
               {authorName}
             </p>
           </div>

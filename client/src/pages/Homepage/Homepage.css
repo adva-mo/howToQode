@@ -49,6 +49,15 @@
   font-size: 5rem;
   transition: all ease-in 0s;
 }
+.q-img {
+  width: 5rem;
+  transform: translate(0.6rem, 1.3rem);
+}
+.shift {
+  display: contents;
+  font-family: "Roboto", sans-serif;
+}
+
 @keyframes animate-earth {
   0% {
     transform: rotate(0deg);
@@ -69,5 +78,8 @@
 @media (max-width: 800px) {
   .welcome-title {
     font-size: 3rem;
+  }
+  .shift {
+    display: inline-block;
   }
 }

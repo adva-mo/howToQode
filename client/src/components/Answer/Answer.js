@@ -50,7 +50,6 @@ function Answer({
           userid: loggedUser,
         }
       );
-      console.log(data);
       setNumOfLikes((prev) => (prev += 1));
       setisLoggedUserLiked((prev) => !prev);
       if (data === "confirmed") {

@@ -1,8 +1,6 @@
 import React from "react";
 import "./LoginCard.css";
 import useInput from "../../hooks/useInput";
-// import axios from "axios";
-// import { useNavigate } from "react-router-dom";
 
 const isEmailInputValid = (value) => value.trim() !== "" && value.includes("@");
 const isPasswordInputValid = (value) =>

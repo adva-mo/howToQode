@@ -24,6 +24,7 @@ function UploadInput({ setIsFileUploaded }) {
   };
 
   useEffect(() => {
+    if (!imageToUpload) return;
     uploadFile();
     // eslint-disable-next-line
   }, [imageToUpload]);
