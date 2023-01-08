@@ -20,6 +20,7 @@ function SnippetCard({
   const navigate = useNavigate();
   const [answersToDisplay, setAnswersToDisplay] = useState(answers);
   const [authorName, setauthorName] = useState("");
+  const [isSolved, setisSolved] = useState(solved);
 
   useEffect(() => {
     axios
@@ -58,7 +59,7 @@ function SnippetCard({
             <i className="fa-solid fa-question turkiz-font"></i>
             <br />
             <p>
-              {solved ? (
+              {isSolved ? (
                 <i className="fa-solid fa-check"></i>
               ) : (
                 <i className="fa-solid fa-xmark turkiz-font" />
@@ -85,6 +86,7 @@ function SnippetCard({
             {...answer}
             snippetOwner={author}
             snippetId={_id}
+            setisSolved={setisSolved}
           />
         ))}
         <NewAnswerForm setAnswersToDisplay={setAnswersToDisplay} />

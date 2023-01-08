@@ -17,12 +17,13 @@ function Answer({
   _id,
   snippetId,
   likes,
+  setisSolved,
 }) {
   const [NumOfLikes, setNumOfLikes] = useState(likes.length);
   const [showComments, setshowComments] = useState(false);
   const [answerComments, setAnswerComments] = useState(comments);
   const [authorName, setauthorName] = useState("");
-  const [isSolved, setisSolved] = useState(isHelpful);
+  const [isCorrect, setIsCorrect] = useState(isHelpful);
 
   const { setError } = useContext(errorCtx);
   const { loggedUser } = useContext(currentLoggedUser);
@@ -52,6 +53,10 @@ function Answer({
       console.log(data);
       setNumOfLikes((prev) => (prev += 1));
       setisLoggedUserLiked((prev) => !prev);
+      if (data === "confirmed") {
+        setIsCorrect(true);
+        setisSolved(true);
+      }
     } catch (e) {
       console.log(e.response.data.message);
       setError(e.response.data.message);
@@ -63,7 +68,7 @@ function Answer({
       <div className="answer-container primary-box flex-column-center">
         <p> {description}</p>
 
-        <p className="turkiz-bottom-border">correct? {isHelpful ? "V" : "X"}</p>
+        <p className="turkiz-bottom-border">correct? {isCorrect ? "V" : "X"}</p>
         <div className="flex-row-around">
           <div>
             <i className="fa-solid fa-calendar-days turkiz-font"></i>
