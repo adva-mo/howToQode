@@ -11,14 +11,12 @@ function Navbar() {
     <ul className="navbar-ul">
       <li>
         <NavLink
-          className={(navData) => (navData.isActive ? "active" : "")}
+          className={(navData) =>
+            navData.isActive ? "active turkiz-font" : "turkiz-font"
+          }
           to={"/homepage"}
         >
-          <img
-            className="logo-img"
-            src="https://firebasestorage.googleapis.com/v0/b/sharry-1319e.appspot.com/o/QODE%2FASSETS%2FScreen%20Shot%202023-01-04%20at%205.28.15%20PM_prev_ui.png?alt=media&token=638f374e-e17a-46cf-8e6e-e70317864c48"
-            alt=""
-          />{" "}
+          QODE
         </NavLink>
       </li>
       <li>

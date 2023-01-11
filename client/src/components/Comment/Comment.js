@@ -10,7 +10,7 @@ function Comment({ author, description, date }) {
 
   useEffect(() => {
     axios
-      .get(`http://127.0.0.1:3001/users/name/${author}`)
+      .get(`http://howtoqode.onrender.com/users/name/${author}`)
       .then(({ data }) => setauthorName(data))
       .catch((e) => console.log(e));
   }, [author]);
