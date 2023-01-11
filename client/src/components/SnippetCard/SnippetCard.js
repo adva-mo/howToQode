@@ -24,7 +24,7 @@ function SnippetCard({
 
   useEffect(() => {
     axios
-      .get(`http://howtoqode.onrender.com/users/name/${author}`)
+      .get(`https://howtoqode.onrender.com/users/name/${author}`)
       .then(({ data }) => setauthorName(data))
       .catch((e) => console.log(e));
   }, [author]);
