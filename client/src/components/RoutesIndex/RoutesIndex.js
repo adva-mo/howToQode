@@ -7,6 +7,7 @@ import NewSnippetPage from "../../pages/NewSnippet/NewSnippetPage";
 import SnippetPage from "../../pages/SnippetPage/SnippetPage";
 import UserProfilePage from "../../pages/userProfilePage/UserProfilePage";
 import AIpage from "../../pages/AIpage/AIpage";
+import Chat from "../Chat/Chat";
 
 function RoutesIndex() {
   return (
@@ -19,6 +20,7 @@ function RoutesIndex() {
       <Route path="/snippets/:id" element={<SnippetPage />} />
       <Route path="/profile/:id" element={<UserProfilePage />} />
       <Route path="/ai" element={<AIpage />} />
+      <Route path="/chat" element={<Chat />} />
     </Routes>
   );
 }

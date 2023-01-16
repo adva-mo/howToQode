@@ -25,7 +25,7 @@ function App() {
             {error && <Error msg={error} setError={setError} />}
             <RoutesIndex />
           </errorCtx.Provider>
-          <Chat />
+          {size.width > 800 ? <Chat /> : ""}
         </div>
       </currentLoggedUser.Provider>
     </div>

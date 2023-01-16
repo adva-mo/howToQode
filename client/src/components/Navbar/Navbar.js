@@ -45,6 +45,16 @@ function Navbar() {
       </li>
       <li>
         <NavLink
+          className={(navData) =>
+            navData.isActive ? "active navlink-chat" : "navlink-chat"
+          }
+          to={"/chat"}
+        >
+          CHAT
+        </NavLink>
+      </li>
+      <li>
+        <NavLink
           className={(navData) => (navData.isActive ? "active" : "")}
           to={loggedUser ? `/profile/${loggedUser}` : "/login"}
         >

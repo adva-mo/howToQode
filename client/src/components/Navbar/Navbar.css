@@ -31,16 +31,17 @@
 }
 .logo-img {
   width: 4rem;
-  /* transform: translateY(-0.7rem); */
 }
 .logout-btn {
   transform: translateY(-0.5rem);
 }
+.navlink-chat {
+  display: none;
+  /* z-index: -10; */
+}
 @media (max-width: 800px) {
   .navbar-ul {
     flex-direction: column;
-    /* background: none; */
-    /* background-color: none; */
     position: static;
     height: 100%;
   }
@@ -49,6 +50,9 @@
   }
   .bm-item-list {
     padding: 0 !important;
+  }
+  .navlink-chat {
+    display: list-item;
   }
 
   #react-burger-cross-btn {

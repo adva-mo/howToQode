@@ -11,10 +11,12 @@
   top: 8vh;
   right: 0;
   border-left: 1px solid whitesmoke;
+  display: flex;
 }
 .chat-room {
   height: 100%;
   position: relative;
+  width: 100%;
 }
 .chat-input-container {
   /* align-self: flex-end; */
@@ -37,6 +39,10 @@
   padding-bottom: 0;
   /* display: flex; */
 }
+.join-chat-btn {
+  margin: auto;
+}
+
 .message-meta {
   font-size: smaller;
 }
@@ -108,8 +114,13 @@
   text-align: center;
 }
 @media (max-width: 800px) {
-  .chat {
+  /* .chat {
     top: 0;
     height: 100vh;
+  } */
+  .chat {
+    /* display: block; */
+    width: 100%;
+    /* margin: 2rem; */
   }
 }

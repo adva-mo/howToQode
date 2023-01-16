@@ -115,7 +115,11 @@ function Chat() {
             </div>
           </div>
         ) : (
-          <button onClick={joinChat}>click here and chat with friends!</button>
+          <button className="join-chat-btn" onClick={joinChat}>
+            click here
+            <br /> to enter <br />
+            discussion room
+          </button>
         )}
       </div>
     </div>
