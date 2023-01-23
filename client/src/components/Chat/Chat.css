@@ -7,7 +7,6 @@
   width: 250px;
   height: 92vh;
   position: fixed;
-  /* matxh to navbar height: */
   top: 8vh;
   right: 0;
   border-left: 1px solid whitesmoke;
@@ -19,9 +18,7 @@
   width: 100%;
 }
 .chat-input-container {
-  /* align-self: flex-end; */
   display: flex;
-  /* width: 100%; */
   position: sticky;
   bottom: 0;
   right: 0;
@@ -37,7 +34,6 @@
   height: auto;
   padding: 10px;
   padding-bottom: 0;
-  /* display: flex; */
 }
 .join-chat-btn {
   margin: auto;
@@ -58,7 +54,6 @@
   justify-content: flex-start;
   background-color: rgba(136, 92, 202, 0.652);
   padding: 2px;
-  /* color: pink !important; */
   border-radius: 5px;
 }
 
@@ -114,13 +109,16 @@
   text-align: center;
 }
 @media (max-width: 800px) {
-  /* .chat {
-    top: 0;
-    height: 100vh;
-  } */
   .chat {
-    /* display: block; */
     width: 100%;
-    /* margin: 2rem; */
+  }
+  .chat-input-container {
+    height: 3rem;
+  }
+  .send-msg-btn {
+    width: 3rem;
+  }
+  .chat-input {
+    font-size: larger;
   }
 }

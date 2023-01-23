@@ -37,3 +37,8 @@
   margin-top: 6rem !important;
   margin-bottom: 2rem;
 }
+@media (max-width: 800px) {
+  .login-card {
+    width: 90%;
+  }
+}

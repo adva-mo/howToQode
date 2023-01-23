@@ -11,7 +11,7 @@
   align-items: center;
   gap: 2rem;
 }
-.Homepage-page-container {
+.Homepage {
   justify-content: center;
 }
 .space {
@@ -81,5 +81,12 @@
   }
   .shift {
     display: inline-block;
+  }
+  .animation-title-container {
+    flex-direction: column;
+  }
+  .Homepage {
+    justify-content: space-between;
+    margin-top: 6rem;
   }
 }

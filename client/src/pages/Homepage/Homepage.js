@@ -3,8 +3,8 @@ import "./Homepage.css";
 
 function Homepage() {
   return (
-    <div className="Homepage page-container Homepage-page-container">
-      <div className="flex-row-between">
+    <div className="Homepage page-container ">
+      <div className="flex-row-between animation-title-container">
         {/* <img
           className="hero-image"
           src={process.env.PUBLIC_URL + "/assets/hero-image.png"}

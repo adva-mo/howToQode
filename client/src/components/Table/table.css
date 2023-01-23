@@ -19,3 +19,12 @@
 .first-td {
   width: 60% !;
 }
+@media (max-width: 800px) {
+  .right-blue-border {
+    padding: 0.2rem !important;
+  }
+  .table-container {
+    padding: 0.2rem;
+    font-size: xx-small;
+  }
+}
