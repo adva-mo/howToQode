@@ -24,7 +24,7 @@ function Navbar() {
           className={(navData) => (navData.isActive ? "active" : "")}
           to={"/new-snippet"}
         >
-          POST A QEUSTION
+          POST A QUESTION
         </NavLink>
       </li>
       <li>
