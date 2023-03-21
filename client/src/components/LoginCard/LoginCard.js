@@ -128,7 +128,7 @@ function LoginCard({ setUserToRegister, isNewUser, setIsNewUser }) {
         <button className="select-primary">
           {isNewUser ? "Sign up" : "Login"}
         </button>
-        <button onClick={() => loginGuest()} style={{ marginLeft: "1`rem" }}>
+        <button onClick={() => loginGuest()} style={{ marginLeft: "1rem" }}>
           enter as a guest
         </button>
       </div>
