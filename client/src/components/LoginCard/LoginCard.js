@@ -64,6 +64,14 @@ function LoginCard({ setUserToRegister, isNewUser, setIsNewUser }) {
     }
   };
 
+  const loginGuest = () => {
+    setIsNewUser(false);
+    setUserToRegister({
+      username: "guest@gmail.com",
+      password: "123456",
+    });
+  };
+
   return (
     <form
       onSubmit={formSubmissionHandler}
@@ -116,16 +124,20 @@ function LoginCard({ setUserToRegister, isNewUser, setIsNewUser }) {
           </>
         )}
       </div>
+      <div>
+        <button className="select-primary">
+          {isNewUser ? "Sign up" : "Login"}
+        </button>
+        <button onClick={() => loginGuest()} style={{ marginLeft: "1rem" }}>
+          enter as a guest
+        </button>
+      </div>
 
-      <button className="select-primary">
-        {isNewUser ? "Sign up" : "Login"}
-      </button>
       <div>
         <button
           style={{ fontSize: "0.7rem" }}
           className="select-primary"
           type="button"
-          // className="blue-btn"
           onClick={() => {
             setIsNewUser((prev) => !prev);
           }}
