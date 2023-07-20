@@ -1,50 +1,36 @@
-# Project Title
+# HOW TO 'QODE'
 
-A community for new programmers to share their code and get help with issues they are facing.
+A community for new developers to share their coding issues, get answers from other users and from experts, help others with their questions, get ranked, and participate in an online discussion board.
 
-## Getting Started
+## Key features
+* Upload scripts or code online to publish questions in your profile and in the community.
+* Explore users' questions, try to answer and solve others' coding issues.
+* Get points for each time you helped others (only if the user who published the question added like to your answer).
+* Try to get to an expert level.
+* Ask our experts (AI) anything you want about coding.
+* Enter the discussion board and chat online with other developers.
 
-These instructions will get you set up with the project so you can start using it and contributing to the community.
+## Technologies 
+* MERN stack (MongoDB, Express.js, React.js, Node.js)
+* Passport.js for authentication
+* OpenAI API for the 'expert's answers'
+* Socket.io for the online chat in the discussion board
+* AWS EC2 for deployment
+* Nginx as a proxy
+* PM2 to control the running servers on the EC2 instance
+* React context API for state management
+* React-syntax-highlighter
+* React-router-dom to configure the web app routes
+* react-burger-menu
 
-### Prerequisites
+## How to 'qode' demo
+visit our community --> http://howtoqode.com/
 
-Before you begin, make sure you have the following:
+## Screenshots
+![alt text](https://firebasestorage.googleapis.com/v0/b/sharry-1319e.appspot.com/o/QODE%2FASSETS%2Freadme-github%2Fscript.png?alt=media&token=8fa44f34-0f60-4611-a7d0-ec45d8eed67f) 
 
-- A computer with internet access
-- A text editor or integrated development environment (IDE) for writing code
+![alt text](https://firebasestorage.googleapis.com/v0/b/sharry-1319e.appspot.com/o/QODE%2FASSETS%2Freadme-github%2Fanswer.png?alt=media&token=2c415e64-10af-4647-a69e-d2a434f5c4d8)
 
-### Installing
+![alt text](https://firebasestorage.googleapis.com/v0/b/sharry-1319e.appspot.com/o/QODE%2FASSETS%2Freadme-github%2Fai.png?alt=media&token=491230a6-85b2-46c3-95b8-d2ce4726412b)
 
-Follow these steps to set up the project on your local machine:
-
-1. Download the project code from the repository (e.g. using `git clone`)
-2. Open the project in your text editor or IDE
-3. Install any necessary dependencies (e.g. using `npm install` or `pip install`)
-4. Run the project locally (e.g. using `npm start` or `python main.py`)
-
-## Usage
-
-Once the project is set up, you can start using it by:
-
-- Sharing your code and asking for help with issues in the community forum
-- Helping others by answering their questions and providing feedback on their code
-- ask our AI any question about coding
-- get points and rank for solving other's questions
-- enter the dashborad room and have a chat with friends online
-
-## Contributing
-
-We welcome contributions to the project! If you want to contribute, please follow these steps:
-
-1. Fork the repository to your own GitHub account
-2. Clone the repository to your local machine
-3. Create a new branch for your changes (e.g. `git branch my-new-feature`)
-4. Make your changes and commit them (e.g. `git commit -am 'Added a new feature'`)
-5. Push the changes to your branch (e.g. `git push origin my-new-feature`)
-6. Create a new pull request from your branch to the `master` branch of the main repository
-
-
-## Acknowledgments
-
-* Thank you to all the members of the community who contribute their time and knowledge to help others.
-# howtoqode-aws
+![alt text](https://firebasestorage.googleapis.com/v0/b/sharry-1319e.appspot.com/o/QODE%2FASSETS%2Freadme-github%2Fquestion.png?alt=media&token=a90f4085-8c20-49c1-bcb6-8ef1227c3ac7)
